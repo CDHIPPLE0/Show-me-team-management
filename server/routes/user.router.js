@@ -59,7 +59,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-router.put('/editEmail/:id', (req, res) => {
+router.put('/editEmail/:id', rejectUnauthenticated, (req, res) => {
   const edit = req.body;
   const queryText = `UPDATE "user" SET email=$1 WHERE id=$2;`;
   const queryArray = [edit.newEmail, req.params.id];
@@ -67,18 +67,19 @@ router.put('/editEmail/:id', (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
+      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.warning(err);
+      console.log(err);
       res.sendStatus(500);
     });
 });
 
-router.put('/editPhone/:id', (req, res) => {
+router.put('/editPhone/:id', rejectUnauthenticated, (req, res) => {
   const edit = req.body;
   const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
-  const queryArray = [edit, req.params.id];
+  const queryArray = [edit.newPhone, req.params.id];
 
   pool
     .query(queryText, queryArray)
@@ -86,11 +87,26 @@ router.put('/editPhone/:id', (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.warning(err);
+      console.log(err);
       res.sendStatus(500);
     });
 });
 
+router.put('/verify/:id', rejectUnauthenticated, (req, res) => {
+  const accessLevel = req.body;
+  const queryText = `UPDATE "user" SET access_level_id=$1 WHERE id=$2;`;
+  const queryArray = [accessLevel.setLevel, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful

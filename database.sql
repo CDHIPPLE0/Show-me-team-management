@@ -26,14 +26,16 @@ CREATE TABLE "job" (
   id serial PRIMARY KEY,
   description text,
   job_address varchar(500),
-  job_creator_id INT REFERENCES "user"
+  job_creator_id INT REFERENCES "user",
+  is_active boolean
 );
 
 CREATE TABLE "user_job" (
-  id serial PRIMARY KEY, 
-  user_id INT REFERENCES "user",
-  job_id INT REFERENCES "job"  
+  id serial PRIMARY KEY,
+  job_id INT REFERENCES "job",
+  user_id INT REFERENCES "user"
 );
+
 
 INSERT INTO "access_level" (level, name) VALUES
 ( 1 , 'UNVERIFIED'),
