@@ -59,6 +59,38 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.put('/editEmail/:id', (req, res) => {
+  const edit = req.body;
+  const queryText = `UPDATE "user" SET email=$1 WHERE id=$2;`;
+  const queryArray = [edit.newEmail, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warning(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/editPhone/:id', (req, res) => {
+  const edit = req.body;
+  const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
+  const queryArray = [edit, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warning(err);
+      res.sendStatus(500);
+    });
+});
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful
