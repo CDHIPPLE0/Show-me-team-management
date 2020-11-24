@@ -3,8 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT first_name, last_name, phone, email, address,
-  job_title, osha_level, subcontractor_certifications, job_status FROM "user" WHERE access_level_id = 2;`;
+  const queryText = `SELECT first_name, last_name, phone, email, vendor_company
+    FROM "user" WHERE access_level_id = 3;`;
   pool
     .query(queryText)
     .then((result) => {

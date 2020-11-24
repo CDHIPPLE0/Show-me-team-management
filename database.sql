@@ -1,3 +1,9 @@
+CREATE TABLE "access_level" (
+  id serial PRIMARY KEY,
+  name varchar(120),
+  level int
+);
+
 CREATE TABLE "user" (
   id serial PRIMARY KEY, 
   username varchar(120),
@@ -6,8 +12,9 @@ CREATE TABLE "user" (
   access_level_id INT REFERENCES "access_level",
   first_name varchar(120),
   last_name varchar(120),
-  phone INT,
-  email varchar(500)
+  phone varchar(20),
+  email varchar(500),
+  address varchar(500),
   job_title varchar(120),
   osha_level INT,
   subcontractor_certifications text,
@@ -15,23 +22,17 @@ CREATE TABLE "user" (
   vendor_company text
 );
 
-CREATE TABLE "access_level" (
+CREATE TABLE "job" (
   id serial PRIMARY KEY,
-  name varchar(120),
-  level int
+  description text,
+  job_address varchar(500),
+  job_creator_id INT REFERENCES "user"
 );
 
 CREATE TABLE "user_job" (
   id serial PRIMARY KEY, 
   user_id INT REFERENCES "user",
-  job_id INT REFERENCES "job"
-  
-);
-
-CREATE TABLE "job" (
-  id serial PRIMARY KEY,
-  job_address varchar(500),
-  job_creater_id INT REFERENCES "user"
+  job_id INT REFERENCES "job"  
 );
 
 INSERT INTO "access_level" (level, name) VALUES
@@ -39,4 +40,3 @@ INSERT INTO "access_level" (level, name) VALUES
 ( 2 , 'SUBCONTRACTOR'),
 ( 3 , 'VENDOR'),
 ( 4 , 'ADMIN');
-

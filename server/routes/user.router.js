@@ -25,15 +25,16 @@ router.post('/register', (req, res, next) => {
   const lName = req.body.lName;
   const phone = req.body.phone;
   const email = req.body.email;
+  const address = req.body.address;
   const jobTitle = req.body.jobTitle;
   const oshaLevel = req.body.oshaLevel;
   const certs = req.body.certs;
   const company = req.body.company;
 
   const queryText = `INSERT INTO "user" (username, password, registered_as,
-    access_level_id, first_name, last_name, phone, email, job_title, osha_level,
+    access_level_id, first_name, last_name, phone, email, address, job_title, osha_level,
     subcontractor_certifications, job_status, vendor_company)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`;
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING id`;
   pool
     .query(queryText, [
       username,
@@ -44,6 +45,7 @@ router.post('/register', (req, res, next) => {
       lName,
       phone,
       email,
+      address,
       jobTitle,
       oshaLevel,
       certs,
