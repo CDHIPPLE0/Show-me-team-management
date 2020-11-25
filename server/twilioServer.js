@@ -6,7 +6,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
 app.use(urlencoded({ extended: false }));
 
-app.post('/sms', (req, res) => {
+app.post('/', (req, res) => {
   const twiml = new MessagingResponse();
 
   // Access the message body and the number it was sent from.
