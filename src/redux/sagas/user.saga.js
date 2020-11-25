@@ -24,8 +24,35 @@ function* fetchUser() {
   }
 }
 
+function* editEmail(action) {
+  try {
+    yield axios.put(`/user/editEmail/:${action.id}`, action.payload);
+  } catch (error) {
+    console.log('Error with user email edit:', error);
+  }
+}
+
+function* editPhone(action) {
+  try {
+    yield axios.put(`/user/editPhone/:${action.id}`, action.payload);
+  } catch (error) {
+    console.log('Error with user phone edit:', error);
+  }
+}
+
+function* verify(action) {
+  try {
+    yield axios.put(`/user/verify/:${action.id}`, action.payload);
+  } catch (error) {
+    console.log('Error with user verification:', error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('EDIT_EMAIL', editEmail);
+  yield takeLatest('EDIT_PHONE', editPhone);
+  yield takeLatest('VERIFY_USER', verify);
 }
 
 export default userSaga;
