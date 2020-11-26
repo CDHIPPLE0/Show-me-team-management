@@ -3,19 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button, MenuItem, Select } from '@material-ui/core';
 
-// const username = req.body.username;
-// const password = encryptLib.encryptPassword(req.body.password);
-// const registeredAs = req.body.registeredAs;
-// const fName = req.body.firstName;
-// const lName = req.body.lastName;
-// const phone = req.body.phone;
-// const email = req.body.email;
-// const address = req.body.address;
-// const jobTitle = req.body.jobTitle;
-// const oshaLevel = req.body.oshaLevel;
-// const certs = req.body.certs;
-// const company = req.body.company;
-
 class RegisterForm extends Component {
   state = {
     registeredAs: null,
