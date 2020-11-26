@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // CUSTOM COMPONENTS
@@ -17,7 +18,7 @@ class RegisterPage extends Component {
         <RegisterForm />
 
         <center>
-          <button
+          <Button
             type="button"
             className="btn btn_asLink"
             onClick={() => {
@@ -25,7 +26,7 @@ class RegisterPage extends Component {
             }}
           >
             Login
-          </button>
+          </Button>
         </center>
       </div>
     );

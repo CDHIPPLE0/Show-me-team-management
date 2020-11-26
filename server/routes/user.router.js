@@ -27,7 +27,7 @@ router.post('/register', (req, res, next) => {
   const email = req.body.email;
   const address = req.body.address;
   const jobTitle = req.body.jobTitle;
-  const oshaLevel = req.body.oshaLevel;
+  const oshaLevel = req.body.osha;
   const certs = req.body.certs;
   const company = req.body.company;
 
