@@ -1,3 +1,20 @@
+body {
+  background-image: url(/public/Images/landingPageBackground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .buttonForm {
   margin-top: 10rem;
   border: solid black 1px;

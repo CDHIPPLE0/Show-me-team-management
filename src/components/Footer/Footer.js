@@ -6,6 +6,22 @@ import './Footer.css';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const Footer = () => <footer>&copy; Show Me Stainless</footer>;
+const Footer = () => (
+  <div class="footcontent">
+    <footer class="footer">
+      <nav class="footNavBar">
+        <ul>
+          <li>&copy; Show Me Stainless :: Built by CDHIPPLE0</li>
+          <a href="#" />
+          <img src={require('../../Images/instagram.png')} />
+          <a href="#" />
+          <img src={require('../../Images/facebook.png')} />
+          <a href="#" />
+          <img src={require('../../Images/linkedin.png')} />
+        </ul>
+      </nav>
+    </footer>
+  </div>
+);
 
 export default Footer;

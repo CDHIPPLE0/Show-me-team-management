@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+.logoLink {
+  border-radius: 1rem;
+  height: auto;
+  width: auto;
+  max-width: 8rem;
+  max-height: 12rem;
+}
+
+.nav-link {
+  font-family: 'Volkhov', serif;
+  font-weight: 500;
+  font-size: 16px;
+  display: inline-block;
+  padding: 1rem 1rem 1rem 4.2rem;
+  text-decoration: none;
+  color: #fffded;
+}
+
+.nav_links a:hover {
+  color: rgba(6, 21, 96, 1);
+}
+.toggle-button {
+  position: absolute;
+  top: 3rem;
+  right: 3.5rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 35px;
+}
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+.navbar {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2% 10%;
+  background-color: rgba(72, 79, 86, 0.7);
+}
+
+.button {
+  box-shadow: inset 0px 0px 15px 3px #23395e;
+  background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+  background-color: #2e466e;
+  border-radius: 17px;
+  border: 1px solid #1f2f47;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 6px 13px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #263666;
+}

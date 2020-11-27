@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import logo from '../Nav/showme.png';
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -17,9 +18,9 @@ const Nav = (props) => {
   }
 
   return (
-    <div className="nav">
+    <div className="navbar">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <img src={logo} className="logoLink" alt="" />
       </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
@@ -39,7 +40,7 @@ const Nav = (props) => {
         )}
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
-          About Us
+          About
         </Link>
       </div>
     </div>
