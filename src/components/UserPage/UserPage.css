@@ -1,7 +1,14 @@
-.containerTable {
+.userPage {
+  display: flex;
+}
+
+.table {
+  flex: 1;
   display: flex;
   justify-content: center;
+  float: right;
   padding: 20px;
+  margin-left: 2rem;
 }
 
 .statTable {

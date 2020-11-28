@@ -33,14 +33,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.2% 10%;
-  background-color: rgba(72, 79, 86, 0.7);
+  background-color: rgba(9, 11, 14, 0.7);
+  border: solid black 1px;
 }
 
 .appNav p {
   font-size: 16px;
   font-weight: 400;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  font-size: 16px;
+  color: white;
   margin-left: 15rem;
 }
 
@@ -68,6 +71,12 @@
   color: #fffded;
   display: inline-block;
   padding: 1rem 1rem 1rem 1rem;
+}
+
+.sideBar {
+  height: 100vh;
+  width: 10%;
+  background-color: rgba(9, 11, 14, 0.7);
 }
 
 /* CONTENT STYLES */

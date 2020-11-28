@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import '../UserPage/UserPage.css';
 import AppNav from '../Nav/AppNav';
+import SideBar from './SideBar';
 
 class UserPage extends Component {
   state = {
@@ -18,16 +19,34 @@ class UserPage extends Component {
     return (
       <>
         <AppNav props={this.props} />
-        {this.state.access_level === 4 && (
-          <div>
-            <p>admin</p>
-          </div>
-        )}
-        {this.state.access_level === 3 && (
-          <div className="userPage">
-            <p>Subcontractor</p>
-          </div>
-        )}
+        <div className="userPage">
+          <SideBar />
+          {this.state.access_level === 4 && (
+            <div class="table">
+              <table class="statTable">
+                <thead class="tableHead">
+                  <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Jobs Owned</th>
+                    <th>Status</th>
+                    <th>Comments</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          )}
+
+          {this.state.access_level === 3 && (
+            <div className="userPage">
+              <p>Subcontractor</p>
+            </div>
+          )}
+        </div>
       </>
     );
   }
