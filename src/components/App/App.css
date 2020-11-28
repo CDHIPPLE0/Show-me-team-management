@@ -27,6 +27,15 @@
 
 /* NAV STYLES */
 
+.appNav {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2% 10%;
+  background-color: rgba(72, 79, 86, 0.7);
+}
+
 .nav {
   margin-top: 0;
   display: flex;

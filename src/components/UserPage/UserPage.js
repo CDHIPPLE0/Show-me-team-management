@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import '../UserPage/UserPage.css';
+import AppNav from '../Nav/AppNav';
 
 class UserPage extends Component {
   state = {
@@ -16,6 +17,7 @@ class UserPage extends Component {
   render() {
     return (
       <>
+        <AppNav props={this.props} />
         {this.state.access_level === 4 && (
           <div>
             <p>admin</p>

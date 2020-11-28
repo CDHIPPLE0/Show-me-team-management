@@ -33,7 +33,7 @@ class App extends Component {
         <div
           className={this.props.store.user.id ? 'menuWrapper' : 'pageWrapper'}
         >
-          <Nav />
+          {!this.props.store.user.id ? <Nav /> : <></>}
           <Switch>
             <Redirect exact from="/" to="/home" />
 
@@ -64,7 +64,7 @@ class App extends Component {
 
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {!this.props.store.user.id ? <Footer /> : <></>}
         </div>
       </Router>
     );
