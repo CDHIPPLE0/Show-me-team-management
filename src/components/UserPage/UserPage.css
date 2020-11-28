@@ -2,6 +2,26 @@
   display: flex;
 }
 
+.sideBar {
+  height: 100vh;
+  min-width: 10rem;
+  background-color: rgba(9, 11, 14, 0.7);
+}
+
+.sideBar li {
+  color: white;
+  list-style-type: none;
+  margin: 2rem;
+  cursor: pointer;
+}
+
+.sideBar li:hover {
+  text-align: center;
+  width: 80%;
+  height: 2rem;
+  background-color: rgba(58, 60, 66, 0.7);
+}
+
 .table {
   flex: 1;
   display: flex;
@@ -28,7 +48,7 @@
 
 .tableHead {
   height: 4rem;
-  background-color: rgba(96, 108, 116, 1);
+  background-color: rgba(9, 11, 14, 0.7);
   font-size: 1rem;
   text-align: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

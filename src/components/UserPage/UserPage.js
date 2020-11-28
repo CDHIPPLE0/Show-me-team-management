@@ -37,6 +37,20 @@ class UserPage extends Component {
                     <th></th>
                   </tr>
                 </thead>
+                <tbody class="tdStyle">
+                  <tr>
+                    <td>Hal Todd</td>
+                  </tr>
+                  <tr>
+                    <td>Bill Ben</td>
+                  </tr>
+                  <tr>
+                    <td>Bill Ben</td>
+                  </tr>
+                  <tr>
+                    <td>Bill Ben</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           )}
