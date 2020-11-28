@@ -6,9 +6,9 @@ import React from 'react';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const Footer = () => (
-  <div class="footcontent">
-    <footer class="footer">
-      <nav class="footNavBar">
+  <div className="footcontent">
+    <footer className="footer">
+      <nav className="footNavBar">
         <ul>
           <li>&copy; Show Me Stainless :: Built by CDHIPPLE0</li>
           <a href="#" />

@@ -8,7 +8,16 @@ import SideBar from './SideBar';
 class UserPage extends Component {
   state = {
     access_level: 0,
+    selection: 0,
   };
+
+  handleClick = (event) => {
+    this.setState({
+      ...this.state,
+      selection: event.target.value,
+    });
+  };
+
   componentDidMount() {
     this.setState({
       ...this.state,
@@ -20,11 +29,11 @@ class UserPage extends Component {
       <>
         <AppNav props={this.props} />
         <div className="userPage">
-          <SideBar />
+          <SideBar handleClick={this.handleClick} />
           {this.state.access_level === 4 && (
-            <div class="table">
-              <table class="statTable">
-                <thead class="tableHead">
+            <div className="table">
+              <table className="statTable">
+                <thead className="tableHead">
                   <tr>
                     <th>Name</th>
                     <th>Company</th>
@@ -37,7 +46,7 @@ class UserPage extends Component {
                     <th></th>
                   </tr>
                 </thead>
-                <tbody class="tdStyle">
+                <tbody className="tdStyle">
                   <tr>
                     <td>Hal Todd</td>
                   </tr>

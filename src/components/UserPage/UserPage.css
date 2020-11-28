@@ -11,7 +11,8 @@
 .sideBar li {
   color: white;
   list-style-type: none;
-  margin: 2rem;
+  margin-top: 5rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 

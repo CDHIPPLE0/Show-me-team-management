@@ -3,18 +3,18 @@ import react from 'react';
 export const SideBarData = [
   {
     Title: 'Job Selection',
-    Link: '',
+    Selection: 1,
   },
   {
     Title: 'Assignment',
-    Link: '',
+    Selection: 2,
   },
   {
-    Title: 'Subcontractor Admin',
-    Link: '',
+    Title: 'Subcontractors',
+    Selection: 3,
   },
   {
-    Title: 'Vendor Admin',
-    Link: '',
+    Title: 'Vendors',
+    Selection: 4,
   },
 ];
