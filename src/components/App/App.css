@@ -36,6 +36,14 @@
   background-color: rgba(72, 79, 86, 0.7);
 }
 
+.appNav p {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  margin-left: 15rem;
+}
+
 .nav {
   margin-top: 0;
   display: flex;
