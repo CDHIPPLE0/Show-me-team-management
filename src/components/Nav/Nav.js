@@ -7,7 +7,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 const Nav = (props) => {
   let loginLinkData = {
     path: '/login',
-    text: 'Login / Register',
+    text: 'SIGN UP / SIGN IN ',
   };
 
   if (props.store.user.id != null) {
@@ -30,15 +30,12 @@ const Nav = (props) => {
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
-            <Link className="nav-link" to="/info">
-              Info Page
-            </Link>
             <LogOutButton className="nav-link" />
           </>
         )}
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
-          About
+          ABOUT
         </Link>
       </div>
     </div>

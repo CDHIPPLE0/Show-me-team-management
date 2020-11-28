@@ -14,10 +14,10 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
-        <RegisterForm />
+      <center>
+        <center className="loginWrapper">
+          <RegisterForm />
 
-        <center>
           <Button
             type="button"
             className="btn btn_asLink"
@@ -28,7 +28,7 @@ class RegisterPage extends Component {
             Login
           </Button>
         </center>
-      </div>
+      </center>
     );
   }
 }

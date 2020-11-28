@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .pageWrapper {
   background-image: url(../../Images/landingPageBackground.png);
   background-size: cover;
@@ -16,6 +10,12 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* NAV STYLES */
@@ -39,7 +39,7 @@
 .nav-link {
   font-family: 'Volkhov', serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: none;
   color: #fffded;
   display: inline-block;
@@ -71,6 +71,24 @@
   font-size: 16px;
   font-family: 'Bree Serif', serif;
   color: #fffded;
+}
+
+.loginWrapper {
+  width: 40%;
+  height: 80vh;
+  background-color: rgba(72, 79, 86, 0.7);
+}
+
+.form {
+  background-color: white;
+  margin: 3rem;
+  min-width: 30rem;
+}
+
+.userPage {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
 }
 
 /* FOOTER STYLES */
@@ -106,4 +124,18 @@
   padding-top: 0.7rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/*--------responsiveness--------*/
+
+@media (max-width: 800px) {
+  .pageWrapper {
+    background-image: url(../../Images/landingPageBackgroundMobile.png);
+  }
+
+  /*--------responsivenessNAV----------------*/
+
+  /*-------responsivenessBODY---------*/
+
+  /*-------responsivenessFOOTER---------*/
 }
