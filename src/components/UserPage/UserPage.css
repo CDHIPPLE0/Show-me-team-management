@@ -7,23 +7,33 @@
   min-width: 10rem;
   background-color: rgba(9, 11, 14, 0.7);
   /* font-family: 'Courier New', Courier, monospace; */
-  font-weight: bold;
-  font-size: 16px;
+}
+
+.sideBarHeader {
   color: white;
+  line-height: 4rem;
+  text-align: center;
+  background-color: rgba(27, 32, 39, 0.315);
 }
 
 .sideBar li {
+  line-height: 4rem;
+  height: 100%;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
   color: white;
   list-style-type: none;
-  margin-top: 5rem;
-  margin-left: 1rem;
   cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  border-top: solid rgb(80, 80, 104) 1px;
+  border-bottom: solid black 1px;
+  transition: 0.4s;
 }
 
 .sideBar li:hover {
-  text-align: center;
-  width: 80%;
-  height: 2rem;
+  padding-left: 20px;
   background-color: rgba(58, 60, 66, 0.7);
 }
 

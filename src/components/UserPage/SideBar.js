@@ -20,6 +20,7 @@ const Sidebar = (props) => {
   if (items != 0) {
     return (
       <div className="sideBar">
+        <h1 className="sideBarHeader">Menu</h1>
         {items.map((val, key) => {
           return (
             <ul key={key}>
