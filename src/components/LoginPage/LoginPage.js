@@ -7,7 +7,7 @@ class LoginPage extends Component {
   render() {
     return (
       <center>
-        <center className="loginWrapper">
+        <center>
           <LoginForm />
           <button
             type="button"

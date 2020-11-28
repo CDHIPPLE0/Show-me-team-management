@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
+import mapStoreToProps from '../../redux/mapStoreToProps';
 import './App.css';
 
 class App extends Component {
@@ -30,7 +30,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="pageWrapper">
+        <div
+          className={this.props.store.user.id ? 'menuWrapper' : 'pageWrapper'}
+        >
           <Nav />
           <Switch>
             <Redirect exact from="/" to="/home" />
@@ -69,4 +71,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);
