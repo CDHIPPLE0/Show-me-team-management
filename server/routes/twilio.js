@@ -14,7 +14,7 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
     .create({
       body: message,
       from: '+13862048962',
-      to: '+16609246155',
+      to: '+16604121990',
     })
     .then((message) => console.log(message.sid))
     .then(() => res.sendStatus(200));

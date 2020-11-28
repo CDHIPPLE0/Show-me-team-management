@@ -227,18 +227,18 @@ class RegisterForm extends Component {
                   required
                   onChange={this.handleInputChangeFor('firstName')}
                 />
-              </div>
-              <div>
-                <TextField
-                  id="outlined-basic"
-                  label="Last Name"
-                  variant="outlined"
-                  type="text"
-                  name="Last Name"
-                  value={this.state.lastName}
-                  required
-                  onChange={this.handleInputChangeFor('lastName')}
-                />
+                <span>
+                  <TextField
+                    id="outlined-basic"
+                    label="Last Name"
+                    variant="outlined"
+                    type="text"
+                    name="Last Name"
+                    value={this.state.lastName}
+                    required
+                    onChange={this.handleInputChangeFor('lastName')}
+                  />
+                </span>
               </div>
               <div>
                 <TextField

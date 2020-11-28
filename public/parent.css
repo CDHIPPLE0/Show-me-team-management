@@ -1,0 +1,10 @@
+#react-root {
+  /* background-image: url(../Images/landingPageBackground.png); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

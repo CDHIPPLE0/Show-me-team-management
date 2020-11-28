@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import logo from '../Nav/showme.png';
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -16,7 +17,7 @@ const Nav = (props) => {
   }
 
   return (
-    <div className="nav">
+    <div className="navbar">
       <Link to="/home">
         <img className="nav-logo" src={require('../../Images/showme.png')} />
       </Link>
@@ -38,7 +39,7 @@ const Nav = (props) => {
         )}
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
-          About Us
+          About
         </Link>
       </div>
     </div>
