@@ -38,7 +38,7 @@ const Nav = (props) => {
         {/* Always show this link since the about page is not protected */}
         {!props.store.user.id && (
           <Link className="nav-link" to="/about">
-            ABOUT
+            ABOUT US
           </Link>
         )}
       </div>

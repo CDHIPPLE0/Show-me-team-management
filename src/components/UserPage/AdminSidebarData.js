@@ -1,6 +1,4 @@
-import react from 'react';
-
-export const SideBarData = [
+export const AdminSidebarData = [
   {
     Title: 'Job Selection',
     Selection: 1,

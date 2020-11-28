@@ -6,6 +6,10 @@
   height: 100vh;
   min-width: 10rem;
   background-color: rgba(9, 11, 14, 0.7);
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
 }
 
 .sideBar li {
