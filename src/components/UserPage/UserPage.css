@@ -1,0 +1,65 @@
+.containerTable {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.statTable {
+  margin-top: 8rem;
+  border-collapse: collapse;
+}
+
+.statTable th {
+  padding: 6px 10px;
+  border: 1px solid black;
+}
+
+.statTable td {
+  padding: 6px 10px;
+  border: 1px solid black;
+}
+
+.tableHead {
+  height: 4rem;
+  background-color: rgba(96, 108, 116, 1);
+  font-size: 1rem;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  color: white;
+  padding-top: 2rem;
+}
+
+.tableHead th {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.tdStyle tr {
+  background-color: white;
+}
+
+.tdStyle tr:nth-child(even) {
+  background-color: rgba(200, 205, 208, 1);
+}
+
+.totalRow {
+  background-color: rgba(96, 108, 116, 1);
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: right;
+}
+/* ---------------------------------------- */
+.inTheGreen tr {
+  background-color: rgba(144, 238, 144, 0.322);
+}
+
+.inTheRed tr {
+  background-color: rgba(255, 0, 0, 0.342);
+}
+
+.font1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+}

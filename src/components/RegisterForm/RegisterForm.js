@@ -362,24 +362,28 @@ class RegisterForm extends Component {
         );
       default:
         return (
-          <div className="buttonForm">
-            <Button
-              className="buttonFormButton"
-              variant="contained"
-              color="primary"
-              onClick={this.handleSelectionButtons('vendor')}
-            >
-              Vendor
-            </Button>
-            <Button
-              className="buttonFormButton"
-              variant="contained"
-              color="secondary"
-              onClick={this.handleSelectionButtons('subcontractor')}
-            >
-              Subcontractor
-            </Button>
-          </div>
+          <center className="form">
+            <div className="loginWrapper">
+              <div className="buttonForm">
+                <Button
+                  className="buttonFormButton"
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleSelectionButtons('vendor')}
+                >
+                  Vendor
+                </Button>
+                <Button
+                  className="buttonFormButton"
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.handleSelectionButtons('subcontractor')}
+                >
+                  Subcontractor
+                </Button>
+              </div>
+            </div>
+          </center>
         );
     }
   }

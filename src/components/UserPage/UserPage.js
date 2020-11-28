@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import '../UserPage/UserPage.css';
 
 class UserPage extends Component {
   state = {
@@ -13,7 +14,20 @@ class UserPage extends Component {
     });
   }
   render() {
-    return <div className="userPage"></div>;
+    return (
+      <>
+        {this.state.access_level === 4 && (
+          <div>
+            <p>admin</p>
+          </div>
+        )}
+        {this.state.access_level === 3 && (
+          <div className="userPage">
+            <p>Subcontractor</p>
+          </div>
+        )}
+      </>
+    );
   }
 }
 
