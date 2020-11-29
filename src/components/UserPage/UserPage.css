@@ -4,9 +4,8 @@
 
 .sideBar {
   height: 100vh;
-  min-width: 10rem;
+  min-width: 12rem;
   background-color: rgba(9, 11, 14, 0.7);
-  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .sideBarHeader {
@@ -17,7 +16,10 @@
 }
 
 .sideBar li {
+  display: flex;
+  flex-direction: row;
   line-height: 4rem;
+  justify-content: center;
   height: 100%;
   width: 100%;
   font-weight: bold;
@@ -25,16 +27,23 @@
   color: white;
   list-style-type: none;
   cursor: pointer;
-  text-align: center;
   box-sizing: border-box;
-  border-top: solid rgb(80, 80, 104) 1px;
+  border-top: solid rgb(80, 80, 104, 1) 1px;
   border-bottom: solid black 1px;
-  transition: 0.4s;
+  transition: 0.3s;
+}
+
+.icon {
+  flex: 30%;
+}
+
+.listTitle {
+  flex: 70%;
 }
 
 .sideBar li:hover {
-  padding-left: 20px;
-  background-color: rgba(58, 60, 66, 0.7);
+  margin-left: 20px;
+  background-color: rgba(58, 60, 66, 1);
 }
 
 .table {

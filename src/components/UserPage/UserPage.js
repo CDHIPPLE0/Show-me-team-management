@@ -11,10 +11,11 @@ class UserPage extends Component {
     selection: 0,
   };
 
-  handleClick = (event) => {
+  handleClick = (event, id) => {
+    console.log('its working');
     this.setState({
       ...this.state,
-      selection: event.target.value,
+      selection: event,
     });
   };
 
@@ -33,6 +34,7 @@ class UserPage extends Component {
             access={this.state.access_level}
             handleClick={this.handleClick}
           />
+          {JSON.stringify(this.state.selection)}
         </div>
       </>
     );

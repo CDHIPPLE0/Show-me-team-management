@@ -1,15 +1,11 @@
 import React from 'react';
 import { AdminSidebarData } from './AdminSidebarData';
 import { VendorSidebarData } from './VendorSidebarData';
-import { SubcontractorSidebarData } from './SubcontractorSidebarData';
 
 const Sidebar = (props) => {
   const access = props.access;
   let items = 0;
   switch (access) {
-    case 2:
-      items = SubcontractorSidebarData;
-      break;
     case 3:
       items = VendorSidebarData;
       break;
@@ -24,8 +20,12 @@ const Sidebar = (props) => {
         {items.map((val, key) => {
           return (
             <ul key={key}>
-              <li value={val.Selection} onClick={props.handleClick}>
-                {val.Title}
+              <li
+                onClick={() => props.handleClick(val.Selection)}
+                value={val.Selection}
+              >
+                <div className="icon">{val.Icon}</div>
+                <div className="listTitle">{val.Title}</div>
               </li>
             </ul>
           );

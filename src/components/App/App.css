@@ -39,10 +39,10 @@
 
 .appNav p {
   /* font-family: 'Courier New', Courier, monospace; */
-  font-weight: bold;
-  font-size: 20px;
+  /* font-weight: bold; */
+  font-size: 35px;
   color: white;
-  margin-left: 15rem;
+  margin-left: 25rem;
 }
 
 .nav {
