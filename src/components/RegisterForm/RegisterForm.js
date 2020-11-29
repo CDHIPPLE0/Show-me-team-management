@@ -19,12 +19,12 @@ class RegisterForm extends Component {
     certs: '',
   };
 
-  componentDidMount() {
-    this.setState({
-      ...this.state,
-      registrationStep: 0,
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     ...this.state,
+  //     registrationStep: 0,
+  //   });
+  // }
 
   registerUser = (event) => {
     event.preventDefault();

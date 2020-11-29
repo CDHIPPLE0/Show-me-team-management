@@ -16,7 +16,7 @@ CREATE TABLE "user" (
   email varchar(500),
   address varchar(500),
   job_title varchar(120),
-  osha_level INT,
+  osha_level varchar(10),
   subcontractor_certifications text,
   job_status boolean,
   vendor_company text
@@ -27,6 +27,10 @@ CREATE TABLE "job" (
   description text,
   job_address varchar(500),
   job_creator_id INT REFERENCES "user" ON DELETE CASCADE,
+  helpers_needed int,
+  welders_needed int,
+  fitters_needed int,
+  date_created date not null default CURRENT_DATE,
   is_active boolean
 );
 
@@ -42,3 +46,5 @@ INSERT INTO "access_level" (level, name) VALUES
 ( 2 , 'SUBCONTRACTOR'),
 ( 3 , 'VENDOR'),
 ( 4 , 'ADMIN');
+
+
