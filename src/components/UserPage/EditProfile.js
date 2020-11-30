@@ -5,13 +5,19 @@ import { TextField, Button } from '@material-ui/core';
 
 class EditProfile extends Component {
   componentDidMount() {
-    console.log(this.props.store.user.phone);
+    console.log(this.props.store.user);
   }
   state = {
     address: '',
     email: '',
     phone: '',
+    osha: null,
+    certifications: '',
   };
+
+  handleVendorEdit = () => {};
+
+  handleSubcontractorEdit = () => {};
 
   createJob = (event) => {
     event.preventDefault();
@@ -19,7 +25,7 @@ class EditProfile extends Component {
     this.props.dispatch({
       type: 'CREATE_JOB',
       payload: {
-        address: this.state.address,
+        address: this.state.vendor_company,
         email: this.state.email,
         phone: this.props.phone,
       },
@@ -28,6 +34,8 @@ class EditProfile extends Component {
       address: '',
       email: '',
       phone: '',
+      osha: null,
+      certifications: '',
     });
   };
 
@@ -45,16 +53,18 @@ class EditProfile extends Component {
             <table class="statTable">
               <thead class="tableHead">
                 <tr>
-                  <th>My Company</th>
                   <th>My Email</th>
                   <th>My Phone</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody class="tdStyle"></tbody>
               <tr>
-                <td>{this.props.store.user.address}</td>
                 <td>{this.props.store.user.email}</td>
                 <td>{this.props.store.user.phone}</td>
+                <td>
+                  <Button onClick={this.handleVendorEdit}>Edit</Button>
+                </td>
               </tr>
             </table>
           </div>
@@ -72,6 +82,7 @@ class EditProfile extends Component {
                   <th>My Phone</th>
                   <th>My Osha Level</th>
                   <th>My Certifications</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody class="tdStyle"></tbody>
@@ -81,6 +92,9 @@ class EditProfile extends Component {
                 <td>{this.props.store.user.phone}</td>
                 <td>{this.props.store.user.osha_level}</td>
                 <td>{this.props.store.user.subcontractor_certifications}</td>
+                <td>
+                  <Button onClick={this.handleSubcontractorEdit}>Edit</Button>
+                </td>
               </tr>
             </table>
           </div>

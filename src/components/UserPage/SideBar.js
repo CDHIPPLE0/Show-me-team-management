@@ -1,11 +1,15 @@
 import React from 'react';
 import { AdminSidebarData } from './AdminSidebarData';
 import { VendorSidebarData } from './VendorSidebarData';
+import { SubcontractorSidebarData } from './SubcontractorSidebarData';
 
 const Sidebar = (props) => {
   const access = props.access;
   let items = 0;
   switch (access) {
+    case 2:
+      items = SubcontractorSidebarData;
+      break;
     case 3:
       items = VendorSidebarData;
       break;
@@ -35,7 +39,7 @@ const Sidebar = (props) => {
   } else {
     return (
       <div>
-        <p>Loading...</p>
+        <center>Your Account Is Awaiting Approval</center>
       </div>
     );
   }
