@@ -6,6 +6,7 @@ import AppNav from '../Nav/AppNav';
 import Sidebar from './Sidebar';
 import JobSelection from './JobSelection';
 import JobCreation from './JobCreation';
+import EditProfile from './EditProfile';
 
 class UserPage extends Component {
   state = {
@@ -46,7 +47,7 @@ class UserPage extends Component {
         display = <JobCreation />;
         break;
       case 6:
-        display = <p>edit self</p>;
+        display = <EditProfile />;
         break;
     }
     let table = <p>hello</p>;

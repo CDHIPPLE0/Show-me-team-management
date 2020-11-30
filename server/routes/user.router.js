@@ -59,6 +59,22 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.put('/editAddress/:id', rejectUnauthenticated, (req, res) => {
+  const edit = req.body;
+  const queryText = `UPDATE "user" SET address=$1 WHERE id=$2;`;
+  const queryArray = [edit.newAddress, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 router.put('/editEmail/:id', rejectUnauthenticated, (req, res) => {
   const edit = req.body;
   const queryText = `UPDATE "user" SET email=$1 WHERE id=$2;`;

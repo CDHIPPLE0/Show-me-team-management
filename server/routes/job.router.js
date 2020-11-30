@@ -20,13 +20,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/', rejectUnauthenticated, (req, res) => {
+  console.log(req.body);
   const description = req.body.description;
   const address = req.body.address;
-  const creator = req.body.creator;
-  const queryText = `INSERT INTO "job" (description, job_address, job_creator_id) 
-  VALUES ($1, $2, $3)`;
+  const creator = req.body.jobCreator;
+  const helpersNeeded = req.body.helpersNeeded;
+  const weldersNeeded = req.body.weldersNeeded;
+  const fittersNeeded = req.body.fittersNeeded;
+  const queryText = `INSERT INTO "job" (description, job_address, job_creator_id, helpers_needed, welders_needed, fitters_needed) 
+  VALUES ($1, $2, $3, $4, $5, $6)`;
   pool
-    .query(queryText, [description, address, creator])
+    .query(queryText, [
+      description,
+      address,
+      creator,
+      helpersNeeded,
+      weldersNeeded,
+      fittersNeeded,
+    ])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('Job registration failed: ', err);
