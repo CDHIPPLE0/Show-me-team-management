@@ -1,42 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Select, Button } from '@material-ui/core';
 
 class EditProfile extends Component {
-  componentDidMount() {
-    console.log(this.props.store.user);
-  }
+  componentDidMount() {}
   state = {
     address: '',
     email: '',
     phone: '',
     osha: null,
     certifications: '',
-  };
-
-  handleVendorEdit = () => {};
-
-  handleSubcontractorEdit = () => {};
-
-  createJob = (event) => {
-    event.preventDefault();
-
-    this.props.dispatch({
-      type: 'CREATE_JOB',
-      payload: {
-        address: this.state.vendor_company,
-        email: this.state.email,
-        phone: this.props.phone,
-      },
-    });
-    this.setState({
-      address: '',
-      email: '',
-      phone: '',
-      osha: null,
-      certifications: '',
-    });
+    edit: false,
+    madeChanges: false,
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -45,59 +21,154 @@ class EditProfile extends Component {
     });
   };
 
+  handleEdit = () => {
+    this.setState({
+      ...this.state,
+      edit: true,
+    });
+  };
+
+  handleSubmit = () => {
+    this.setState({
+      ...this.state,
+      edit: false,
+    });
+  };
+
   render() {
     if (this.props.store.user.access_level_id === 3) {
       return (
-        <div class="containerTable">
-          <div class="table">
-            <table class="statTable">
-              <thead class="tableHead">
-                <tr>
-                  <th>My Email</th>
-                  <th>My Phone</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody class="tdStyle"></tbody>
+        <div className="table">
+          <table className="statTable">
+            <thead className="tableHead">
               <tr>
-                <td>{this.props.store.user.email}</td>
-                <td>{this.props.store.user.phone}</td>
-                <td>
-                  <Button onClick={this.handleVendorEdit}>Edit</Button>
-                </td>
+                <th>My Email</th>
+                <th>My Phone</th>
+                <th></th>
               </tr>
-            </table>
-          </div>
+            </thead>
+            <tbody className="tdStyle"></tbody>
+            <tr>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    onChange={this.handleInputChangeFor('email')}
+                    defaultValue={this.props.store.user.email}
+                  />
+                ) : (
+                  this.props.store.user.email
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    type="number"
+                    onChange={this.handleInputChangeFor('phone')}
+                    defaultValue={this.props.store.user.phone}
+                  />
+                ) : (
+                  this.props.store.user.phone
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <Button onClick={this.handleSubmit}>Submit Changes</Button>
+                ) : (
+                  <Button onClick={this.handleEdit}>Edit</Button>
+                )}
+              </td>
+            </tr>
+          </table>
         </div>
       );
     } else {
       return (
-        <div class="containerTable">
-          <div class="table">
-            <table class="statTable">
-              <thead class="tableHead">
-                <tr>
-                  <th>My Address</th>
-                  <th>My Email</th>
-                  <th>My Phone</th>
-                  <th>My Osha Level</th>
-                  <th>My Certifications</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody class="tdStyle"></tbody>
+        <div className="table">
+          <table className="statTable">
+            <thead className="tableHead">
               <tr>
-                <td>{this.props.store.user.address}</td>
-                <td>{this.props.store.user.email}</td>
-                <td>{this.props.store.user.phone}</td>
-                <td>{this.props.store.user.osha_level}</td>
-                <td>{this.props.store.user.subcontractor_certifications}</td>
-                <td>
-                  <Button onClick={this.handleSubcontractorEdit}>Edit</Button>
-                </td>
+                <th>My Address</th>
+                <th>My Email</th>
+                <th>My Phone</th>
+                <th>My Osha Level</th>
+                <th>My Certifications</th>
+                <th></th>
               </tr>
-            </table>
-          </div>
+            </thead>
+            <tbody className="tdStyle"></tbody>
+            <tr>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    onChange={this.handleInputChangeFor('address')}
+                    defaultValue={this.props.store.user.address}
+                  />
+                ) : (
+                  this.props.store.user.address
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    onChange={this.handleInputChangeFor('email')}
+                    defaultValue={this.props.store.user.email}
+                  />
+                ) : (
+                  this.props.store.user.email
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    type="number"
+                    onChange={this.handleInputChangeFor('phone')}
+                    defaultValue={this.props.store.user.phone}
+                  />
+                ) : (
+                  this.props.store.user.phone
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <Select
+                    native
+                    defaultValue={this.props.store.user.osha_level}
+                    onChange={this.handleInputChangeFor('osha')}
+                    inputProps={{
+                      name: 'osha',
+                      id: 'filled-osha-native-simple',
+                    }}
+                  >
+                    <option aria-label="None" value="" />
+                    <option value={10}>10</option>
+                    <option value={30}>30</option>
+                    <option value={40}>40</option>
+                  </Select>
+                ) : (
+                  this.props.store.user.osha_level
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <TextField
+                    onChange={this.handleInputChangeFor('email')}
+                    defaultValue={
+                      this.props.store.user.subcontractor_certifications
+                    }
+                  />
+                ) : (
+                  this.props.store.user.subcontractor_certifications
+                )}
+              </td>
+              <td>
+                {this.state.edit ? (
+                  <Button onClick={this.handleSubmit}>Submit Changes</Button>
+                ) : (
+                  <Button onClick={this.handleEdit}>Edit</Button>
+                )}
+              </td>
+            </tr>
+          </table>
         </div>
       );
     }
