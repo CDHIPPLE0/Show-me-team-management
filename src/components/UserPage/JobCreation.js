@@ -6,6 +6,7 @@ import { TextField, Button } from '@material-ui/core';
 class JobCreation extends Component {
   state = {
     description: '',
+    startDate: '',
     jobAddress: '',
     jobCreator: '',
     helpersNeeded: '',
@@ -20,6 +21,7 @@ class JobCreation extends Component {
       type: 'CREATE_JOB',
       payload: {
         description: this.state.description,
+        startDate: this.state.startDate,
         address: this.state.jobAddress,
         jobCreator: this.props.store.user.id,
         helpersNeeded: this.state.helpersNeeded,
@@ -29,6 +31,7 @@ class JobCreation extends Component {
     });
     this.setState({
       description: '',
+      startDate: '',
       jobAddress: '',
       jobCreator: '',
       helpersNeeded: '',
@@ -62,6 +65,18 @@ class JobCreation extends Component {
             value={this.state.description}
             required
             onChange={this.handleInputChangeFor('description')}
+          />
+        </div>
+        <div>
+          <TextField
+            id="outlined-basic"
+            label="StartDate"
+            variant="outlined"
+            type="text"
+            name="startDate"
+            value={this.state.startDate}
+            required
+            onChange={this.handleInputChangeFor('startDate')}
           />
         </div>
         <div>

@@ -28,10 +28,18 @@ class EditProfile extends Component {
     });
   };
 
-  handleSubmit = () => {
+  editOff = () => {
     this.setState({
       ...this.state,
       edit: false,
+    });
+  };
+
+  emailSubmit = () => {
+    this.props.dispatch({
+      type: 'EDIT_EMAIL',
+      id: this.props.store.user.id,
+      payload: { newEmail: this.state.email },
     });
   };
 
@@ -51,10 +59,13 @@ class EditProfile extends Component {
             <tr>
               <td>
                 {this.state.edit ? (
-                  <TextField
-                    onChange={this.handleInputChangeFor('email')}
-                    defaultValue={this.props.store.user.email}
-                  />
+                  <>
+                    <TextField
+                      onChange={this.handleInputChangeFor('email')}
+                      defaultValue={this.props.store.user.email}
+                    />
+                    <Button onClick={this.emailSubmit}>Submit</Button>
+                  </>
                 ) : (
                   this.props.store.user.email
                 )}
@@ -72,7 +83,7 @@ class EditProfile extends Component {
               </td>
               <td>
                 {this.state.edit ? (
-                  <Button onClick={this.handleSubmit}>Submit Changes</Button>
+                  <Button onClick={this.editOff}>Done</Button>
                 ) : (
                   <Button onClick={this.handleEdit}>Edit</Button>
                 )}

@@ -25,8 +25,9 @@ function* fetchUser() {
 }
 
 function* editEmail(action) {
+  console.log('in saga with', action);
   try {
-    yield axios.put(`/user/editEmail/:${action.id}`, action.payload);
+    yield axios.put(`/api/user/editEmail/${action.id}`, action.payload);
   } catch (error) {
     console.log('Error with user email edit:', error);
   }
@@ -34,7 +35,7 @@ function* editEmail(action) {
 
 function* editPhone(action) {
   try {
-    yield axios.put(`/user/editPhone/:${action.id}`, action.payload);
+    yield axios.put(`/api/user/editPhone/${action.id}`, action.payload);
   } catch (error) {
     console.log('Error with user phone edit:', error);
   }
@@ -42,7 +43,7 @@ function* editPhone(action) {
 
 function* verify(action) {
   try {
-    yield axios.put(`/user/verify/:${action.id}`, action.payload);
+    yield axios.put(`/user/verify/${action.id}`, action.payload);
   } catch (error) {
     console.log('Error with user verification:', error);
   }

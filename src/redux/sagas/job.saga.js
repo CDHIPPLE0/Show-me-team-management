@@ -4,6 +4,7 @@ import axios from 'axios';
 function* getJobs() {
   try {
     const response = yield axios.get('/api/job');
+    console.log(response.data);
     yield put({ type: 'POPULATE_JOBS', payload: response.data });
   } catch (error) {
     console.log('Error with jobs get:', error);

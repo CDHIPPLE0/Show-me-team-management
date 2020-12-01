@@ -22,16 +22,18 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const description = req.body.description;
+  const startDate = req.body.startDate;
   const address = req.body.address;
   const creator = req.body.jobCreator;
   const helpersNeeded = req.body.helpersNeeded;
   const weldersNeeded = req.body.weldersNeeded;
   const fittersNeeded = req.body.fittersNeeded;
-  const queryText = `INSERT INTO "job" (description, job_address, job_creator_id, helpers_needed, welders_needed, fitters_needed) 
-  VALUES ($1, $2, $3, $4, $5, $6)`;
+  const queryText = `INSERT INTO "job" (description,start_date, job_address, job_creator_id, helpers_needed, welders_needed, fitters_needed) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
   pool
     .query(queryText, [
       description,
+      startDate,
       address,
       creator,
       helpersNeeded,

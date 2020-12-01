@@ -27,6 +27,7 @@ CREATE TABLE "job" (
   description text,
   job_address varchar(500),
   job_creator_id INT REFERENCES "user" ON DELETE CASCADE,
+  start_date varchar(100),
   helpers_needed int,
   welders_needed int,
   fitters_needed int,
@@ -46,5 +47,4 @@ INSERT INTO "access_level" (level, name) VALUES
 ( 2 , 'SUBCONTRACTOR'),
 ( 3 , 'VENDOR'),
 ( 4 , 'ADMIN');
-
 

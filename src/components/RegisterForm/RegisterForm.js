@@ -19,6 +19,13 @@ class RegisterForm extends Component {
     certs: '',
   };
 
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      registrationStep: 0,
+    });
+  }
+
   registerUser = (event) => {
     event.preventDefault();
 
@@ -47,7 +54,7 @@ class RegisterForm extends Component {
     });
   };
 
-  handleSelectionButtons = (propertyName) => {
+  handleSelectionButtons = (propertyName) => (event) => {
     switch (propertyName) {
       case 'vendor':
         this.setState({

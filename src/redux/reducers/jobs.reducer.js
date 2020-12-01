@@ -4,7 +4,7 @@ const populateJobs = (state = [], action) => {
   switch (action.type) {
     case 'POPULATE_JOBS':
       console.log(action.payload);
-      return action.payload[0].array;
+      return action.payload;
     default:
       return state;
   }
