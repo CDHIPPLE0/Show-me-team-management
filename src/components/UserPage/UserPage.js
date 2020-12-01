@@ -7,15 +7,26 @@ import Sidebar from './Sidebar';
 import JobSelection from './JobSelection';
 import JobCreation from './JobCreation';
 import EditProfile from './EditProfile';
+import CurrentJob from './CurrentJob';
+import Assignment from './Assignment';
 
 class UserPage extends Component {
   state = {
     access_level: null,
-    selection: 0,
+    jobSelection: 0,
+    selection: null,
   };
 
-  handleClick = (id) => {
-    console.log('its working');
+  jobSelection = (selection) => {
+    console.log(selection);
+    this.setState({
+      ...this.state,
+      jobSelection: selection,
+      selection: 0,
+    });
+  };
+
+  handleSidebar = (id) => {
     this.setState({
       ...this.state,
       selection: id,
@@ -31,11 +42,14 @@ class UserPage extends Component {
   render() {
     let display = null;
     switch (this.state.selection) {
+      case 0:
+        display = <CurrentJob jobSelection={this.state.jobSelection} />;
+        break;
       case 1:
-        display = <JobSelection />;
+        display = <JobSelection callBack={this.jobSelection} />;
         break;
       case 2:
-        display = <p>assignment</p>;
+        display = <Assignment />;
         break;
       case 3:
         display = <p>subcontractors</p>;
@@ -50,14 +64,13 @@ class UserPage extends Component {
         display = <EditProfile />;
         break;
     }
-    let table = <p>hello</p>;
     return (
       <>
         <AppNav props={this.props} />
         <div className="userPage">
           <Sidebar
             access={this.state.access_level}
-            handleClick={this.handleClick}
+            handleSidebar={this.handleSidebar}
           />
           {display}
         </div>

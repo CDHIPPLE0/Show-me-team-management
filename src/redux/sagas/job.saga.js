@@ -11,6 +11,16 @@ function* getJobs() {
   }
 }
 
+function* getThisJob(action) {
+  try {
+    const response = yield axios.get(`/api/job/${action.payload}`);
+    console.log(response.data);
+    yield put({ type: 'GET_THIS_JOB', payload: response.data });
+  } catch (error) {
+    console.log('Error with jobs get:', error);
+  }
+}
+
 function* createJob(action) {
   try {
     yield axios.post('/api/job', action.payload);
@@ -48,6 +58,7 @@ function* jobSaga() {
   yield takeLatest('CREATE_JOB', createJob);
   yield takeLatest('EDIT_JOB_DESCRIPTION', editJobDescription);
   yield takeLatest('EDIT_JOB_ADDRESS', editJobAddress);
+  yield takeLatest('GET_JOB', getThisJob);
   yield takeLatest('DELETE_JOB', deleteJob);
 }
 

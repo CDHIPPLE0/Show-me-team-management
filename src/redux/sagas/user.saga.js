@@ -24,6 +24,16 @@ function* fetchUser() {
   }
 }
 
+function* getUser(action) {
+  console.log('in saga with', action);
+  try {
+    const response = yield axios.get(`/api/user/${action.id}`, action.payload);
+    yield put({ type: 'GET_DETAILS', payload: response.data });
+  } catch (error) {
+    console.log('Error with get user details:', error);
+  }
+}
+
 function* editEmail(action) {
   console.log('in saga with', action);
   try {
@@ -54,6 +64,7 @@ function* userSaga() {
   yield takeLatest('EDIT_EMAIL', editEmail);
   yield takeLatest('EDIT_PHONE', editPhone);
   yield takeLatest('VERIFY_USER', verify);
+  yield takeLatest('GET_USER_DETAILS', getUser);
 }
 
 export default userSaga;

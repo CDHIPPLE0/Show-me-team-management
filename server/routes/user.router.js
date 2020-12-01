@@ -59,6 +59,20 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT first_name, address, last_name, phone, email, vendor_company
+    FROM "user" WHERE id = $1;`;
+  pool
+    .query(queryText, req.params.id)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('Error getting user information', err);
+      res.sendStatus(500);
+    });
+});
+
 router.put('/editAddress/:id', rejectUnauthenticated, (req, res) => {
   const edit = req.body;
   const queryText = `UPDATE "user" SET address=$1 WHERE id=$2;`;

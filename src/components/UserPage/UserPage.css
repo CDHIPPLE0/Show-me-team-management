@@ -34,6 +34,7 @@
 }
 
 .icon {
+  margin-left: 5px;
   flex: 30%;
 }
 
@@ -75,23 +76,23 @@
   background-color: rgba(9, 11, 14, 0.7);
   font-size: 1rem;
   text-align: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-weight: bold;
   color: white;
   padding-top: 2rem;
 }
 
 .tableHead th {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .tdStyle tr {
   background-color: white;
 }
 
-.tdStyle tr:nth-child(even) {
-  background-color: rgba(200, 205, 208, 1);
+.statTable tbody tr:nth-child(odd) > td {
+  background-color: white;
 }
 
 .totalRow {

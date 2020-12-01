@@ -35,4 +35,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.get('/available', rejectUnauthenticated, (req, res) => {
+  console.log('made it to router');
+  const queryText = `SELECT first_name, last_name, phone, email, address,
+  job_title, osha_level, subcontractor_certifications FROM "user" WHERE access_level_id = 2 AND job_status = false;`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('Error getting subcontractors', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

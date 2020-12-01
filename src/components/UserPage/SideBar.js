@@ -25,7 +25,7 @@ const Sidebar = (props) => {
           return (
             <ul key={key}>
               <li
-                onClick={() => props.handleClick(val.Selection)}
+                onClick={() => props.handleSidebar(val.Selection)}
                 value={val.Selection}
               >
                 <div className="icon">{val.Icon}</div>

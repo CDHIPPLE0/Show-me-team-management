@@ -55,40 +55,41 @@ class EditProfile extends Component {
                 <th></th>
               </tr>
             </thead>
-            <tbody className="tdStyle"></tbody>
-            <tr>
-              <td>
-                {this.state.edit ? (
-                  <>
+            <tbody className="tdStyle">
+              <tr>
+                <td>
+                  {this.state.edit ? (
+                    <>
+                      <TextField
+                        onChange={this.handleInputChangeFor('email')}
+                        defaultValue={this.props.store.user.email}
+                      />
+                      <Button onClick={this.emailSubmit}>Submit</Button>
+                    </>
+                  ) : (
+                    this.props.store.user.email
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
                     <TextField
-                      onChange={this.handleInputChangeFor('email')}
-                      defaultValue={this.props.store.user.email}
+                      type="number"
+                      onChange={this.handleInputChangeFor('phone')}
+                      defaultValue={this.props.store.user.phone}
                     />
-                    <Button onClick={this.emailSubmit}>Submit</Button>
-                  </>
-                ) : (
-                  this.props.store.user.email
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <TextField
-                    type="number"
-                    onChange={this.handleInputChangeFor('phone')}
-                    defaultValue={this.props.store.user.phone}
-                  />
-                ) : (
-                  this.props.store.user.phone
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <Button onClick={this.editOff}>Done</Button>
-                ) : (
-                  <Button onClick={this.handleEdit}>Edit</Button>
-                )}
-              </td>
-            </tr>
+                  ) : (
+                    this.props.store.user.phone
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <Button onClick={this.editOff}>Done</Button>
+                  ) : (
+                    <Button onClick={this.handleEdit}>Edit</Button>
+                  )}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       );
@@ -106,79 +107,80 @@ class EditProfile extends Component {
                 <th></th>
               </tr>
             </thead>
-            <tbody className="tdStyle"></tbody>
-            <tr>
-              <td>
-                {this.state.edit ? (
-                  <TextField
-                    onChange={this.handleInputChangeFor('address')}
-                    defaultValue={this.props.store.user.address}
-                  />
-                ) : (
-                  this.props.store.user.address
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <TextField
-                    onChange={this.handleInputChangeFor('email')}
-                    defaultValue={this.props.store.user.email}
-                  />
-                ) : (
-                  this.props.store.user.email
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <TextField
-                    type="number"
-                    onChange={this.handleInputChangeFor('phone')}
-                    defaultValue={this.props.store.user.phone}
-                  />
-                ) : (
-                  this.props.store.user.phone
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <Select
-                    native
-                    defaultValue={this.props.store.user.osha_level}
-                    onChange={this.handleInputChangeFor('osha')}
-                    inputProps={{
-                      name: 'osha',
-                      id: 'filled-osha-native-simple',
-                    }}
-                  >
-                    <option aria-label="None" value="" />
-                    <option value={10}>10</option>
-                    <option value={30}>30</option>
-                    <option value={40}>40</option>
-                  </Select>
-                ) : (
-                  this.props.store.user.osha_level
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <TextField
-                    onChange={this.handleInputChangeFor('email')}
-                    defaultValue={
-                      this.props.store.user.subcontractor_certifications
-                    }
-                  />
-                ) : (
-                  this.props.store.user.subcontractor_certifications
-                )}
-              </td>
-              <td>
-                {this.state.edit ? (
-                  <Button onClick={this.handleSubmit}>Submit Changes</Button>
-                ) : (
-                  <Button onClick={this.handleEdit}>Edit</Button>
-                )}
-              </td>
-            </tr>
+            <tbody className="tdStyle">
+              <tr>
+                <td>
+                  {this.state.edit ? (
+                    <TextField
+                      onChange={this.handleInputChangeFor('address')}
+                      defaultValue={this.props.store.user.address}
+                    />
+                  ) : (
+                    this.props.store.user.address
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <TextField
+                      onChange={this.handleInputChangeFor('email')}
+                      defaultValue={this.props.store.user.email}
+                    />
+                  ) : (
+                    this.props.store.user.email
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <TextField
+                      type="number"
+                      onChange={this.handleInputChangeFor('phone')}
+                      defaultValue={this.props.store.user.phone}
+                    />
+                  ) : (
+                    this.props.store.user.phone
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <Select
+                      native
+                      defaultValue={this.props.store.user.osha_level}
+                      onChange={this.handleInputChangeFor('osha')}
+                      inputProps={{
+                        name: 'osha',
+                        id: 'filled-osha-native-simple',
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={10}>10</option>
+                      <option value={30}>30</option>
+                      <option value={40}>40</option>
+                    </Select>
+                  ) : (
+                    this.props.store.user.osha_level
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <TextField
+                      onChange={this.handleInputChangeFor('email')}
+                      defaultValue={
+                        this.props.store.user.subcontractor_certifications
+                      }
+                    />
+                  ) : (
+                    this.props.store.user.subcontractor_certifications
+                  )}
+                </td>
+                <td>
+                  {this.state.edit ? (
+                    <Button onClick={this.handleSubmit}>Submit Changes</Button>
+                  ) : (
+                    <Button onClick={this.handleEdit}>Edit</Button>
+                  )}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       );

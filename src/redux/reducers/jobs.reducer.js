@@ -3,7 +3,15 @@ import { combineReducers } from 'redux';
 const populateJobs = (state = [], action) => {
   switch (action.type) {
     case 'POPULATE_JOBS':
-      console.log(action.payload);
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const getDetailJob = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_THIS_JOB':
       return action.payload;
     default:
       return state;
@@ -12,4 +20,5 @@ const populateJobs = (state = [], action) => {
 
 export default combineReducers({
   populateJobs,
+  getDetailJob,
 });
