@@ -28,7 +28,7 @@ app.use('/api/user', userRouter);
 app.use('/api/subcontractor', subcontractorRouter);
 app.use('/api/vendor', vendorRouter);
 app.use('/api/job', jobRouter);
-app.use('/api/userJob', userJobRouter);
+app.use('api/userJob', userJobRouter);
 app.use('/api/twilio', twilio);
 
 // Serve static files
