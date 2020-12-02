@@ -95,18 +95,26 @@
   background-color: white;
 }
 
-.totalRow {
-  background-color: rgba(96, 108, 116, 1);
+.footStyleDark {
+  background-color: rgba(9, 11, 14, 0.7);
   color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+  text-align: left;
+}
+
+.footStyleWhite {
+  background-color: white;
+  color: white;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   text-align: right;
 }
 /* ---------------------------------------- */
-.inTheGreen tr {
+.inTheGreen {
+  font-size: 15px;
   background-color: rgba(144, 238, 144, 0.322);
 }
 
-.inTheRed tr {
+.inTheRed {
   background-color: rgba(255, 0, 0, 0.342);
 }
 

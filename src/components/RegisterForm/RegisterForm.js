@@ -288,6 +288,7 @@ class RegisterForm extends Component {
                 <option value={'Helper'}>Helper</option>
                 <option value={'Welder'}>Welder</option>
                 <option value={'Fitter'}>Fitter</option>
+                <option value={'Welder / Fitter'}>Welder / Fitter</option>
               </Select>
             </div>
             <div>

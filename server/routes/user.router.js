@@ -90,7 +90,6 @@ router.put('/editAddress/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/editEmail/:id', rejectUnauthenticated, (req, res) => {
-  console.log('in router', req.body, req.params.id);
   const edit = req.body;
   const queryText = `UPDATE "user" SET email=$1 WHERE id=$2;`;
   const queryArray = [edit.newEmail, req.params.id];
@@ -108,6 +107,22 @@ router.put('/editEmail/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/editPhone/:id', rejectUnauthenticated, (req, res) => {
+  const edit = req.body;
+  const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
+  const queryArray = [edit.newPhone, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/setJobStatus/:id', rejectUnauthenticated, (req, res) => {
   const edit = req.body;
   const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
   const queryArray = [edit.newPhone, req.params.id];

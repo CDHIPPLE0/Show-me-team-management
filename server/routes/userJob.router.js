@@ -30,7 +30,7 @@ router.get('/active/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log('Error retrieving active job', err);
+      console.log('Error retrieving active subcontractors for job', err);
       res.sendStatus(500);
     });
 });

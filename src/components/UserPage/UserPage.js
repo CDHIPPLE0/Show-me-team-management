@@ -49,7 +49,7 @@ class UserPage extends Component {
         display = <JobSelection callBack={this.jobSelection} />;
         break;
       case 2:
-        display = <Assignment />;
+        display = <Assignment jobSelection={this.state.jobSelection} />;
         break;
       case 3:
         display = <p>subcontractors</p>;

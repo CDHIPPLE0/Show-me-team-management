@@ -9,9 +9,9 @@ function* createJobConnection(action) {
   }
 }
 
-function* getCurrentJobSubcontractors() {
+function* getCurrentJobSubcontractors(action) {
   try {
-    const response = yield axios.get('/api/userJob');
+    const response = yield axios.get(`/api/userJob/active/${action.id}`);
     yield put({
       type: 'POPULATE_CURRENT_JOB',
       payload: response.data,
@@ -29,10 +29,10 @@ function* deleteJobConnection(action) {
   }
 }
 
-function* vendorSaga() {
+function* userJobSaga() {
   yield takeLatest('GET_CURRENT_JOB_SUB', getCurrentJobSubcontractors);
   yield takeLatest('DELETE_JOB_CONNECTION', deleteJobConnection);
   yield takeLatest('CREATE_JOB_CONNECTION', createJobConnection);
 }
 
-export default vendorSaga;
+export default userJobSaga;
