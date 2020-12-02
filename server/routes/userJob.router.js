@@ -20,8 +20,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/active/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT first_name, last_name, job_title, osha_level, 
-  phone, email, address, subcontractor_certifications  FROM "user" JOIN 
+  const queryText = `SELECT "user".id, first_name, last_name, job_title, osha_level, 
+  phone, email, address, subcontractor_certifications FROM "user" JOIN 
   "user_job" ON "user".id = "user_job".user_id JOIN "job" ON "job".id = 
   "user_job".job_id WHERE "job".id = $1;`;
   pool
@@ -36,7 +36,7 @@ router.get('/active/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/deleteJobConnection/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `DELETE FROM "user_job" WHERE id=$1;`;
+  const queryText = `DELETE FROM "user_job" WHERE user_id=$1;`;
   const queryArray = [req.params.id];
 
   pool

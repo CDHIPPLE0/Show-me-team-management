@@ -9,7 +9,6 @@ class Assignment extends Component {
   };
 
   forceAssignSubcontractor = (id) => (event) => {
-    console.log(this.props.jobSelection, id);
     this.props.dispatch({
       type: 'CREATE_JOB_CONNECTION',
       payload: {
@@ -19,9 +18,7 @@ class Assignment extends Component {
     });
     this.props.dispatch({
       type: 'STATUS_WORKING',
-      payload: {
-        id: id,
-      },
+      id: id,
     });
     this.props.dispatch({
       type: 'GET_AVAILABLE',
@@ -113,7 +110,17 @@ class Assignment extends Component {
               </div>
             );
           } else {
-            return <p>loading..</p>;
+            return (
+              <div className="table">
+                <table className="statTable">
+                  <thead className="tableHead">
+                    <tr className="inTheRed">
+                      <th>No Subcontractors To Assign</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            );
           }
         }
       } else {

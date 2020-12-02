@@ -4,6 +4,21 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Button, TextField } from '@material-ui/core';
 
 class JobSelection extends Component {
+  removeEmployee = (id) => (event) => {
+    this.props.dispatch({
+      type: 'DELETE_JOB_CONNECTION',
+      id: id,
+    });
+    this.props.dispatch({
+      type: 'STATUS_NOT_WORKING',
+      id: id,
+    });
+    this.props.dispatch({
+      type: 'GET_CURRENT_JOB_SUB',
+      id: this.props.jobSelection,
+    });
+  };
+
   componentDidMount() {
     console.log(this.props.jobSelection);
     this.props.dispatch({
@@ -51,6 +66,7 @@ class JobSelection extends Component {
               <th>Job Title</th>
               <th>Osha Level</th>
               <th>Certifications</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -62,6 +78,14 @@ class JobSelection extends Component {
                   <td>{item.job_title}</td>
                   <td>{item.osha_level}</td>
                   <td>{item.subcontractor_certifications}</td>
+                  <td>
+                    <Button
+                      color="secondary"
+                      onClick={this.removeEmployee(item.id)}
+                    >
+                      Remove
+                    </Button>
+                  </td>
                 </tr>
               )
             )}

@@ -122,8 +122,23 @@ router.put('/editPhone/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put('/setJobStatus/:id', rejectUnauthenticated, (req, res) => {
+router.put('/setJobStatusTrue/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `UPDATE "user" SET job_status=true WHERE id=$1;`;
+  const queryArray = [req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/setJobStatusFalse/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `UPDATE "user" SET job_status=false WHERE id=$1;`;
   const queryArray = [req.params.id];
 
   pool
