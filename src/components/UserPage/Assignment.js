@@ -17,6 +17,15 @@ class Assignment extends Component {
         user: id,
       },
     });
+    this.props.dispatch({
+      type: 'STATUS_WORKING',
+      payload: {
+        id: id,
+      },
+    });
+    this.props.dispatch({
+      type: 'GET_AVAILABLE',
+    });
   };
 
   selectSubcontractor = (id) => (event) => {

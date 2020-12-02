@@ -123,9 +123,8 @@ router.put('/editPhone/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/setJobStatus/:id', rejectUnauthenticated, (req, res) => {
-  const edit = req.body;
-  const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
-  const queryArray = [edit.newPhone, req.params.id];
+  const queryText = `UPDATE "user" SET job_status=true WHERE id=$1;`;
+  const queryArray = [req.params.id];
 
   pool
     .query(queryText, queryArray)

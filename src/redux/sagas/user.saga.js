@@ -51,6 +51,14 @@ function* editPhone(action) {
   }
 }
 
+function* updateJobStatusTrue(action) {
+  try {
+    yield axios.put(`/api/user/setJobStatus/${action.payload.id}`);
+  } catch (error) {
+    console.log('Error with user status update:', error);
+  }
+}
+
 function* verify(action) {
   try {
     yield axios.put(`/user/verify/${action.id}`, action.payload);
@@ -65,6 +73,7 @@ function* userSaga() {
   yield takeLatest('EDIT_PHONE', editPhone);
   yield takeLatest('VERIFY_USER', verify);
   yield takeLatest('GET_USER_DETAILS', getUser);
+  yield takeLatest('STATUS_WORKING', updateJobStatusTrue);
 }
 
 export default userSaga;

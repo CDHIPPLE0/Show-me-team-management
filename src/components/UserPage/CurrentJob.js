@@ -14,7 +14,6 @@ class JobSelection extends Component {
       type: 'GET_CURRENT_JOB_SUB',
       id: this.props.jobSelection,
     });
-    console.log(this.props.store.populateCurrentJobContractors);
   }
 
   render() {
@@ -49,23 +48,23 @@ class JobSelection extends Component {
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Position</th>
-              <th>Address</th>
+              <th>Job Title</th>
               <th>Osha Level</th>
-              <th colSpan="4"></th>
+              <th>Certifications</th>
             </tr>
           </thead>
           <tbody>
-            {/* {this.props.store.populateCurrentJobContractors.map(
+            {this.props.store.populateCurrentJobSubcontractors.populateCurrentJobSubcontractors.map(
               (item, index) => (
                 <tr index={index}>
                   <td>{item.first_name}</td>
                   <td>{item.last_name}</td>
                   <td>{item.job_title}</td>
                   <td>{item.osha_level}</td>
+                  <td>{item.subcontractor_certifications}</td>
                 </tr>
               )
-            )} */}
+            )}
           </tbody>
         </table>
       </div>

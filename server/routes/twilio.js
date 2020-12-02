@@ -37,4 +37,20 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
     .then(() => res.sendStatus(200));
 });
 
+router.put('/change_status/:id', rejectUnauthenticated, (req, res) => {
+  const data = req.body;
+  const queryText = `UPDATE "user" SET job_status=true WHERE id=$2;`;
+  const queryArray = [data.message, req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
