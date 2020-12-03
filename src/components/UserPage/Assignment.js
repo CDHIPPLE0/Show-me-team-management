@@ -22,6 +22,23 @@ class Assignment extends Component {
     });
   };
 
+  sendAutomated = () => {
+    let jobDetails = this.props.store.jobs.getDetailJob[0];
+    let startDate = jobDetails.start_date;
+    let jobAddress = jobDetails.job_address;
+    let jobId = this.props.jobSelection;
+    let userArray = this.state.selection;
+    this.props.dispatch({
+      type: 'SEND_AUTOMATED',
+      payload: {
+        jobId: jobId,
+        userArray: userArray,
+        startDate: startDate,
+        jobAddress: jobAddress,
+      },
+    });
+  };
+
   selectSubcontractor = (id) => (event) => {
     this.props.dispatch({
       type: 'SELECT_TRUE',
@@ -116,7 +133,9 @@ class Assignment extends Component {
                       required
                     />
                     <Button color="secondary">Send Custom</Button>
-                    <Button color="primary">Send Automated</Button>
+                    <Button color="primary" onClick={this.sendAutomated}>
+                      Send Automated
+                    </Button>
                   </td>
                 </tr>
               </tfoot>

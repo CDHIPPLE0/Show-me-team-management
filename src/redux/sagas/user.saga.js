@@ -27,7 +27,7 @@ function* fetchUser() {
 function* getUser(action) {
   console.log('in saga with', action);
   try {
-    const response = yield axios.get(`/api/user/${action.id}`, action.payload);
+    const response = yield axios.get(`/api/user/${action.id}`);
     yield put({ type: 'GET_DETAILS', payload: response.data });
   } catch (error) {
     console.log('Error with get user details:', error);
