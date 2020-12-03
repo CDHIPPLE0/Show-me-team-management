@@ -1,13 +1,15 @@
 const accountSid = process.env.TWILIO_ACCOUNT_SSID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const dataGuid = require('../modules/dataGuid');
-// const http = require('http');
+const http = require('http');
 const pool = require('../modules/pool');
 const express = require('express');
 const { urlencoded } = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
 app.use(urlencoded({ extended: false }));
+var uid = '';
+var jid = '';
 
 const {
   rejectUnauthenticated,
@@ -51,7 +53,7 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
 
   const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}. 
   If you would like to be considered for a job starting ${startDate}, at ${jobAddress} 
-  then please click the link below http://34e6a3ffcaa6.ngrok.io/api/twilio/accept_job/${newGuid}`;
+  then please click the link below  http://c96dd28cadc2.ngrok.io/api/twilio/accept/${newGuid}`;
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
@@ -70,14 +72,19 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get('/accept_job/:id', (req, res) => {
+router.get('/accept/:id', (req, res) => {
   const query = `SELECT user_id, job_id FROM "job_user_message" WHERE message_id = $1;`;
   const reference = [req.params.id];
+  pool.query(query, reference).then((dbResponse) => {
+    uid = dbResponse.rows[0].user_id;
+    jid = dbResponse.rows[0].job_id;
+    console.log('first pool', uid, jid);
+  });
+  var queryTwo = `INSERT INTO "user_job" ("job_id", "user_id")
+    VALUES ($1, $2)`;
+  var referenceTwo = [Number(jid), Number(uid)];
   pool
-    .query(query, reference)
-    .then((dbResponse) => {
-      console.log(dbResponse.rows[0]);
-    })
+    .query(queryTwo, referenceTwo)
     .then(() => res.sendStatus(200))
     .catch((err) => {
       console.log(err);
