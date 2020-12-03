@@ -16,8 +16,11 @@ const Sidebar = (props) => {
     case 4:
       items = AdminSidebarData;
       break;
+    default:
+      items = SubcontractorSidebarData;
+      break;
   }
-  if (items != 0) {
+  if (items !== 0) {
     return (
       <div className="sideBar">
         <h1 className="sideBarHeader">Menu</h1>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 class JobSelection extends Component {
   removeEmployee = (id) => (event) => {
@@ -32,7 +32,7 @@ class JobSelection extends Component {
   }
 
   render() {
-    if (this.props.store.jobs.getDetailJob != 0) {
+    if (this.props.store.jobs.getDetailJob !== 0) {
     }
     return (
       <div className="table">

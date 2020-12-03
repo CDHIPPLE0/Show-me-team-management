@@ -51,6 +51,14 @@ function* editPhone(action) {
   }
 }
 
+function* editAddress(action) {
+  try {
+    yield axios.put(`/api/user/editAddress/${action.id}`, action.payload);
+  } catch (error) {
+    console.log('Error with user address edit:', error);
+  }
+}
+
 function* updateJobStatusTrue(action) {
   try {
     yield axios.put(`/api/user/setJobStatusTrue/${action.id}`);
@@ -78,6 +86,7 @@ function* verify(action) {
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('EDIT_ADDRESS', editAddress);
   yield takeLatest('EDIT_EMAIL', editEmail);
   yield takeLatest('EDIT_PHONE', editPhone);
   yield takeLatest('VERIFY_USER', verify);

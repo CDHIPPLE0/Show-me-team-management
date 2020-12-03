@@ -8,4 +8,4 @@ const userDetails = (state = [], action) => {
   }
 };
 
-export default populateJobs;
+export default userDetails;

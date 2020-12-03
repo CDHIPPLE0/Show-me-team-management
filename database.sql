@@ -19,7 +19,8 @@ CREATE TABLE "user" (
   osha_level varchar(10),
   subcontractor_certifications text,
   job_status boolean,
-  vendor_company text
+  vendor_company text,
+  is_selected boolean
 );
 
 CREATE TABLE "job" (

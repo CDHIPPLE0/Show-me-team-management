@@ -1,6 +1,7 @@
 const accountSid = process.env.TWILIO_ACCOUNT_SSID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const http = require('http');
+const pool = require('../modules/pool');
 const express = require('express');
 const { urlencoded } = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
@@ -37,10 +38,10 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
     .then(() => res.sendStatus(200));
 });
 
-router.put('/change_status/:id', rejectUnauthenticated, (req, res) => {
+router.get('/change_status/:id', (req, res) => {
   const data = req.body;
-  const queryText = `UPDATE "user" SET job_status=true WHERE id=$2;`;
-  const queryArray = [data.message, req.params.id];
+  const queryText = `UPDATE "user" SET job_status=true WHERE id=$1;`;
+  const queryArray = [req.params.id];
 
   pool
     .query(queryText, queryArray)

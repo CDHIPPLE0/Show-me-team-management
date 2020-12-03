@@ -63,6 +63,9 @@ class UserPage extends Component {
       case 6:
         display = <EditProfile />;
         break;
+      default:
+        display = null;
+        break;
     }
     return (
       <>

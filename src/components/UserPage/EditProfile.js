@@ -16,6 +16,7 @@ class EditProfile extends Component {
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
+    console.log(propertyName, event);
     this.setState({
       [propertyName]: event.target.value,
     });
@@ -35,11 +36,27 @@ class EditProfile extends Component {
     });
   };
 
+  addressSubmit = () => {
+    this.props.dispatch({
+      type: 'EDIT_ADDRESS',
+      id: this.props.store.user.id,
+      payload: { newAddress: this.state.address },
+    });
+  };
+
   emailSubmit = () => {
     this.props.dispatch({
       type: 'EDIT_EMAIL',
       id: this.props.store.user.id,
       payload: { newEmail: this.state.email },
+    });
+  };
+
+  emailSubmit = () => {
+    this.props.dispatch({
+      type: 'EDIT_PHONE',
+      id: this.props.store.user.id,
+      payload: { newPhone: this.state.phone },
     });
   };
 
