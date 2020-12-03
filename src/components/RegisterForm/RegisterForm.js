@@ -16,7 +16,7 @@ class RegisterForm extends Component {
     address: '',
     jobTitle: '',
     osha: '',
-    certs: '',
+    certifications: '',
   };
 
   componentDidMount() {
@@ -306,6 +306,7 @@ class RegisterForm extends Component {
                 <option value={10}>10</option>
                 <option value={30}>30</option>
                 <option value={40}>40</option>
+                <option value={'N/A'}>0</option>
               </Select>
             </div>
             <div>

@@ -30,11 +30,27 @@ class Assignment extends Component {
   };
 
   selectSubcontractor = (id) => (event) => {
+    this.props.dispatch({
+      type: 'SELECT_TRUE',
+      id: id,
+    });
+    this.props.dispatch({
+      type: 'GET_AVAILABLE',
+    });
     this.setState({
       ...this.state,
       selection: [...this.state.selection, id],
     });
-    console.log('---- hello ---- ', this.state.selection);
+  };
+
+  deselectSubcontractor = (id) => (event) => {
+    this.props.dispatch({
+      type: 'SELECT_FALSE',
+      id: id,
+    });
+    this.props.dispatch({
+      type: 'GET_AVAILABLE',
+    });
   };
 
   componentDidMount() {
@@ -71,12 +87,18 @@ class Assignment extends Component {
                     <td>{item.certifications}</td>
                     <td>{item.address}</td>
                     <td>
-                      <Button
-                        color="primary"
-                        onClick={this.selectSubcontractor(item.id)}
-                      >
-                        Select
-                      </Button>
+                      {item.is_selected === true ? (
+                        <Button onClick={this.deselectSubcontractor(item.id)}>
+                          Deselect
+                        </Button>
+                      ) : (
+                        <Button
+                          color="primary"
+                          onClick={this.selectSubcontractor(item.id)}
+                        >
+                          Select
+                        </Button>
+                      )}
                     </td>
                     <td>
                       <Button

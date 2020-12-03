@@ -33,7 +33,7 @@ router.post('/register', (req, res, next) => {
 
   const queryText = `INSERT INTO "user" (username, password, registered_as,
     access_level_id, first_name, last_name, phone, email, address, job_title, osha_level,
-    subcontractor_certifications, job_status, vendor_company)
+    subcontractor_certifications, job_status, is_selected, vendor_company)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING id`;
   pool
     .query(queryText, [
@@ -49,6 +49,7 @@ router.post('/register', (req, res, next) => {
       jobTitle,
       oshaLevel,
       certs,
+      false,
       false,
       company,
     ])
@@ -139,6 +140,36 @@ router.put('/setJobStatusTrue/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/setJobStatusFalse/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `UPDATE "user" SET job_status=false WHERE id=$1;`;
+  const queryArray = [req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/selectFalse/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `UPDATE "user" SET is_selected=false WHERE id=$1;`;
+  const queryArray = [req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/selectTrue/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `UPDATE "user" SET is_selected=true WHERE id=$1;`;
   const queryArray = [req.params.id];
 
   pool

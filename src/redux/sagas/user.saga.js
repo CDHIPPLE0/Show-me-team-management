@@ -76,6 +76,22 @@ function* updateJobStatusFalse(action) {
   }
 }
 
+function* selectTrue(action) {
+  try {
+    yield axios.put(`/api/user/selectTrue/${action.id}`);
+  } catch (error) {
+    console.log('Error with user status update:', error);
+  }
+}
+
+function* selectFalse(action) {
+  try {
+    yield axios.put(`/api/user/selectFalse/${action.id}`);
+  } catch (error) {
+    console.log('Error with user status update:', error);
+  }
+}
+
 function* verify(action) {
   try {
     yield axios.put(`/user/verify/${action.id}`, action.payload);
@@ -93,6 +109,8 @@ function* userSaga() {
   yield takeLatest('GET_USER_DETAILS', getUser);
   yield takeLatest('STATUS_WORKING', updateJobStatusTrue);
   yield takeLatest('STATUS_NOT_WORKING', updateJobStatusFalse);
+  yield takeLatest('SELECT_TRUE', selectTrue);
+  yield takeLatest('SELECT_FALSE', selectFalse);
 }
 
 export default userSaga;

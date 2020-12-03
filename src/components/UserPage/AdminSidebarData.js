@@ -4,8 +4,14 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import BusinessIcon from '@material-ui/icons/Business';
 import PeopleIcon from '@material-ui/icons/People';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+import CreateIcon from '@material-ui/icons/Create';
 
 export const AdminSidebarData = [
+  {
+    Icon: <CreateIcon />,
+    Title: 'Job Creation',
+    Selection: 5,
+  },
   {
     Icon: <WorkOutlineIcon />,
     Title: 'Current Job',
