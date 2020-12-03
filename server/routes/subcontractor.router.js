@@ -37,7 +37,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/available', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT id, first_name, last_name, phone, email, address,
-  job_title, osha_level, subcontractor_certifications, is_selected FROM "user" WHERE access_level_id = 2 AND job_status = false;`;
+  job_title, osha_level, subcontractor_certifications, is_selected FROM "user" 
+  WHERE access_level_id = 2 AND job_status = false ORDER BY last_name DESC;`;
   pool
     .query(queryText)
     .then((result) => {

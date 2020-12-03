@@ -8,8 +8,6 @@ const { urlencoded } = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
 app.use(urlencoded({ extended: false }));
-var uid = '';
-var jid = '';
 
 const {
   rejectUnauthenticated,
@@ -73,22 +71,32 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/accept/:id', (req, res) => {
+  let uid = null;
+  let jid = null;
+  let queryThree = `DELETE FROM "job_user_message" WHERE message_id = $1;`;
+  let referenceThree = [req.params.id];
   const query = `SELECT user_id, job_id FROM "job_user_message" WHERE message_id = $1;`;
   const reference = [req.params.id];
-  pool.query(query, reference).then((dbResponse) => {
-    uid = dbResponse.rows[0].user_id;
-    jid = dbResponse.rows[0].job_id;
-    console.log('first pool', uid, jid);
-  });
-  var queryTwo = `INSERT INTO "user_job" ("job_id", "user_id")
-    VALUES ($1, $2)`;
-  var referenceTwo = [Number(jid), Number(uid)];
   pool
-    .query(queryTwo, referenceTwo)
-    .then(() => res.sendStatus(200))
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
+    .query(query, reference)
+    .then((dbResponse) => {
+      uid = dbResponse.rows[0].user_id;
+      jid = dbResponse.rows[0].job_id;
+      console.log('first pool', uid, jid);
+    })
+    .then(() => {
+      let queryTwo = `INSERT INTO "user_job" ("job_id", "user_id")
+    VALUES ($1, $2);`;
+      let referenceTwo = [Number(jid), Number(uid)];
+      pool.query(queryTwo, referenceTwo).then(() => {
+        pool
+          .query(queryThree, referenceThree)
+          .then(() => res.sendStatus(200))
+          .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+          });
+      });
     });
 });
 
