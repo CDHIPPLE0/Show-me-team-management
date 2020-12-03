@@ -1,5 +1,6 @@
 const accountSid = process.env.TWILIO_ACCOUNT_SSID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const dataGuid = require('../modules/dataGuid');
 const http = require('http');
 const pool = require('../modules/pool');
 const express = require('express');
@@ -27,15 +28,32 @@ router.post('/', (req, res) => {
 });
 
 router.post('/send', rejectUnauthenticated, (req, res) => {
-  const message = req.body.data;
-  client.messages
-    .create({
-      body: message,
-      from: '+13862048962',
-      to: '+16609246155',
+  const newGuid = dataGuid();
+  const user = req.body.data.user;
+  const job = req.body.data.job;
+
+  // const message =
+
+  const queryText = `INSERT INTO "job_user_message" ("job_id", "user_id", "message_id") 
+  VALUES ($1 , $2, $3);`;
+  const queryArray = [job.id, user.id, newGuid];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      client.messages
+        .create({
+          body: message,
+          from: '+13862048962',
+          to: '+16609246155',
+        })
+        .then((message) => console.log(message.sid))
+        .then(() => res.sendStatus(200));
     })
-    .then((message) => console.log(message.sid))
-    .then(() => res.sendStatus(200));
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 router.get('/change_status/:id', (req, res) => {

@@ -9,6 +9,8 @@ import JobCreation from './JobCreation';
 import EditProfile from './EditProfile';
 import CurrentJob from './CurrentJob';
 import Assignment from './Assignment';
+import Welcome from './Welcome';
+import Subcontractors from './Subcontractors';
 
 class UserPage extends Component {
   state = {
@@ -52,7 +54,7 @@ class UserPage extends Component {
         display = <Assignment jobSelection={this.state.jobSelection} />;
         break;
       case 3:
-        display = <p>subcontractors</p>;
+        display = <Subcontractors />;
         break;
       case 4:
         display = <p>vendors</p>;
@@ -64,7 +66,7 @@ class UserPage extends Component {
         display = <EditProfile />;
         break;
       default:
-        display = null;
+        display = <Welcome />;
         break;
     }
     return (

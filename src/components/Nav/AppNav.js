@@ -11,7 +11,9 @@ const AppNav = (props) => {
       {props.props.store.user.id && (
         <>
           <p>Show Me Stainless Team Management</p>
-          <Button onClick={handle}>Logout</Button>
+          <Button onClick={handle} variant="contained">
+            Logout
+          </Button>
         </>
       )}
     </div>

@@ -6,6 +6,4 @@ function uuidv4() {
   });
 }
 
-console.log(uuidv4());
-
-module.exports = { dataGuid };
+module.exports = uuidv4;

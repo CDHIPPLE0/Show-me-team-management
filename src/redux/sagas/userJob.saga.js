@@ -2,8 +2,11 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* createJobConnection(action) {
+  let id = action.payload.user;
   try {
     yield axios.post('/api/userJob', action.payload);
+    yield put({ type: 'STATUS_WORKING', payload: action.payload });
+    yield put({ type: 'SELECT_FALSE', payload: id });
   } catch (error) {
     console.log('Error with userJob creation:', error);
   }

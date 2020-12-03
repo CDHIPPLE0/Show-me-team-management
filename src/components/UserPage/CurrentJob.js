@@ -40,8 +40,8 @@ class JobSelection extends Component {
           <thead className="tableHead">
             {this.props.store.jobs.getDetailJob.length ? (
               this.props.store.jobs.getDetailJob.map((item, index) => (
-                <tr index={index} className="inTheGreen">
-                  <th colSpan="9">
+                <tr index={index} className="welcome">
+                  <th colSpan="9" className="inTheGreen">
                     {'Vendor Company: '}
                     {item.vendor_company}
                     {' | '}
@@ -54,8 +54,10 @@ class JobSelection extends Component {
                 </tr>
               ))
             ) : (
-              <tr className="inTheRed">
-                <th colSpan="9">Please Select A Job</th>
+              <tr className="welcome">
+                <th colSpan="9" className="inTheRed">
+                  Please Select A Job
+                </th>
               </tr>
             )}
           </thead>
@@ -70,7 +72,7 @@ class JobSelection extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.store.populateCurrentJobSubcontractors.populateCurrentJobSubcontractors.map(
+            {this.props.store.userJob.populateCurrentJobSubcontractors.map(
               (item, index) => (
                 <tr index={index}>
                   <td>{item.first_name}</td>

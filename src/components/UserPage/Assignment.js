@@ -20,22 +20,12 @@ class Assignment extends Component {
         user: id,
       },
     });
-    this.props.dispatch({
-      type: 'STATUS_WORKING',
-      id: id,
-    });
-    this.props.dispatch({
-      type: 'GET_AVAILABLE',
-    });
   };
 
   selectSubcontractor = (id) => (event) => {
     this.props.dispatch({
       type: 'SELECT_TRUE',
-      id: id,
-    });
-    this.props.dispatch({
-      type: 'GET_AVAILABLE',
+      payload: id,
     });
     this.setState({
       ...this.state,
@@ -46,10 +36,7 @@ class Assignment extends Component {
   deselectSubcontractor = (id) => (event) => {
     this.props.dispatch({
       type: 'SELECT_FALSE',
-      id: id,
-    });
-    this.props.dispatch({
-      type: 'GET_AVAILABLE',
+      payload: id,
     });
   };
 
@@ -61,7 +48,7 @@ class Assignment extends Component {
 
   render() {
     if (this.props.jobSelection !== 0) {
-      if (this.props.store.availableSubcontractors.length > 0) {
+      if (this.props.store.Subcontractors.availableSubcontractors.length > 0) {
         return (
           <div className="table">
             <table className="statTable">
@@ -78,38 +65,40 @@ class Assignment extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.store.availableSubcontractors.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.first_name}</td>
-                    <td>{item.last_name}</td>
-                    <td>{item.job_title}</td>
-                    <td>{item.osha_level}</td>
-                    <td>{item.certifications}</td>
-                    <td>{item.address}</td>
-                    <td>
-                      {item.is_selected === true ? (
-                        <Button onClick={this.deselectSubcontractor(item.id)}>
-                          Deselect
-                        </Button>
-                      ) : (
+                {this.props.store.Subcontractors.availableSubcontractors.map(
+                  (item, index) => (
+                    <tr key={index}>
+                      <td>{item.first_name}</td>
+                      <td>{item.last_name}</td>
+                      <td>{item.job_title}</td>
+                      <td>{item.osha_level}</td>
+                      <td>{item.certifications}</td>
+                      <td>{item.address}</td>
+                      <td>
+                        {item.is_selected === true ? (
+                          <Button onClick={this.deselectSubcontractor(item.id)}>
+                            Deselect
+                          </Button>
+                        ) : (
+                          <Button
+                            color="primary"
+                            onClick={this.selectSubcontractor(item.id)}
+                          >
+                            Select
+                          </Button>
+                        )}
+                      </td>
+                      <td>
                         <Button
-                          color="primary"
-                          onClick={this.selectSubcontractor(item.id)}
+                          color="secondary"
+                          onClick={this.forceAssignSubcontractor(item.id)}
                         >
-                          Select
+                          Force Assign
                         </Button>
-                      )}
-                    </td>
-                    <td>
-                      <Button
-                        color="secondary"
-                        onClick={this.forceAssignSubcontractor(item.id)}
-                      >
-                        Force Assign
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
               <tfoot>
                 <tr>
@@ -139,7 +128,7 @@ class Assignment extends Component {
           <div className="table">
             <table className="statTable">
               <thead className="tableHead">
-                <tr className="inTheRed">
+                <tr className="inTheRed" className="welcome">
                   <th>No Subcontractors To Assign</th>
                 </tr>
               </thead>
@@ -152,8 +141,10 @@ class Assignment extends Component {
         <div className="table">
           <table className="statTable">
             <thead className="tableHead">
-              <tr className="inTheRed">
-                <th>Please Select A Job Before Assigning Employees</th>
+              <tr className="welcome">
+                <th className="inTheRed">
+                  Please Select A Job Before Assigning Employees
+                </th>
               </tr>
             </thead>
           </table>

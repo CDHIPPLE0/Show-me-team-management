@@ -61,7 +61,8 @@ function* editAddress(action) {
 
 function* updateJobStatusTrue(action) {
   try {
-    yield axios.put(`/api/user/setJobStatusTrue/${action.id}`);
+    yield axios.put(`/api/user/setJobStatusTrue/${action.payload.user}`);
+    yield put({ type: 'GET_AVAILABLE' });
   } catch (error) {
     console.log('Error with user status update:', error);
   }
@@ -78,15 +79,18 @@ function* updateJobStatusFalse(action) {
 
 function* selectTrue(action) {
   try {
-    yield axios.put(`/api/user/selectTrue/${action.id}`);
+    yield axios.put(`/api/user/selectTrue/${action.payload}`);
+    yield put({ type: 'GET_AVAILABLE' });
   } catch (error) {
     console.log('Error with user status update:', error);
   }
 }
 
 function* selectFalse(action) {
+  console.log('in selectFalse', action);
   try {
-    yield axios.put(`/api/user/selectFalse/${action.id}`);
+    yield axios.put(`/api/user/selectFalse/${action.payload}`);
+    yield put({ type: 'GET_AVAILABLE' });
   } catch (error) {
     console.log('Error with user status update:', error);
   }

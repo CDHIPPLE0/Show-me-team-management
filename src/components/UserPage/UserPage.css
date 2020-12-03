@@ -2,6 +2,14 @@
   display: flex;
 }
 
+.form {
+  flex: 1;
+  max-width: 40rem;
+  padding: 10px;
+  margin-left: 0rem;
+  border: solid black 1px;
+}
+
 .sideBar {
   height: 100vh;
   min-width: 12rem;
@@ -109,6 +117,10 @@
   text-align: right;
 }
 /* ---------------------------------------- */
+.welcome th {
+  font-size: 20px;
+}
+
 .inTheGreen {
   font-size: 15px;
   background-color: rgba(144, 238, 144, 0.322);
