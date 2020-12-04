@@ -72,24 +72,33 @@ class JobSelection extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.store.userJob.populateCurrentJobSubcontractors.map(
-              (item, index) => (
-                <tr index={index}>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.job_title}</td>
-                  <td>{item.osha_level}</td>
-                  <td>{item.subcontractor_certifications}</td>
-                  <td>
-                    <Button
-                      color="secondary"
-                      onClick={this.removeEmployee(item.id)}
-                    >
-                      Remove
-                    </Button>
-                  </td>
-                </tr>
+            {this.props.store.userJob.populateCurrentJobSubcontractors.length >
+            0 ? (
+              this.props.store.userJob.populateCurrentJobSubcontractors.map(
+                (item, index) => (
+                  <tr index={index}>
+                    <td>{item.first_name}</td>
+                    <td>{item.last_name}</td>
+                    <td>{item.job_title}</td>
+                    <td>{item.osha_level}</td>
+                    <td>{item.subcontractor_certifications}</td>
+                    <td>
+                      <Button
+                        color="secondary"
+                        onClick={this.removeEmployee(item.id)}
+                      >
+                        Remove
+                      </Button>
+                    </td>
+                  </tr>
+                )
               )
+            ) : (
+              <tr className="welcome">
+                <th colSpan="9" className="inTheRed">
+                  No Employees Assigned
+                </th>
+              </tr>
             )}
           </tbody>
         </table>
