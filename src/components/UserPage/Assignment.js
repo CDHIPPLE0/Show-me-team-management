@@ -6,8 +6,15 @@ import { Button, TextField } from '@material-ui/core';
 class Assignment extends Component {
   state = {
     selection: [],
+    message: '',
   };
-
+  recordMessage = (event) => {
+    console.log(this.state.message);
+    this.setState({
+      ...this.state,
+      message: event.target.value,
+    });
+  };
   sendToParent = (id) => (event) => {
     this.props.callBack(id);
   };
@@ -22,7 +29,30 @@ class Assignment extends Component {
     });
   };
 
+  sendCustom = () => {
+    let message = this.state.message;
+    this.setState({
+      ...this.state,
+      message: '',
+    });
+    let userArray = this.state.selection;
+    this.props.dispatch({
+      type: 'SELECT_ALL_FALSE',
+    });
+    this.setState({
+      selection: [],
+    });
+    this.props.dispatch({
+      type: 'SEND_CUSTOM',
+      payload: {
+        userArray: userArray,
+        message: message,
+      },
+    });
+  };
+
   sendAutomated = () => {
+    let userArray = this.state.selection;
     this.props.dispatch({
       type: 'SELECT_ALL_FALSE',
     });
@@ -33,7 +63,6 @@ class Assignment extends Component {
     let startDate = jobDetails.start_date;
     let jobAddress = jobDetails.job_address;
     let jobId = this.props.jobSelection;
-    let userArray = this.state.selection;
     this.props.dispatch({
       type: 'SEND_AUTOMATED',
       payload: {
@@ -138,15 +167,18 @@ class Assignment extends Component {
                 <tr>
                   <td colSpan="8" className="footStyleWhite">
                     <TextField
+                      onChange={this.recordMessage}
                       color="primary"
                       variant="outlined"
                       type="text"
                       name="Last Name"
                       placeholder="Enter Custom Message"
-                      // value={this.state.lastName}
+                      value={this.state.message}
                       required
                     />
-                    <Button color="secondary">Send Custom</Button>
+                    <Button color="secondary" onClick={this.sendCustom}>
+                      Send Custom
+                    </Button>
                     <Button color="primary" onClick={this.sendAutomated}>
                       Send Automated
                     </Button>

@@ -5,8 +5,8 @@ export default function Welcome() {
     <div className="table">
       <table className="statTable">
         <thead className="tableHead">
-          <tr className="welcome">
-            <th className="inTheGreen">
+          <tr className="inTheGreen">
+            <th className="welcome">
               Welcome to Show Me Team Management please select your task from
               the side menu
             </th>

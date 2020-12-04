@@ -28,7 +28,25 @@ function* sendAutomatedToTwilio(action) {
     };
     console.log('in automated with user', data);
     try {
-      yield axios.post('/api/twilio/send', data);
+      yield axios.post('/api/twilio/sendAutomated', data);
+    } catch (error) {
+      console.log('Error with userJob creation:', error);
+    }
+  }
+}
+
+function* sendCustomToTwilio(action) {
+  let userArray = action.payload.userArray;
+  let message = action.payload.message;
+  let data = [];
+  for (let index = 0; index < userArray.length; index++) {
+    const user = userArray[index];
+    data = {
+      userId: user,
+      message: message,
+    };
+    try {
+      yield axios.post('/api/twilio/sendCustom', data);
     } catch (error) {
       console.log('Error with userJob creation:', error);
     }
@@ -60,6 +78,7 @@ function* userJobSaga() {
   yield takeLatest('DELETE_JOB_CONNECTION', deleteJobConnection);
   yield takeLatest('CREATE_JOB_CONNECTION', createJobConnection);
   yield takeLatest('SEND_AUTOMATED', sendAutomatedToTwilio);
+  yield takeLatest('SEND_CUSTOM', sendCustomToTwilio);
 }
 
 export default userJobSaga;

@@ -24,7 +24,33 @@ router.post('/', (req, res) => {
   res.end(twiml.toString());
 });
 
-router.post('/send', rejectUnauthenticated, (req, res) => {
+router.post('/sendCustom', rejectUnauthenticated, (req, res) => {
+  const userId = req.body.userId;
+  const message = req.body.message;
+  const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
+  const queryGetArray = [userId];
+  let phone = '';
+  pool
+    .query(queryGetText, queryGetArray)
+    .then((dbResponse) => {
+      phone = dbResponse.rows[0].phone;
+      console.log(phone);
+      client.messages
+        .create({
+          body: message,
+          from: '+13862048962',
+          to: `+1${phone}`,
+        })
+        .then((message) => console.log(message.sid))
+        .then(() => res.sendStatus(200));
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const newGuid = dataGuid();
   const userId = req.body.userId;
@@ -47,8 +73,6 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
   const queryText = `INSERT INTO "job_user_message" ("job_id", "user_id", "message_id") 
   VALUES ($1 , $2, $3);`;
   const queryArray = [jobId, userId, newGuid];
-  // const message = { newGuid, startDate, jobAddress };
-
   const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}. 
   If you would like to be considered for a job starting ${startDate}, at ${jobAddress} 
   then please click the link below  http://c96dd28cadc2.ngrok.io/api/twilio/accept/${newGuid}`;
