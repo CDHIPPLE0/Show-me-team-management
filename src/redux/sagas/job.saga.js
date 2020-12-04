@@ -31,7 +31,7 @@ function* createJob(action) {
 
 function* editJobDescription(action) {
   try {
-    yield axios.put(`/api/job/editJobDescription/:${action.id}`);
+    yield axios.put(`/api/job/editJobDescription/${action.id}`);
   } catch (error) {
     console.log('Error with edit job description');
   }
@@ -39,7 +39,7 @@ function* editJobDescription(action) {
 
 function* editJobAddress(action) {
   try {
-    yield axios.put(`/api/job/editJobAddress/:${action.id}`);
+    yield axios.put(`/api/job/editJobAddress/${action.id}`);
   } catch (error) {
     console.log('Error with edit address description');
   }
@@ -48,7 +48,7 @@ function* editJobAddress(action) {
 function* setActive(action) {
   console.log('overhere');
   try {
-    yield axios.put(`/api/job/setActive/:${action.id}`);
+    yield axios.put(`/api/job/setActive/${action.id}`);
   } catch (error) {
     console.log('Error with set job active ');
   }
@@ -56,7 +56,7 @@ function* setActive(action) {
 
 function* setInactive(action) {
   try {
-    yield axios.put(`/api/job/setInactive/:${action.id}`);
+    yield axios.put(`/api/job/setInactive/${action.id}`);
   } catch (error) {
     console.log('Error with set job inactive ');
   }
