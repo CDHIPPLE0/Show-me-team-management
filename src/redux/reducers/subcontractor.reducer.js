@@ -9,7 +9,7 @@ const availableSubcontractors = (state = {}, action) => {
   }
 };
 
-const allSubcontractors = (state = {}, action) => {
+const allSubcontractors = (state = [], action) => {
   switch (action.type) {
     case 'POPULATE_SUBCONTRACTORS':
       return action.payload;

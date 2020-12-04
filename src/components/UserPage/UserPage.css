@@ -4,6 +4,8 @@
 
 .CreateJobForm {
   flex: 1;
+  border: solid, black, 1px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   padding: 35px;

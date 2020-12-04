@@ -40,8 +40,8 @@ class JobSelection extends Component {
           <thead className="tableHead">
             {this.props.store.jobs.getDetailJob.length ? (
               this.props.store.jobs.getDetailJob.map((item, index) => (
-                <tr index={index} className="welcome">
-                  <th colSpan="9" className="inTheGreen">
+                <tr index={index} className="inTheGreen">
+                  <th colSpan="9" className="welcome">
                     {'Vendor Company: '}
                     {item.vendor_company}
                     {' | '}

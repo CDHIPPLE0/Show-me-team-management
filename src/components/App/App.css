@@ -114,9 +114,15 @@
     rgba(218, 218, 223, 1) 37%,
     rgba(211, 211, 218, 1) 100%
   );
+  border: solid, black, 1px;
+  border-radius: 20px;
   margin-top: 8rem;
   width: 20rem;
   height: 20rem;
+}
+
+.form Button {
+  width: 50%;
 }
 
 .form form {
@@ -135,6 +141,8 @@
 }
 
 .registrationForm {
+  border: solid, black, 1px;
+  border-radius: 20px;
   background: linear-gradient(
     90deg,
     rgba(218, 218, 223, 1) 37%,
@@ -153,6 +161,8 @@
 }
 
 .vendorRegistrationForm {
+  border: solid, black, 1px;
+  border-radius: 20px;
   background: linear-gradient(
     90deg,
     rgba(218, 218, 223, 1) 37%,

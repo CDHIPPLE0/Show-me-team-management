@@ -8,7 +8,6 @@ class Subcontractors extends Component {
     this.props.dispatch({
       type: 'GET_SUBCONTRACTORS',
     });
-    console.log(this.props.store.Subcontractors.allSubcontractors);
   }
 
   render() {
@@ -20,31 +19,39 @@ class Subcontractors extends Component {
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
                 <th>Job Title</th>
                 <th>Osha Level</th>
                 <th>Certifications</th>
-                <th>
-                  {JSON.stringify(
-                    this.props.store.Subcontractors.allSubcontractors
-                  )}
-                </th>
+                <th>Availability</th>
+                <th>Account Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              {/* {this.props.store.Subcontractors.allSubcontractors.map(
+              {this.props.store.Subcontractors.allSubcontractors.map(
                 (item, index) => (
                   <tr index={index}>
                     <td>{item.first_name}</td>
                     <td>{item.last_name}</td>
                     <td>{item.phone}</td>
                     <td>{item.email}</td>
-                    <td>{item.company}</td>
+                    <td>{item.job_title}</td>
+                    <td>{item.osha_level}</td>
+                    <td>{item.subcontractor_certifications}</td>
+                    <td>{item.job_status ? 'Working' : 'Available'}</td>
                     <td>
-                      <Button color="secondary">Remove</Button>
+                      {item.access_level_id === item.registered_as
+                        ? 'Verified'
+                        : 'Pending Approval'}
+                    </td>
+                    <td>
+                      <Button color="secondary">Edit</Button>
                     </td>
                   </tr>
                 )
-              )} */}
+              )}
             </tbody>
           </table>
         </div>

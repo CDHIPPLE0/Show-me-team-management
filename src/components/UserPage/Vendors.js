@@ -13,6 +13,7 @@ class Vendors extends Component {
 
   render() {
     if (this.props.store.allVendors.length !== 0) {
+      console.log(this.props.store.allVendors);
       return (
         <div className="table">
           <table className="statTable">
@@ -20,25 +21,31 @@ class Vendors extends Component {
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Job Title</th>
-                <th>Osha Level</th>
-                <th>Certifications</th>
-                <th>{JSON.stringify(this.props.store.allVendors)}</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Account Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              {/* {this.props.store.allVendors.map((item, index) => (
+              {this.props.store.allVendors.map((item, index) => (
                 <tr index={index}>
                   <td>{item.first_name}</td>
                   <td>{item.last_name}</td>
                   <td>{item.phone}</td>
                   <td>{item.email}</td>
-                  <td>{item.company}</td>
+                  <td>{item.vendor_company}</td>
                   <td>
-                    <Button color="secondary">Remove</Button>
+                    {item.access_level_id === item.registered_as
+                      ? 'Verified'
+                      : 'Pending Approval'}
+                  </td>
+                  <td>
+                    <Button color="secondary">Edit</Button>
                   </td>
                 </tr>
-              ))} */}
+              ))}
             </tbody>
           </table>
         </div>

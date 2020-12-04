@@ -403,9 +403,11 @@ class RegisterForm extends Component {
         return (
           <center className="form">
             <div className="selectionButton">
+              <br />
               <div>
-                <label className="formText">I Am A</label>
+                <label className="formText">I am registering as a: </label>
               </div>
+              <br />
               <Button
                 style={{
                   backgroundColor: '#77818c',

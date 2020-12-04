@@ -1,4 +1,4 @@
-const allVendors = (state = {}, action) => {
+const allVendors = (state = [], action) => {
   switch (action.type) {
     case 'ALL_VENDORS':
       return action.payload;

@@ -35,6 +35,7 @@ class LoginForm extends Component {
     return (
       <center className="form">
         <form onSubmit={this.login}>
+          <br />
           <h2>Login</h2>
           {this.props.store.errors.loginMessage && (
             <h3 className="alert" role="alert">
@@ -67,6 +68,7 @@ class LoginForm extends Component {
               />
             </label>
           </div>
+          <br />
           <div>
             <Button
               style={{

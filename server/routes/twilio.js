@@ -75,7 +75,7 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
   const queryArray = [jobId, userId, newGuid];
   const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}. 
   If you would like to be considered for a job starting ${startDate}, at ${jobAddress} 
-  then please click the link below  http://c96dd28cadc2.ngrok.io/api/twilio/accept/${newGuid}`;
+  then please click the link below  http://09dbb34fdee6.ngrok.io/api/twilio/accept/${newGuid}`;
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
