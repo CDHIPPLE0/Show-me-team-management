@@ -17,6 +17,10 @@
   margin-top: 1rem;
 }
 
+.textField {
+  width: 20%;
+}
+
 .sideBar {
   height: 100vh;
   min-width: 12rem;

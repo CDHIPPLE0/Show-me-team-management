@@ -43,7 +43,7 @@ class RegisterForm extends Component {
         address: this.state.address,
         jobTitle: this.state.jobTitle,
         osha: this.state.osha,
-        certs: this.state.certs,
+        certs: this.state.certifications,
       },
     });
   }; // end registerUser

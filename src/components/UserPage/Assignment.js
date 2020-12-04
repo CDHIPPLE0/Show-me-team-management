@@ -167,6 +167,7 @@ class Assignment extends Component {
                 <tr>
                   <td colSpan="8" className="footStyleWhite">
                     <TextField
+                      className="textField"
                       onChange={this.recordMessage}
                       color="primary"
                       variant="outlined"
