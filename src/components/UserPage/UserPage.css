@@ -2,12 +2,19 @@
   display: flex;
 }
 
-.form {
+.CreateJobForm {
   flex: 1;
-  max-width: 40rem;
-  padding: 10px;
-  margin-left: 0rem;
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+  margin: auto;
   border: solid black 1px;
+  max-width: 20rem;
+  background-color: white;
+}
+
+.CreateJobForm Button {
+  margin-top: 1rem;
 }
 
 .sideBar {

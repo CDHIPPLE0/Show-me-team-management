@@ -5,6 +5,11 @@ import { Button } from '@material-ui/core';
 
 class JobSelection extends Component {
   sendToParent = (id) => (event) => {
+    console.log(event);
+    this.props.dispatch({
+      type: 'SET_ACTIVE',
+      id: id,
+    });
     this.props.callBack(id);
   };
 

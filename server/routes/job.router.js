@@ -97,6 +97,40 @@ router.put('/editJobDescription/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.put('/setActive/:id', rejectUnauthenticated, (req, res) => {
+  console.log(req);
+  const queryText = `UPDATE "job" SET is_active=true WHERE id=$1;`;
+  const queryArray = [req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      console.log(dbResponse);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/setInactive/:id', rejectUnauthenticated, (req, res) => {
+  console.log(req);
+  const queryText = `UPDATE "job" SET is_active=false  WHERE id=$1;`;
+  const queryArray = [req.params.id];
+
+  pool
+    .query(queryText, queryArray)
+    .then((dbResponse) => {
+      console.log(dbResponse);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `DELETE FROM "job" WHERE id=$1;`;
   const queryArray = [req.params.id];

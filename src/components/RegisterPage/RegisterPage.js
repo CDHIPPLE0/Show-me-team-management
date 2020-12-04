@@ -13,19 +13,13 @@ class RegisterPage extends Component {
   };
 
   render() {
+    let toLogin = () => {
+      this.props.history.push('/login');
+    };
     return (
       <center>
-        <center className="loginWrapper">
-          <RegisterForm />
-
-          <Button
-            type="button"
-            onClick={() => {
-              this.props.history.push('/login');
-            }}
-          >
-            Login
-          </Button>
+        <center>
+          <RegisterForm callback={toLogin} />
         </center>
       </center>
     );

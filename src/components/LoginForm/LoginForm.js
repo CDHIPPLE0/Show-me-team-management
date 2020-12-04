@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { Button, TextField } from '@material-ui/core';
 
 class LoginForm extends Component {
   state = {
@@ -33,7 +34,7 @@ class LoginForm extends Component {
   render() {
     return (
       <center className="form">
-        <form className="formPanel" onSubmit={this.login}>
+        <form onSubmit={this.login}>
           <h2>Login</h2>
           {this.props.store.errors.loginMessage && (
             <h3 className="alert" role="alert">
@@ -42,8 +43,9 @@ class LoginForm extends Component {
           )}
           <div>
             <label htmlFor="username">
-              Username:
-              <input
+              <TextField
+                autoComplete="off"
+                label="username"
                 type="text"
                 name="username"
                 required
@@ -54,8 +56,9 @@ class LoginForm extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
-              <input
+              <TextField
+                autoComplete="off"
+                label="password"
                 type="password"
                 name="password"
                 required
@@ -65,9 +68,32 @@ class LoginForm extends Component {
             </label>
           </div>
           <div>
-            <input className="btn" type="submit" name="submit" value="Log In" />
+            <Button
+              style={{
+                backgroundColor: '#77818c',
+              }}
+              variant="contained"
+              type="submit"
+              name="submit"
+              value="Log In"
+            >
+              Login
+            </Button>
           </div>
         </form>
+        <>
+          <Button
+            style={{
+              backgroundColor: '#77818c',
+            }}
+            variant="contained"
+            type="button"
+            className="btn btn_asLink"
+            onClick={this.props.callback}
+          >
+            Register
+          </Button>
+        </>
       </center>
     );
   }

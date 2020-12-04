@@ -23,6 +23,12 @@ class Assignment extends Component {
   };
 
   sendAutomated = () => {
+    this.props.dispatch({
+      type: 'SELECT_ALL_FALSE',
+    });
+    this.setState({
+      selection: [],
+    });
     let jobDetails = this.props.store.jobs.getDetailJob[0];
     let startDate = jobDetails.start_date;
     let jobAddress = jobDetails.job_address;
@@ -51,6 +57,14 @@ class Assignment extends Component {
   };
 
   deselectSubcontractor = (id) => (event) => {
+    let array = this.state.selection;
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      if (element === id) {
+        array.splice(index, 1);
+      }
+    }
+    console.log('look at me', array);
     this.props.dispatch({
       type: 'SELECT_FALSE',
       payload: id,
@@ -147,8 +161,8 @@ class Assignment extends Component {
           <div className="table">
             <table className="statTable">
               <thead className="tableHead">
-                <tr className="inTheRed" className="welcome">
-                  <th>No Subcontractors To Assign</th>
+                <tr className="inTheRed">
+                  <th className="welcome">No Subcontractors To Assign</th>
                 </tr>
               </thead>
             </table>

@@ -45,9 +45,26 @@ function* editJobAddress(action) {
   }
 }
 
+function* setActive(action) {
+  console.log('overhere');
+  try {
+    yield axios.put(`/api/job/setActive/:${action.id}`);
+  } catch (error) {
+    console.log('Error with set job active ');
+  }
+}
+
+function* setInactive(action) {
+  try {
+    yield axios.put(`/api/job/setInactive/:${action.id}`);
+  } catch (error) {
+    console.log('Error with set job inactive ');
+  }
+}
+
 function* deleteJob(action) {
   try {
-    yield axios.delete(`/api/job/deleteJob/${action.id}`);
+    yield axios.delete(`/api/job/setInactive/${action.id}`);
   } catch (error) {
     console.log('Error with job deletion');
   }
@@ -60,6 +77,8 @@ function* jobSaga() {
   yield takeLatest('EDIT_JOB_ADDRESS', editJobAddress);
   yield takeLatest('GET_JOB', getThisJob);
   yield takeLatest('DELETE_JOB', deleteJob);
+  yield takeLatest('SET_ACTIVE', setActive);
+  yield takeLatest('SET_INACTIVE', setInactive);
 }
 
 export default jobSaga;

@@ -5,33 +5,33 @@ import { Button } from '@material-ui/core';
 
 class Subcontractors extends Component {
   componentDidMount() {
-    console.log(this.props.jobSelection);
     this.props.dispatch({
       type: 'GET_SUBCONTRACTORS',
     });
+    console.log(this.props.store.Subcontractors.allSubcontractors);
   }
 
   render() {
-    return (
-      <div className="table">
-        <table className="statTable">
-          <thead className="tableHead">
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Job Title</th>
-              <th>Osha Level</th>
-              <th>Certifications</th>
-              <th>
-                {JSON.stringify(
-                  this.props.store.Subcontractors.allSubcontractors
-                )}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {this.props.store.Subcontractors.allSubcontractors &&
-              this.props.store.Subcontractors.allSubcontractors.map(
+    if (this.props.store.Subcontractors.allSubcontractors.length !== 0) {
+      return (
+        <div className="table">
+          <table className="statTable">
+            <thead className="tableHead">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Job Title</th>
+                <th>Osha Level</th>
+                <th>Certifications</th>
+                <th>
+                  {JSON.stringify(
+                    this.props.store.Subcontractors.allSubcontractors
+                  )}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {this.props.store.Subcontractors.allSubcontractors.map(
                 (item, index) => (
                   <tr index={index}>
                     <td>{item.first_name}</td>
@@ -45,10 +45,13 @@ class Subcontractors extends Component {
                   </tr>
                 )
               )} */}
-          </tbody>
-        </table>
-      </div>
-    );
+            </tbody>
+          </table>
+        </div>
+      );
+    } else {
+      return <center>loading...</center>;
+    }
   }
 }
 

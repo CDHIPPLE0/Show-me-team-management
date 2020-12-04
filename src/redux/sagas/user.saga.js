@@ -96,6 +96,25 @@ function* selectFalse(action) {
   }
 }
 
+function* selectAllTrue(action) {
+  try {
+    yield axios.put(`/api/user/selectAllTrue/`);
+    yield put({ type: 'GET_AVAILABLE' });
+  } catch (error) {
+    console.log('Error with user status update:', error);
+  }
+}
+
+function* selectAllFalse(action) {
+  console.log('in selectFalse', action);
+  try {
+    yield axios.put(`/api/user/selectAllFalse/`);
+    yield put({ type: 'GET_AVAILABLE' });
+  } catch (error) {
+    console.log('Error with user status update:', error);
+  }
+}
+
 function* verify(action) {
   try {
     yield axios.put(`/user/verify/${action.id}`, action.payload);
@@ -115,6 +134,8 @@ function* userSaga() {
   yield takeLatest('STATUS_NOT_WORKING', updateJobStatusFalse);
   yield takeLatest('SELECT_TRUE', selectTrue);
   yield takeLatest('SELECT_FALSE', selectFalse);
+  yield takeLatest('SELECT_ALL_TRUE', selectAllTrue);
+  yield takeLatest('SELECT_ALL_FALSE', selectAllFalse);
 }
 
 export default userSaga;

@@ -2,9 +2,10 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* getVendors() {
+  yield console.log('in vendors');
   try {
     const response = yield axios.get('/api/vendor');
-    yield put({ type: 'POPULATE_VENDORS', payload: response.data });
+    yield put({ type: 'ALL_VENDORS', payload: response.data });
   } catch (error) {
     console.log('Error with jobs get:', error);
   }

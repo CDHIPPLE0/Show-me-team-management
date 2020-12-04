@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import jobSaga from './job.saga';
 import subcontractorSaga from './subcontractor.saga';
 import userJobSaga from './userJob.saga';
+import vendorSaga from './vendor.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -14,5 +15,6 @@ export default function* rootSaga() {
     userJobSaga(),
     jobSaga(),
     subcontractorSaga(),
+    vendorSaga(),
   ]);
 }

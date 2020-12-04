@@ -5,6 +5,7 @@ import jobs from './jobs.reducer';
 import userJob from './userJob.reducer';
 import Subcontractors from './subcontractor.reducer';
 import userDetails from './userDetail.reducer';
+import allVendors from './vendors.reducer';
 
 const rootReducer = combineReducers({
   errors,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   userJob,
   Subcontractors,
   userDetails,
+  allVendors,
 });
 
 export default rootReducer;

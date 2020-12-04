@@ -85,17 +85,23 @@ router.get('/accept/:id', (req, res) => {
       console.log('first pool', uid, jid);
     })
     .then(() => {
+      let queryFour = `UPDATE "user" SET job_status=true WHERE id=$1;`;
+      let referenceFour = [uid];
       let queryTwo = `INSERT INTO "user_job" ("job_id", "user_id")
     VALUES ($1, $2);`;
       let referenceTwo = [Number(jid), Number(uid)];
       pool.query(queryTwo, referenceTwo).then(() => {
-        pool
-          .query(queryThree, referenceThree)
-          .then(() => res.sendStatus(200))
-          .catch((err) => {
-            console.log(err);
-            res.sendStatus(500);
-          });
+        pool.query(queryThree, referenceThree).then(() => {
+          pool
+            .query(queryFour, referenceFour)
+            .then(() => {
+              res.sendStatus(200);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.sendStatus(500);
+            });
+        });
       });
     });
 });

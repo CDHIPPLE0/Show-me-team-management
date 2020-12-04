@@ -11,6 +11,7 @@ import CurrentJob from './CurrentJob';
 import Assignment from './Assignment';
 import Welcome from './Welcome';
 import Subcontractors from './Subcontractors';
+import Vendors from './Vendors';
 
 class UserPage extends Component {
   state = {
@@ -57,7 +58,7 @@ class UserPage extends Component {
         display = <Subcontractors />;
         break;
       case 4:
-        display = <p>vendors</p>;
+        display = <Vendors />;
         break;
       case 5:
         display = <JobCreation />;
