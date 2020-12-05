@@ -78,6 +78,7 @@
 }
 
 .statTable {
+  width: 98%;
   margin-top: 8rem;
   border-collapse: collapse;
 }
