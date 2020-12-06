@@ -98,8 +98,11 @@ class RegisterForm extends Component {
     switch (this.state.registeredAs) {
       case 3:
         return (
-          <div className="vendorRegistrationForm">
-            <form onSubmit={this.registerUser}>
+          <div className="registrationWrapper">
+            <form
+              className="vendorRegistrationForm"
+              onSubmit={this.registerUser}
+            >
               <h2>Vendor Sign Up</h2>
               <br />
               {this.props.store.errors.registrationMessage && (
@@ -107,7 +110,7 @@ class RegisterForm extends Component {
                   {this.props.store.errors.registrationMessage}
                 </h3>
               )}
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -120,7 +123,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('firstName')}
                 />
               </div>
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -133,7 +136,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('lastName')}
                 />
               </div>
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -146,7 +149,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('phone')}
                 />
               </div>
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -159,7 +162,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('email')}
                 />
               </div>
-              <div>
+              <div className="vendorItemCompany">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -173,7 +176,7 @@ class RegisterForm extends Component {
                 />
               </div>
               <br />
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -186,7 +189,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('username')}
                 />
               </div>
-              <div>
+              <div className="vendorItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -199,7 +202,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('password')}
                 />
               </div>
-              <div>
+              <div className="vendorItem">
                 <Button
                   style={{
                     backgroundColor: '#77818c',
@@ -214,13 +217,23 @@ class RegisterForm extends Component {
                   Submit
                 </Button>
               </div>
+              <div className="vendorItem">
+                <Button
+                  style={{
+                    backgroundColor: '#77818c',
+                  }}
+                  onClick={this.props.callback}
+                >
+                  Login
+                </Button>
+              </div>
             </form>
           </div>
         );
       case 2:
         return (
-          <div className="registrationForm">
-            <form onSubmit={this.registerUser}>
+          <div className="registrationWrapper">
+            <form className="subRegistrationForm" onSubmit={this.registerUser}>
               <h2>Subcontractor Sign Up</h2>
               <br />
               {this.props.store.errors.registrationMessage && (
@@ -228,7 +241,7 @@ class RegisterForm extends Component {
                   {this.props.store.errors.registrationMessage}
                 </h3>
               )}
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -241,7 +254,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('firstName')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -254,7 +267,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('lastName')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -267,7 +280,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('phone')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -280,7 +293,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('email')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -293,7 +306,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('address')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <label>{'What do you do? :'}</label>
                 <Select
                   native
@@ -311,7 +324,7 @@ class RegisterForm extends Component {
                   <option value={'Welder / Fitter'}>Welder / Fitter</option>
                 </Select>
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <label>{'Osha Certification :'}</label>
                 <Select
                   native
@@ -329,7 +342,7 @@ class RegisterForm extends Component {
                   <option value={'N/A'}>0</option>
                 </Select>
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-multiline-static"
@@ -345,7 +358,7 @@ class RegisterForm extends Component {
                 />
               </div>
               <br />
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -358,7 +371,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('username')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -371,7 +384,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('password')}
                 />
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <Button
                   style={{
                     backgroundColor: '#77818c',
@@ -386,7 +399,7 @@ class RegisterForm extends Component {
                   Submit
                 </Button>
               </div>
-              <div className="flexInput">
+              <div className="subItem">
                 <Button
                   style={{
                     backgroundColor: '#77818c',

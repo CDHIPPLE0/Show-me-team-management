@@ -41,7 +41,7 @@
 .appNav p {
   font-size: 30px;
   color: white;
-  margin-left: 32rem;
+  margin-left: 30rem;
 }
 
 .nav {
@@ -139,39 +139,64 @@
   width: 60%;
 }
 
-.registrationForm {
+.registrationWrapper {
+  padding-top: 2rem;
+  margin: auto;
+}
+
+.subRegistrationForm {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10%;
   border: solid, black, 1px;
   border-radius: 20px;
+  width: 40rem;
   background: linear-gradient(
     90deg,
     rgba(218, 218, 223, 1) 37%,
     rgba(211, 211, 218, 1) 100%
   );
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  width: 40rem;
-  height: 48rem;
 }
-.registrationForm form {
-  padding-top: 1rem;
+
+.subPage {
+  padding: 1rem;
 }
-.registrationForm Button {
-  margin-top: 1rem;
+
+.subRegistrationForm > * {
+  padding: 1rem;
+}
+
+.subRegistrationForm form {
+  padding-top: 4rem;
+}
+.subRegistrationForm Button {
+  margin-top: 3rem;
 }
 
 .vendorRegistrationForm {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10%;
   border: solid, black, 1px;
   border-radius: 20px;
+  width: 40rem;
   background: linear-gradient(
     90deg,
     rgba(218, 218, 223, 1) 37%,
     rgba(211, 211, 218, 1) 100%
   );
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  width: 40rem;
-  height: 40rem;
 }
+
+.vendorPage {
+  padding: 1rem;
+}
+
+.vendorRegistrationForm > * {
+  padding: 1rem;
+}
+
 .vendorRegistrationForm form {
   padding-top: 4rem;
 }
