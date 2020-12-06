@@ -24,8 +24,6 @@ class Vendors extends Component {
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Company</th>
-                <th>Account Status</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -36,14 +34,6 @@ class Vendors extends Component {
                   <td>{item.phone}</td>
                   <td>{item.email}</td>
                   <td>{item.vendor_company}</td>
-                  <td>
-                    {item.access_level_id === item.registered_as
-                      ? 'Verified'
-                      : 'Pending Approval'}
-                  </td>
-                  <td>
-                    <Button color="secondary">Edit</Button>
-                  </td>
                 </tr>
               ))}
             </tbody>

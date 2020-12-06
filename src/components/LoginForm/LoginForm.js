@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Button, TextField } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  input: {
+    color: ' #fffded',
+  },
+  underline: {
+    '&:before': {
+      borderBottomColor: ' #fffded',
+    },
+    '&:after': {
+      borderBottomColor: ' #fffded',
+    },
+    '&:hover:before': {
+      borderBottomColor: [' #fffded', '!important'],
+    },
+  },
+};
 
 class LoginForm extends Component {
   state = {
@@ -11,7 +29,6 @@ class LoginForm extends Component {
 
   login = (event) => {
     event.preventDefault();
-
     if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'LOGIN',
@@ -32,6 +49,7 @@ class LoginForm extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <center className="form">
         <form onSubmit={this.login}>
@@ -45,6 +63,15 @@ class LoginForm extends Component {
           <div>
             <label htmlFor="username">
               <TextField
+                InputLabelProps={{
+                  style: { color: '#fffded' },
+                }}
+                InputProps={{
+                  className: classes.underline,
+                  classes: {
+                    underline: classes.input,
+                  },
+                }}
                 autoComplete="off"
                 label="username"
                 type="text"
@@ -58,6 +85,15 @@ class LoginForm extends Component {
           <div>
             <label htmlFor="password">
               <TextField
+                InputLabelProps={{
+                  style: { color: '#fffded' },
+                }}
+                InputProps={{
+                  className: classes.underline,
+                  classes: {
+                    underline: classes.input,
+                  },
+                }}
                 autoComplete="off"
                 label="password"
                 type="password"
@@ -101,4 +137,4 @@ class LoginForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(LoginForm);
+export default connect(mapStoreToProps)(withStyles(styles)(LoginForm));
