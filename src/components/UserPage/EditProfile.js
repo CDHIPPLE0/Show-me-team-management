@@ -1,208 +1,187 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Select, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-class EditProfile extends Component {
-  componentDidMount() {}
-  state = {
-    address: '',
-    email: '',
-    phone: '',
-    osha: null,
-    certifications: '',
-    edit: false,
-    madeChanges: false,
-  };
+const styles = {
+  input: {
+    color: ' #fffded',
+  },
+  notchedOutline: {
+    borderWidth: '1px',
+    borderColor: ' #fffded  !important',
+  },
+};
+
+class JobCreation extends Component {
+  state = {};
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log(propertyName, event);
     this.setState({
       [propertyName]: event.target.value,
     });
   };
 
-  handleEdit = () => {
-    this.setState({
-      ...this.state,
-      edit: true,
-    });
-  };
-
-  editOff = () => {
-    this.setState({
-      ...this.state,
-      edit: false,
-    });
-  };
-
-  addressSubmit = () => {
-    this.props.dispatch({
-      type: 'EDIT_ADDRESS',
-      id: this.props.store.user.id,
-      payload: { newAddress: this.state.address },
-    });
-  };
-
-  emailSubmit = () => {
-    this.props.dispatch({
-      type: 'EDIT_EMAIL',
-      id: this.props.store.user.id,
-      payload: { newEmail: this.state.email },
-    });
-  };
-
-  emailSubmit = () => {
-    this.props.dispatch({
-      type: 'EDIT_PHONE',
-      id: this.props.store.user.id,
-      payload: { newPhone: this.state.phone },
-    });
-  };
-
   render() {
-    if (this.props.store.user.access_level_id === 3) {
-      return (
-        <div className="table">
-          <table className="statTable">
-            <thead className="tableHead">
-              <tr>
-                <th>My Email</th>
-                <th>My Phone</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody className="tdStyle">
-              <tr>
-                <td>
-                  {this.state.edit ? (
-                    <>
-                      <TextField
-                        onChange={this.handleInputChangeFor('email')}
-                        defaultValue={this.props.store.user.email}
-                      />
-                      <Button onClick={this.emailSubmit}>Submit</Button>
-                    </>
-                  ) : (
-                    this.props.store.user.email
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <TextField
-                      type="number"
-                      onChange={this.handleInputChangeFor('phone')}
-                      defaultValue={this.props.store.user.phone}
-                    />
-                  ) : (
-                    this.props.store.user.phone
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <Button onClick={this.editOff}>Done</Button>
-                  ) : (
-                    <Button onClick={this.handleEdit}>Edit</Button>
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
-    } else {
-      return (
-        <div className="table">
-          <table className="statTable">
-            <thead className="tableHead">
-              <tr>
-                <th>My Address</th>
-                <th>My Email</th>
-                <th>My Phone</th>
-                <th>My Osha Level</th>
-                <th>My Certifications</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody className="tdStyle">
-              <tr>
-                <td>
-                  {this.state.edit ? (
-                    <TextField
-                      onChange={this.handleInputChangeFor('address')}
-                      defaultValue={this.props.store.user.address}
-                    />
-                  ) : (
-                    this.props.store.user.address
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <TextField
-                      onChange={this.handleInputChangeFor('email')}
-                      defaultValue={this.props.store.user.email}
-                    />
-                  ) : (
-                    this.props.store.user.email
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <TextField
-                      type="number"
-                      onChange={this.handleInputChangeFor('phone')}
-                      defaultValue={this.props.store.user.phone}
-                    />
-                  ) : (
-                    this.props.store.user.phone
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <Select
-                      native
-                      defaultValue={this.props.store.user.osha_level}
-                      onChange={this.handleInputChangeFor('osha')}
-                      inputProps={{
-                        name: 'osha',
-                        id: 'filled-osha-native-simple',
-                      }}
-                    >
-                      <option aria-label="None" value="" />
-                      <option value={10}>10</option>
-                      <option value={30}>30</option>
-                      <option value={40}>40</option>
-                    </Select>
-                  ) : (
-                    this.props.store.user.osha_level
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <TextField
-                      onChange={this.handleInputChangeFor('email')}
-                      defaultValue={
-                        this.props.store.user.subcontractor_certifications
-                      }
-                    />
-                  ) : (
-                    this.props.store.user.subcontractor_certifications
-                  )}
-                </td>
-                <td>
-                  {this.state.edit ? (
-                    <Button onClick={this.handleSubmit}>Submit Changes</Button>
-                  ) : (
-                    <Button onClick={this.handleEdit}>Edit</Button>
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
-    }
+    const { classes } = this.props;
+
+    return (
+      <div jobFormWrapper>
+        <form className="jobForm-grid-wrapper" onSubmit={this.createJob}>
+          <h2>Job Creation</h2>
+          {this.props.store.errors.registrationMessage && (
+            <h3 className="alert" role="alert">
+              {this.props.store.errors.registrationMessage}
+            </h3>
+          )}
+          <br />
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Description"
+              variant="outlined"
+              type="text"
+              name="Description"
+              value={this.state.description}
+              required
+              onChange={this.handleInputChangeFor('description')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="StartDate"
+              variant="outlined"
+              type="text"
+              name="startDate"
+              value={this.state.startDate}
+              required
+              onChange={this.handleInputChangeFor('startDate')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Job Address"
+              variant="outlined"
+              type="text"
+              name="Job Address"
+              value={this.state.jobAddress}
+              required
+              onChange={this.handleInputChangeFor('jobAddress')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Helpers Needed"
+              variant="outlined"
+              type="number"
+              name="Helpers Needed"
+              value={this.state.helpersNeeded}
+              required
+              onChange={this.handleInputChangeFor('helpersNeeded')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Welders Needed"
+              variant="outlined"
+              type="number"
+              name="Welders Needed"
+              value={this.state.weldersNeeded}
+              required
+              onChange={this.handleInputChangeFor('weldersNeeded')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Fitters Needed"
+              variant="outlined"
+              type="number"
+              name="Fitters Needed"
+              value={this.state.fittersNeeded}
+              required
+              onChange={this.handleInputChangeFor('fittersNeeded')}
+            />
+          </div>
+          <div className="jobItem">
+            <Button
+              variant="contained"
+              className="btn"
+              type="submit"
+              name="submit"
+              value="Register"
+            >
+              Submit
+            </Button>
+          </div>
+        </form>
+      </div>
+    );
   }
 }
-
-export default connect(mapStoreToProps)(EditProfile);
+export default connect(mapStoreToProps)(withStyles(styles)(JobCreation));
