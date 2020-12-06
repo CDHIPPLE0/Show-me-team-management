@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button, Select } from '@material-ui/core';
+import ReCAPTCHA from 'react-google-recaptcha';
+import swal from 'sweetalert';
 
 class RegisterForm extends Component {
+  onChange = () => {
+    this.setState({
+      captchaPassed: true,
+    });
+  };
+
   state = {
+    captchaPassed: false,
     registeredAs: null,
     username: '',
     password: '',
@@ -28,24 +37,29 @@ class RegisterForm extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-
-    this.props.dispatch({
-      type: 'REGISTER',
-      payload: {
-        registeredAs: this.state.registeredAs,
-        username: this.state.username,
-        password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        phone: this.state.phone,
-        email: this.state.email,
-        company: this.state.company,
-        address: this.state.address,
-        jobTitle: this.state.jobTitle,
-        osha: this.state.osha,
-        certs: this.state.certifications,
-      },
-    });
+    if (this.state.captchaPassed) {
+      this.props.dispatch({
+        type: 'REGISTER',
+        payload: {
+          registeredAs: this.state.registeredAs,
+          username: this.state.username,
+          password: this.state.password,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          phone: this.state.phone,
+          email: this.state.email,
+          company: this.state.company,
+          address: this.state.address,
+          jobTitle: this.state.jobTitle,
+          osha: this.state.osha,
+          certs: this.state.certifications,
+        },
+      });
+    } else {
+      setTimeout(() => {
+        swal('SORRY!', 'You need to pass the captcha', 'error');
+      }, 1000);
+    }
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -200,6 +214,12 @@ class RegisterForm extends Component {
                   value={this.state.password}
                   required
                   onChange={this.handleInputChangeFor('password')}
+                />
+              </div>
+              <div className="subItem">
+                <ReCAPTCHA
+                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                  onChange={this.onChange}
                 />
               </div>
               <div className="vendorItem">
@@ -382,6 +402,12 @@ class RegisterForm extends Component {
                   value={this.state.password}
                   required
                   onChange={this.handleInputChangeFor('password')}
+                />
+              </div>
+              <div className="subItem">
+                <ReCAPTCHA
+                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                  onChange={this.onChange}
                 />
               </div>
               <div className="subItem">

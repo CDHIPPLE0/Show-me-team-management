@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import swal from 'sweetalert';
 
 const styles = {
   input: {
@@ -49,6 +50,11 @@ class JobCreation extends Component {
       weldersNeeded: '',
       fittersNeeded: '',
     });
+    swal(
+      'Job Submitted!',
+      'You will be contacted by our team as soon as possible',
+      'success'
+    );
   };
 
   handleInputChangeFor = (propertyName) => (event) => {

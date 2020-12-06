@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
   first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed
-  FROM "job" JOIN "user" ON "job".job_creator_id = "user".id;`;
+  FROM "job" JOIN "user" ON "job".job_creator_id = "user".id ORDER BY id DESC;`;
   pool
     .query(queryText)
     .then((result) => {
