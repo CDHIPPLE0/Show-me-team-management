@@ -65,6 +65,8 @@ class JobSelection extends Component {
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
               <th>Job Title</th>
               <th>Osha Level</th>
               <th>Certifications</th>
@@ -79,6 +81,8 @@ class JobSelection extends Component {
                   <tr index={index}>
                     <td>{item.first_name}</td>
                     <td>{item.last_name}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.email}</td>
                     <td>{item.job_title}</td>
                     <td>{item.osha_level}</td>
                     <td>{item.subcontractor_certifications}</td>

@@ -18,9 +18,7 @@ class RegisterPage extends Component {
     };
     return (
       <center>
-        <center>
-          <RegisterForm callback={toLogin} />
-        </center>
+        <RegisterForm callback={toLogin} />
       </center>
     );
   }

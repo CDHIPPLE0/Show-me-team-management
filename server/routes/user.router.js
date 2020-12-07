@@ -61,7 +61,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT first_name, address, last_name, phone, email, vendor_company
+  const queryText = `SELECT first_name, address, last_name, phone, email, vendor_company, subcontractor_certifications
     FROM "user" WHERE id = $1;`;
   const queryArray = [req.params.id];
   pool
@@ -75,51 +75,33 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put('/editAddress/:id', rejectUnauthenticated, (req, res) => {
-  const edit = req.body;
-  const queryText = `UPDATE "user" SET address=$1 WHERE id=$2;`;
-  const queryArray = [edit.newAddress, req.params.id];
+router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
+  console.log(req.body);
+  const phone = req.body.phone;
+  const email = req.body.email;
+  const address = req.body.address;
+  const jobTitle = req.body.jobTitle;
+  const oshaLevel = req.body.osha;
+  const certs = req.body.certs;
+  const company = req.body.company;
 
+  const queryText = `UPDATE "user" SET phone, email, address, job_title, osha_level,
+    subcontractor_certifications, vendor_company WHERE id=$1)
+    VALUES ($2, $3, $4, $5, $6, $7, $8)`;
   pool
-    .query(queryText, queryArray)
-    .then((dbResponse) => {
-      res.sendStatus(200);
-    })
+    .query(queryText, [
+      req.params.id,
+      phone,
+      email,
+      address,
+      jobTitle,
+      oshaLevel,
+      certs,
+      company,
+    ])
+    .then(() => res.sendStatus(201))
     .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
-});
-
-router.put('/editEmail/:id', rejectUnauthenticated, (req, res) => {
-  const edit = req.body;
-  const queryText = `UPDATE "user" SET email=$1 WHERE id=$2;`;
-  const queryArray = [edit.newEmail, req.params.id];
-
-  pool
-    .query(queryText, queryArray)
-    .then((dbResponse) => {
-      console.log(dbResponse);
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
-});
-
-router.put('/editPhone/:id', rejectUnauthenticated, (req, res) => {
-  const edit = req.body;
-  const queryText = `UPDATE "user" SET phone=$1 WHERE id=$2;`;
-  const queryArray = [edit.newPhone, req.params.id];
-
-  pool
-    .query(queryText, queryArray)
-    .then((dbResponse) => {
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.log(err);
+      console.log('User edit failed: ', err);
       res.sendStatus(500);
     });
 });

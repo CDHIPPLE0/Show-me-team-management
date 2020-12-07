@@ -49,7 +49,12 @@ class UserPage extends Component {
         display = <CurrentJob jobSelection={this.state.jobSelection} />;
         break;
       case 1:
-        display = <JobSelection callBack={this.jobSelection} />;
+        display = (
+          <JobSelection
+            jobSelection={this.state.jobSelection}
+            callBack={this.jobSelection}
+          />
+        );
         break;
       case 2:
         display = <Assignment jobSelection={this.state.jobSelection} />;
@@ -67,7 +72,9 @@ class UserPage extends Component {
         display = <EditProfile />;
         break;
       default:
-        display = <Welcome />;
+        display = (
+          <Welcome accessLevel={this.props.store.user.access_level_id} />
+        );
         break;
     }
     return (

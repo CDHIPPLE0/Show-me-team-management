@@ -15,43 +15,30 @@ const {
 const client = require('twilio')(accountSid, authToken);
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  const twiml = new MessagingResponse();
-  // Access the message body and the number it was sent from.
-  console.log(`Incoming message from ${req.body.From}: ${req.body.Body}`);
-  twiml.message('Beep Boop I am a computer');
-  res.writeHead(200, { 'Content-Type': 'text/xml' });
-  res.end(twiml.toString());
-});
-
 router.post('/sendCustom', rejectUnauthenticated, (req, res) => {
   const userId = req.body.userId;
   const message = req.body.message;
   const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
   const queryGetArray = [userId];
   let phone = '';
-  pool
-    .query(queryGetText, queryGetArray)
-    .then((dbResponse) => {
-      phone = dbResponse.rows[0].phone;
-      console.log(phone);
-      client.messages
-        .create({
-          body: message,
-          from: '+13862048962',
-          to: `+1${phone}`,
-        })
-        .then((message) => console.log(message.sid))
-        .then(() => res.sendStatus(200));
-    })
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
+  pool.query(queryGetText, queryGetArray).then((dbResponse) => {
+    phone = dbResponse.rows[0].phone;
+    client.messages
+      .create({
+        body: message,
+        from: '+13862048962',
+        to: `+1${phone}`,
+      })
+      .then((message) => console.log(message.sid))
+      .then(() => res.sendStatus(200))
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  });
 });
 
 router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
   const newGuid = dataGuid();
   const userId = req.body.userId;
   const jobId = req.body.jobId;
@@ -65,34 +52,39 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
   const queryGetArray = [userId];
   pool
     .query(queryGetText, queryGetArray)
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    })
     .then((dbResponse) => {
       console.log(dbResponse.rows[0]);
       firstName = dbResponse.rows[0].first_name;
       lastName = dbResponse.rows[0].last_name;
       phone = dbResponse.rows[0].phone;
-      console.log(firstName, lastName, phone);
-    })
-    .then(() => {
       const queryText = `INSERT INTO "job_user_message" ("job_id", "user_id", "message_id") 
-    VALUES ($1 , $2, $3);`;
+      VALUES ($1 , $2, $3);`;
       const queryArray = [jobId, userId, newGuid];
       const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}.
 
-    If you would like to be considered for a job starting 
+      If you would like to be considered for a job starting 
 
-    ${startDate} 
+      ${startDate} 
 
-    at 
+      at 
     
-    ${jobAddress}
+      ${jobAddress}
     
-    then please click this link  http://09dbb34fdee6.ngrok.io/api/twilio/accept/${newGuid}
+      then please click this link http://f610823b23bd.ngrok.io/api/twilio/accept/${newGuid}
   
-    To reject this offer please click the link below.
-    http://09dbb34fdee6.ngrok.io/api/twilio/reject/${newGuid};`;
+      To reject this offer please click the link below.
+      http://f610823b23bd.ngrok.io/api/twilio/reject/${newGuid};`;
 
       pool
         .query(queryText, queryArray)
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
+        })
         .then((dbResponse) => {
           client.messages
             .create({
@@ -124,9 +116,6 @@ router.get('/accept/:id', (req, res) => {
     .then((dbResponse) => {
       uid = dbResponse.rows[0].user_id;
       jid = dbResponse.rows[0].job_id;
-      console.log('first pool', uid, jid);
-    })
-    .then(() => {
       let queryFour = `UPDATE "user" SET job_status=true WHERE id=$1;`;
       let referenceFour = [uid];
       let queryTwo = `INSERT INTO "user_job" ("job_id", "user_id")
@@ -135,35 +124,33 @@ router.get('/accept/:id', (req, res) => {
       pool.query(queryTwo, referenceTwo).then(() => {
         pool
           .query(queryThree, referenceThree)
-          .then(() => pool.query(queryFour, referenceFour))
-          .then(() => {
-            const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
-            const queryGetArray = [uid];
-            pool
-              .query(queryGetText, queryGetArray)
-              .then((dbResponse) => {
-                firstName = dbResponse.rows[0].first_name;
-                lastName = dbResponse.rows[0].last_name;
-                phone = dbResponse.rows[0].phone;
-              })
-              .then(() => {
-                message = `${firstName} ${lastName} ACCEPTED your offer.`;
-                client.messages
-                  .create({
-                    body: message,
-                    from: '+13862048962',
-                    to: `+16609246155`,
-                  })
-                  .then(() => {
-                    res.sendStatus(200);
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                    res.sendStatus(500);
-                  });
-              });
-          });
+          .then(() => pool.query(queryFour, referenceFour));
+        const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
+        const queryGetArray = [uid];
+        pool.query(queryGetText, queryGetArray).then((dbResponse) => {
+          firstName = dbResponse.rows[0].first_name;
+          lastName = dbResponse.rows[0].last_name;
+          phone = dbResponse.rows[0].phone;
+          message = `${firstName} ${lastName} ACCEPTED your offer.`;
+          client.messages
+            .create({
+              body: message,
+              from: '+13862048962',
+              to: `+16609246155`,
+            })
+            .then(() => {
+              res.sendStatus(200);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.sendStatus(500);
+            });
+        });
       });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
     });
 });
 
@@ -180,8 +167,6 @@ router.get('/reject/:id', (req, res) => {
       uid = dbResponse.rows[0].user_id;
       jid = dbResponse.rows[0].job_id;
       console.log('first pool', uid, jid);
-    })
-    .then(() => {
       const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
       const queryGetArray = [uid];
       pool
@@ -190,8 +175,6 @@ router.get('/reject/:id', (req, res) => {
           firstName = dbResponse.rows[0].first_name;
           lastName = dbResponse.rows[0].last_name;
           phone = dbResponse.rows[0].phone;
-        })
-        .then(() => {
           message = `${firstName} ${lastName} REJECTED your offer.`;
           let query = `DELETE FROM "job_user_message" WHERE message_id = $1;`;
           let reference = [req.params.id];
@@ -211,7 +194,15 @@ router.get('/reject/:id', (req, res) => {
               console.log(err);
               res.sendStatus(500);
             });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
         });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
     });
 });
 
