@@ -34,28 +34,12 @@ function* getUser(action) {
   }
 }
 
-function* editEmail(action) {
-  console.log('in saga with', action);
+function* edit(action) {
+  console.log('in saga with', action.id, action.payload);
   try {
-    yield axios.put(`/api/user/editEmail/${action.id}`, action.payload);
+    yield axios.put(`/api/user/edit/${action.id}`, action.payload);
   } catch (error) {
     console.log('Error with user email edit:', error);
-  }
-}
-
-function* editPhone(action) {
-  try {
-    yield axios.put(`/api/user/editPhone/${action.id}`, action.payload);
-  } catch (error) {
-    console.log('Error with user phone edit:', error);
-  }
-}
-
-function* editAddress(action) {
-  try {
-    yield axios.put(`/api/user/editAddress/${action.id}`, action.payload);
-  } catch (error) {
-    console.log('Error with user address edit:', error);
   }
 }
 
@@ -125,9 +109,7 @@ function* verify(action) {
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
-  yield takeLatest('EDIT_ADDRESS', editAddress);
-  yield takeLatest('EDIT_EMAIL', editEmail);
-  yield takeLatest('EDIT_PHONE', editPhone);
+  yield takeLatest('EDIT', edit);
   yield takeLatest('VERIFY_USER', verify);
   yield takeLatest('GET_USER_DETAILS', getUser);
   yield takeLatest('STATUS_WORKING', updateJobStatusTrue);

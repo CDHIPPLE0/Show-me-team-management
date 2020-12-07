@@ -25,8 +25,6 @@ class Subcontractors extends Component {
                 <th>Osha Level</th>
                 <th>Certifications</th>
                 <th>Availability</th>
-                <th>Account Status</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -41,14 +39,6 @@ class Subcontractors extends Component {
                     <td>{item.osha_level}</td>
                     <td>{item.subcontractor_certifications}</td>
                     <td>{item.job_status ? 'Working' : 'Available'}</td>
-                    <td>
-                      {item.access_level_id === item.registered_as
-                        ? 'Verified'
-                        : 'Pending Approval'}
-                    </td>
-                    <td>
-                      <Button color="secondary">Edit</Button>
-                    </td>
                   </tr>
                 )
               )}

@@ -50,9 +50,13 @@ class JobSelection extends Component {
                   <td>{item.fitters_needed}</td>
                   <td>{item.date_created.substring(0, 10)}</td>
                   <td>
-                    <Button onClick={this.sendToParent(item.id)} key={index}>
-                      Select
-                    </Button>
+                    {this.props.jobSelection !== item.id ? (
+                      <Button onClick={this.sendToParent(item.id)} key={index}>
+                        Select
+                      </Button>
+                    ) : (
+                      <Button key={index}>Currently Selected</Button>
+                    )}
                   </td>
                 </tr>
               ))}

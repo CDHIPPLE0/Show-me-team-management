@@ -7,7 +7,7 @@ class LandingPage extends Component {
     return (
       <div className="landingWrapper">
         <div class="content1">
-          <p class="headtext1">Bringing the best, Show up and Show out!</p>
+          <p class="headtext1">Show up and Show out!</p>
           <p class="bodytext1">
             We connect high quality subcontractors with vendors all across the
             country. Whatever your needs may be, we will assemble a team you can

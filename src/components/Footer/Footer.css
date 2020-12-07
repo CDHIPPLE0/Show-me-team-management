@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .footcontent {
   padding-top: 40vh;
   margin-top: auto;
@@ -21,7 +24,7 @@
   position: absolute;
   width: 100%;
   background-color: rgba(72, 79, 86, 0.7);
-  font-family: 'Volkhov', serif;
+
   color: #fffded;
 }
 

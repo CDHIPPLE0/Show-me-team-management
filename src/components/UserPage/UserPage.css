@@ -1,18 +1,30 @@
 .userPage {
   display: flex;
 }
+.jobFormWrapper {
+}
+.jobForm-grid-wrapper {
+  border: 2px, solid, black;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  display: grid;
+  background-color: rgba(9, 11, 14, 0.7);
+  color: #fffded;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10%;
+}
 
-.CreateJobForm {
-  flex: 1;
-  border: solid, black, 1px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  padding: 35px;
-  margin: auto;
-  border: solid black 1px;
-  max-width: 20rem;
-  background-color: white;
+.jobForm-grid-wrapper > * {
+  padding: 1rem;
+}
+
+.jobForm-grid-wrapper button {
+  background-color: #fffded;
+}
+
+.jobItem {
+  padding: 1rem;
 }
 
 .CreateJobForm Button {
@@ -78,6 +90,7 @@
 }
 
 .statTable {
+  width: 98%;
   margin-top: 8rem;
   border-collapse: collapse;
 }
@@ -88,6 +101,7 @@
 }
 
 .statTable td {
+  font-size: 0.9rem;
   padding: 6px 10px;
   border: 1px solid black;
 }
@@ -97,7 +111,6 @@
   background-color: rgba(9, 11, 14, 0.7);
   font-size: 1rem;
   text-align: center;
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-weight: bold;
   color: white;
   padding-top: 2rem;
@@ -119,14 +132,12 @@
 .footStyleDark {
   background-color: rgba(9, 11, 14, 0.7);
   color: white;
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   text-align: left;
 }
 
 .footStyleWhite {
   background-color: white;
   color: white;
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   text-align: right;
 }
 /* ---------------------------------------- */
@@ -144,7 +155,6 @@
 }
 
 .font1 {
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   font-size: 1.1rem;
 }
