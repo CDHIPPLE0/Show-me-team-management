@@ -72,7 +72,9 @@ class UserPage extends Component {
         display = <EditProfile />;
         break;
       default:
-        display = <Welcome />;
+        display = (
+          <Welcome accessLevel={this.props.store.user.access_level_id} />
+        );
         break;
     }
     return (
