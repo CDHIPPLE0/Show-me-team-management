@@ -145,6 +145,8 @@
   padding-top: 2rem;
   margin: auto;
 }
+.editWrapper {
+}
 
 .subRegistrationForm {
   display: grid;
@@ -186,6 +188,73 @@
 }
 
 .vendorRegistrationForm > * {
+  padding: 1rem;
+}
+
+.vendorItem0 {
+  color: #fffded;
+  grid-column: 1/-1;
+}
+
+.vendorItem5 {
+  grid-column: 1/-1;
+}
+
+.vendorItem8 {
+  grid-column: 1/-1;
+}
+
+.vendorItem9 {
+  grid-column: 1/-1;
+  padding-top: 3rem;
+}
+
+.editSubcontractorForm {
+  display: grid;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(10%, auto);
+  border: solid, black, 1px;
+
+  width: 60%;
+  background-color: rgba(9, 11, 14, 0.7);
+}
+
+.editSubcontractorForm > * {
+  padding: 1rem;
+}
+
+.editSubcontractorForm Button {
+  margin-top: 3rem;
+}
+.subItem00 {
+  grid-column: 1/-1;
+}
+.subItem0 {
+  color: #fffded;
+  grid-column: 1/-1;
+}
+.subItemEdit5 {
+  grid-column: 1/-1;
+}
+
+.subItem12 {
+}
+
+.VendorEditForm {
+  display: grid;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(10%, auto);
+  border: solid, black, 1px;
+  width: 40rem;
+  background-color: rgba(9, 11, 14, 0.7);
+}
+
+.VendorEditForm > * {
   padding: 1rem;
 }
 

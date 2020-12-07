@@ -184,7 +184,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
@@ -207,7 +207,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Phone (xxx-xxx-xxxx)"
                   variant="outlined"
@@ -230,7 +230,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
@@ -253,7 +253,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Company"
                   variant="outlined"
@@ -277,7 +277,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Username"
                   variant="outlined"
@@ -300,7 +300,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
@@ -359,7 +359,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="First Name"
                   variant="outlined"
@@ -382,7 +382,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
@@ -405,7 +405,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Phone (xxx-xxx-xxxx)"
                   variant="outlined"
@@ -428,7 +428,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
@@ -451,7 +451,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="(Address, city, State, zip)"
                   variant="outlined"
@@ -469,6 +469,9 @@ class RegisterForm extends Component {
                   value={this.state.jobTitle}
                   onChange={this.handleDropdown('jobTitle')}
                   inputProps={{
+                    classes: {
+                      icon: classes.icon,
+                    },
                     name: 'jobTitle',
                     id: 'filled-jobTitle-native-simple',
                   }}
@@ -485,6 +488,9 @@ class RegisterForm extends Component {
                   value={this.state.osha}
                   onChange={this.handleDropdown('osha')}
                   inputProps={{
+                    classes: {
+                      icon: classes.icon,
+                    },
                     name: 'osha',
                     id: 'filled-osha-native-simple',
                   }}
@@ -498,6 +504,7 @@ class RegisterForm extends Component {
               </div>
               <div className="subItem00">
                 <TextField
+                  className
                   InputLabelProps={{
                     style: { color: '#fffded' },
                   }}
@@ -505,10 +512,11 @@ class RegisterForm extends Component {
                     classes: {
                       notchedOutline: classes.notchedOutline,
                       input: classes.input,
+                      icon: classes.icon,
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-multiline-static"
                   label="Other Certifications"
                   multiline
@@ -533,7 +541,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Username"
                   variant="outlined"
@@ -556,7 +564,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
@@ -579,7 +587,7 @@ class RegisterForm extends Component {
                   style={{
                     backgroundColor: '#77818c',
                   }}
-                  fullWidth="true"
+                  fullWidth={true}
                   variant="contained"
                   color="primary"
                   className="btn"
