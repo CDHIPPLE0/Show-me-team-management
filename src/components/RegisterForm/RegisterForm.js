@@ -117,16 +117,19 @@ class RegisterForm extends Component {
               className="vendorRegistrationForm"
               onSubmit={this.registerUser}
             >
-              <h2>Vendor Sign Up</h2>
-              <br />
+              <div className="vendorItem0">
+                <h2>Vendor Sign Up</h2>
+              </div>
+
               {this.props.store.errors.registrationMessage && (
                 <h3 className="alert" role="alert">
                   {this.props.store.errors.registrationMessage}
                 </h3>
               )}
-              <div className="vendorItem">
+              <div className="vendorItem1">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="First Name"
                   variant="outlined"
@@ -137,9 +140,10 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('firstName')}
                 />
               </div>
-              <div className="vendorItem">
+              <div className="vendorItem2">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
@@ -150,9 +154,10 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('lastName')}
                 />
               </div>
-              <div className="vendorItem">
+              <div className="vendorItem3">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Phone (xxx-xxx-xxxx)"
                   variant="outlined"
@@ -163,9 +168,10 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('phone')}
                 />
               </div>
-              <div className="vendorItem">
+              <div className="vendorItem4">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
@@ -176,9 +182,10 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('email')}
                 />
               </div>
-              <div className="vendorItemCompany">
+              <div className="vendorItem5">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Company"
                   variant="outlined"
@@ -189,10 +196,11 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('company')}
                 />
               </div>
-              <br />
-              <div className="vendorItem">
+
+              <div className="vendorItem6">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Username"
                   variant="outlined"
@@ -203,9 +211,10 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('username')}
                 />
               </div>
-              <div className="vendorItem">
+              <div className="vendorItem7">
                 <TextField
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
@@ -216,13 +225,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('password')}
                 />
               </div>
-              <div className="subItem">
-                <ReCAPTCHA
-                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="vendorItem">
+              <div className="vendorItem8">
                 <Button
                   style={{
                     backgroundColor: '#77818c',
@@ -236,16 +239,12 @@ class RegisterForm extends Component {
                 >
                   Submit
                 </Button>
-              </div>
-              <div className="vendorItem">
-                <Button
-                  style={{
-                    backgroundColor: '#77818c',
-                  }}
-                  onClick={this.props.callback}
-                >
-                  Login
-                </Button>
+                <div className="vendorItem9">
+                  <ReCAPTCHA
+                    sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                    onChange={this.onChange}
+                  />
+                </div>
               </div>
             </form>
           </div>
@@ -261,7 +260,7 @@ class RegisterForm extends Component {
                   {this.props.store.errors.registrationMessage}
                 </h3>
               )}
-              <div className="subItem">
+              <div className="subItem1">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -274,7 +273,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('firstName')}
                 />
               </div>
-              <div className="subItem">
+              <div className="subItem2">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -287,7 +286,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('lastName')}
                 />
               </div>
-              <div className="subItem">
+              <div className="subItem3">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -300,7 +299,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('phone')}
                 />
               </div>
-              <div className="subItem">
+              <div className="subItem4">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -313,7 +312,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('email')}
                 />
               </div>
-              <div className="subItem">
+              <div className="subItem5">
                 <TextField
                   autoComplete="off"
                   id="outlined-basic"
@@ -326,7 +325,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('address')}
                 />
               </div>
-              <div className="subItem">
+              <div className="subItem6">
                 <label>{'What do you do? :'}</label>
                 <Select
                   native
@@ -344,7 +343,7 @@ class RegisterForm extends Component {
                   <option value={'Welder / Fitter'}>Welder / Fitter</option>
                 </Select>
               </div>
-              <div className="subItem">
+              <div className="subItem7">
                 <label>{'Osha Certification :'}</label>
                 <Select
                   native
@@ -362,7 +361,34 @@ class RegisterForm extends Component {
                   <option value={'N/A'}>0</option>
                 </Select>
               </div>
-              <div className="subItem">
+              <br />
+              <div className="subItem9">
+                <TextField
+                  autoComplete="off"
+                  id="outlined-basic"
+                  label="Username"
+                  variant="outlined"
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  required
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </div>
+              <div className="subItem10">
+                <TextField
+                  autoComplete="off"
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  required
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </div>
+              <div className="subItem8">
                 <TextField
                   autoComplete="off"
                   id="outlined-multiline-static"
@@ -377,40 +403,7 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('certifications')}
                 />
               </div>
-              <br />
-              <div className="subItem">
-                <TextField
-                  autoComplete="off"
-                  id="outlined-basic"
-                  label="Username"
-                  variant="outlined"
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  required
-                  onChange={this.handleInputChangeFor('username')}
-                />
-              </div>
-              <div className="subItem">
-                <TextField
-                  autoComplete="off"
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  required
-                  onChange={this.handleInputChangeFor('password')}
-                />
-              </div>
-              <div className="subItem">
-                <ReCAPTCHA
-                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="subItem">
+              <div className="subItem12">
                 <Button
                   style={{
                     backgroundColor: '#77818c',
@@ -425,15 +418,11 @@ class RegisterForm extends Component {
                   Submit
                 </Button>
               </div>
-              <div className="subItem">
-                <Button
-                  style={{
-                    backgroundColor: '#77818c',
-                  }}
-                  onClick={this.props.callback}
-                >
-                  Login
-                </Button>
+              <div className="subItem11">
+                <ReCAPTCHA
+                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                  onChange={this.onChange}
+                />
               </div>
             </form>
           </div>

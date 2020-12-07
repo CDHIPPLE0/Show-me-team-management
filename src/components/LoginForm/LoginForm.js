@@ -54,7 +54,9 @@ class LoginForm extends Component {
       <center className="form">
         <form onSubmit={this.login}>
           <br />
-          <h2>Login</h2>
+          <div className="loginHead">
+            <h2>Login</h2>
+          </div>
           {this.props.store.errors.loginMessage && (
             <h3 className="alert" role="alert">
               {this.props.store.errors.loginMessage}
