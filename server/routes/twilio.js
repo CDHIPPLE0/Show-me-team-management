@@ -74,10 +74,10 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
     
       ${jobAddress}
     
-      then please click this link  http://21014655ab88.ngrok.io/api/twilio/accept/${newGuid}
+      then please click this link http://f610823b23bd.ngrok.io/api/twilio/accept/${newGuid}
   
       To reject this offer please click the link below.
-      http://21014655ab88.ngrok.io/api/twilio/reject/${newGuid};`;
+      http://f610823b23bd.ngrok.io/api/twilio/reject/${newGuid};`;
 
       pool
         .query(queryText, queryArray)

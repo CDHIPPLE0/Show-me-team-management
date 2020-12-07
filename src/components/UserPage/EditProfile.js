@@ -27,7 +27,16 @@ const styles = {
 };
 
 class EditProfile extends Component {
-  state = {};
+  state = {
+    phone: '',
+    email: '',
+    company: '',
+    address: '',
+    jobTitle: '',
+    osha: null,
+    certs: '',
+  };
+
   componentDidMount() {
     this.props.dispatch({
       type: 'GET_USER_DETAILS',
@@ -41,8 +50,6 @@ class EditProfile extends Component {
       type: 'EDIT',
       id: this.props.store.user.id,
       payload: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
         phone: this.state.phone,
         email: this.state.email,
         company: this.state.company,
@@ -89,18 +96,7 @@ class EditProfile extends Component {
   render() {
     const { classes } = this.props;
     if (this.props.store.userDetails.length > 0) {
-      // this.setState({
-      //   firstName: this.props.store.userDetails[0].first_name,
-      //   lastName: this.props.store.userDetails[0].last_name,
-      //   phone: this.props.store.userDetails[0].phone,
-      //   email: this.props.store.userDetails[0].email,
-      //   company: this.props.store.userDetails[0].vendor_company,
-      //   address: this.props.store.userDetails[0].address,
-      //   jobTitle: this.props.store.userDetails[0].job_title,
-      //   osha: this.props.store.userDetails[0].osha_level,
-      //   certifications: this.props.store.userDetails[0]
-      //     .subcontractor_certifications,
-      // });
+      console.log('------', this.props.store.userDetails[0]);
       switch (this.props.store.user.access_level_id) {
         case 3:
           return (
@@ -108,7 +104,7 @@ class EditProfile extends Component {
               <form className="VendorEditForm" onSubmit={this.registerUser}>
                 <div className="vendorItem0">
                   <h1>
-                    {JSON.stringify(this.props.store.userDetails.first_name)}
+                    {JSON.stringify(this.props.store.userDetails[0].first_name)}
                   </h1>
                   <h2>Edit User Information</h2>
                 </div>
@@ -117,52 +113,6 @@ class EditProfile extends Component {
                     {this.props.store.errors.registrationMessage}
                   </h3>
                 )}
-                <div className="vendorItem1">
-                  <TextField
-                    InputLabelProps={{
-                      style: { color: '#fffded' },
-                    }}
-                    InputProps={{
-                      classes: {
-                        notchedOutline: classes.notchedOutline,
-                        input: classes.input,
-                      },
-                    }}
-                    autoComplete="off"
-                    fullWidth="true"
-                    id="outlined-basic"
-                    label="First Name"
-                    variant="outlined"
-                    type="text"
-                    name="First Name"
-                    value={this.state.firstName}
-                    required
-                    onChange={this.handleInputChangeFor('firstName')}
-                  />
-                </div>
-                <div className="vendorItem2">
-                  <TextField
-                    InputLabelProps={{
-                      style: { color: '#fffded' },
-                    }}
-                    InputProps={{
-                      classes: {
-                        notchedOutline: classes.notchedOutline,
-                        input: classes.input,
-                      },
-                    }}
-                    autoComplete="off"
-                    fullWidth="true"
-                    id="outlined-basic"
-                    label="Last Name"
-                    variant="outlined"
-                    type="text"
-                    name="Last Name"
-                    value={this.state.lastName}
-                    required
-                    onChange={this.handleInputChangeFor('lastName')}
-                  />
-                </div>
                 <div className="vendorItem3">
                   <TextField
                     InputLabelProps={{
@@ -181,7 +131,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="number"
                     name="Phone Number"
-                    value={this.state.phone}
+                    value={this.props.store.userDetails[0].phone}
                     required
                     onChange={this.handleInputChangeFor('phone')}
                   />
@@ -204,7 +154,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="email"
-                    value={this.state.email}
+                    value={this.props.store.userDetails[0].email}
                     required
                     onChange={this.handleInputChangeFor('email')}
                   />
@@ -227,7 +177,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="company"
-                    value={this.state.company}
+                    value={this.props.store.userDetails[0].company}
                     required
                     onChange={this.handleInputChangeFor('company')}
                   />
@@ -265,52 +215,6 @@ class EditProfile extends Component {
                     {this.props.store.errors.registrationMessage}
                   </h3>
                 )}
-                <div className="subItem1">
-                  <TextField
-                    InputLabelProps={{
-                      style: { color: '#fffded' },
-                    }}
-                    InputProps={{
-                      classes: {
-                        notchedOutline: classes.notchedOutline,
-                        input: classes.input,
-                      },
-                    }}
-                    autoComplete="off"
-                    fullWidth={true}
-                    id="outlined-basic"
-                    label="First Name"
-                    variant="outlined"
-                    type="text"
-                    name="First Name"
-                    value={this.state.firstName}
-                    required
-                    onChange={this.handleInputChangeFor('firstName')}
-                  />
-                </div>
-                <div className="subItem2">
-                  <TextField
-                    InputLabelProps={{
-                      style: { color: '#fffded' },
-                    }}
-                    InputProps={{
-                      classes: {
-                        notchedOutline: classes.notchedOutline,
-                        input: classes.input,
-                      },
-                    }}
-                    autoComplete="off"
-                    fullWidth={true}
-                    id="outlined-basic"
-                    label="Last Name"
-                    variant="outlined"
-                    type="text"
-                    name="Last Name"
-                    value={this.state.lastName}
-                    required
-                    onChange={this.handleInputChangeFor('lastName')}
-                  />
-                </div>
                 <div className="subItem3">
                   <TextField
                     InputLabelProps={{
@@ -329,7 +233,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="number"
                     name="Phone Number"
-                    value={this.state.phone}
+                    value={this.props.store.userDetails[0].phone}
                     required
                     onChange={this.handleInputChangeFor('phone')}
                   />
@@ -352,7 +256,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="email"
-                    value={this.state.email}
+                    value={this.props.store.userDetails[0].email}
                     required
                     onChange={this.handleInputChangeFor('email')}
                   />
@@ -375,16 +279,16 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="address"
-                    value={this.state.address}
+                    value={this.props.store.userDetails[0].address}
                     required
                     onChange={this.handleInputChangeFor('address')}
                   />
                 </div>
-                <div className="subItem6">
+                <div className="subItemEdit6">
                   <label>{'What do you do? :'}</label>
                   <Select
                     native
-                    value={this.state.jobTitle}
+                    value={this.props.store.userDetails[0].job_title}
                     onChange={this.handleDropdown('jobTitle')}
                     inputProps={{
                       name: 'jobTitle',
@@ -400,7 +304,7 @@ class EditProfile extends Component {
                   <label>{'Osha Certification :'}</label>
                   <Select
                     native
-                    value={this.state.osha}
+                    value={this.props.store.userDetails[0].osha_level}
                     onChange={this.handleDropdown('osha')}
                     inputProps={{
                       name: 'osha',
@@ -434,7 +338,10 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="certifications"
-                    value={this.state.certifications}
+                    value={
+                      this.props.store.userDetails[0]
+                        .subcontractor_certifications
+                    }
                     required
                     onChange={this.handleInputChangeFor('certifications')}
                   />
