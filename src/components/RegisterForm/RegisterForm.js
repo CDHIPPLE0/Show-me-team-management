@@ -4,6 +4,28 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button, Select } from '@material-ui/core';
 import ReCAPTCHA from 'react-google-recaptcha';
 import swal from 'sweetalert';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  input: {
+    color: ' #fffded',
+  },
+  notchedOutline: {
+    borderWidth: '1px',
+    borderColor: ' #fffded  !important',
+  },
+  select: {
+    '&:before': {
+      borderColor: ' #fffded',
+    },
+    '&:after': {
+      borderColor: ' #fffded',
+    },
+  },
+  icon: {
+    fill: ' #fffded',
+  },
+};
 
 class RegisterForm extends Component {
   onChange = () => {
@@ -109,6 +131,7 @@ class RegisterForm extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     switch (this.state.registeredAs) {
       case 3:
         return (
@@ -128,6 +151,15 @@ class RegisterForm extends Component {
               )}
               <div className="vendorItem1">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -142,6 +174,15 @@ class RegisterForm extends Component {
               </div>
               <div className="vendorItem2">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -156,6 +197,15 @@ class RegisterForm extends Component {
               </div>
               <div className="vendorItem3">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -170,6 +220,15 @@ class RegisterForm extends Component {
               </div>
               <div className="vendorItem4">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -184,6 +243,15 @@ class RegisterForm extends Component {
               </div>
               <div className="vendorItem5">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -199,6 +267,15 @@ class RegisterForm extends Component {
 
               <div className="vendorItem6">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -213,6 +290,15 @@ class RegisterForm extends Component {
               </div>
               <div className="vendorItem7">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
                   fullWidth="true"
                   id="outlined-basic"
@@ -253,8 +339,9 @@ class RegisterForm extends Component {
         return (
           <div className="registrationWrapper">
             <form className="subRegistrationForm" onSubmit={this.registerUser}>
-              <h2>Subcontractor Sign Up</h2>
-              <br />
+              <div className="subItem0">
+                <h2>Subcontractor Sign Up</h2>
+              </div>
               {this.props.store.errors.registrationMessage && (
                 <h3 className="alert" role="alert">
                   {this.props.store.errors.registrationMessage}
@@ -262,7 +349,17 @@ class RegisterForm extends Component {
               )}
               <div className="subItem1">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="First Name"
                   variant="outlined"
@@ -275,7 +372,17 @@ class RegisterForm extends Component {
               </div>
               <div className="subItem2">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
@@ -288,7 +395,17 @@ class RegisterForm extends Component {
               </div>
               <div className="subItem3">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Phone (xxx-xxx-xxxx)"
                   variant="outlined"
@@ -301,7 +418,17 @@ class RegisterForm extends Component {
               </div>
               <div className="subItem4">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
@@ -314,7 +441,17 @@ class RegisterForm extends Component {
               </div>
               <div className="subItem5">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
+                  fullWidth="true"
                   id="outlined-basic"
                   label="(Address, city, State, zip)"
                   variant="outlined"
@@ -342,8 +479,6 @@ class RegisterForm extends Component {
                   <option value={'Fitter'}>Fitter</option>
                   <option value={'Welder / Fitter'}>Welder / Fitter</option>
                 </Select>
-              </div>
-              <div className="subItem7">
                 <label>{'Osha Certification :'}</label>
                 <Select
                   native
@@ -361,36 +496,19 @@ class RegisterForm extends Component {
                   <option value={'N/A'}>0</option>
                 </Select>
               </div>
-              <br />
-              <div className="subItem9">
+              <div className="subItem00">
                 <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
                   autoComplete="off"
-                  id="outlined-basic"
-                  label="Username"
-                  variant="outlined"
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  required
-                  onChange={this.handleInputChangeFor('username')}
-                />
-              </div>
-              <div className="subItem10">
-                <TextField
-                  autoComplete="off"
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  required
-                  onChange={this.handleInputChangeFor('password')}
-                />
-              </div>
-              <div className="subItem8">
-                <TextField
-                  autoComplete="off"
+                  fullWidth="true"
                   id="outlined-multiline-static"
                   label="Other Certifications"
                   multiline
@@ -403,11 +521,65 @@ class RegisterForm extends Component {
                   onChange={this.handleInputChangeFor('certifications')}
                 />
               </div>
+              <div className="subItem9">
+                <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
+                  autoComplete="off"
+                  fullWidth="true"
+                  id="outlined-basic"
+                  label="Username"
+                  variant="outlined"
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  required
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </div>
+              <div className="subItem10">
+                <TextField
+                  InputLabelProps={{
+                    style: { color: '#fffded' },
+                  }}
+                  InputProps={{
+                    classes: {
+                      notchedOutline: classes.notchedOutline,
+                      input: classes.input,
+                    },
+                  }}
+                  autoComplete="off"
+                  fullWidth="true"
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  required
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </div>
+
+              <div className="subItem11">
+                <ReCAPTCHA
+                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                  onChange={this.onChange}
+                />
+              </div>
               <div className="subItem12">
                 <Button
                   style={{
                     backgroundColor: '#77818c',
                   }}
+                  fullWidth="true"
                   variant="contained"
                   color="primary"
                   className="btn"
@@ -417,12 +589,6 @@ class RegisterForm extends Component {
                 >
                   Submit
                 </Button>
-              </div>
-              <div className="subItem11">
-                <ReCAPTCHA
-                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
-                  onChange={this.onChange}
-                />
               </div>
             </form>
           </div>
@@ -465,4 +631,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default connect(mapStoreToProps)(withStyles(styles)(RegisterForm));
