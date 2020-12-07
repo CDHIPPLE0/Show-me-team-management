@@ -466,6 +466,7 @@ class RegisterForm extends Component {
                 <label>{'What do you do? :'}</label>
                 <Select
                   native
+                  className={classes.select}
                   value={this.state.jobTitle}
                   onChange={this.handleDropdown('jobTitle')}
                   inputProps={{
@@ -487,6 +488,7 @@ class RegisterForm extends Component {
                   native
                   value={this.state.osha}
                   onChange={this.handleDropdown('osha')}
+                  className={classes.select}
                   inputProps={{
                     classes: {
                       icon: classes.icon,

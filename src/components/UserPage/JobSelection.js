@@ -41,7 +41,9 @@ class JobSelection extends Component {
               {this.props.store.jobs.populateJobs.map((item, index) => (
                 <tr key={index}>
                   <td>{item.start_date}</td>
-                  <td>{item.last_name}</td>
+                  <td>
+                    {item.first_name} {item.last_name}
+                  </td>
                   <td>{item.vendor_company}</td>
                   <td>{item.description}</td>
                   <td>{item.job_address}</td>

@@ -22,7 +22,7 @@ const styles = {
     },
   },
   icon: {
-    fill: ' #fffded',
+    fill: '#fffded',
   },
 };
 
@@ -103,9 +103,6 @@ class EditProfile extends Component {
             <div className="editWrapper">
               <form className="VendorEditForm" onSubmit={this.registerUser}>
                 <div className="vendorItem0">
-                  <h1>
-                    {JSON.stringify(this.props.store.userDetails[0].first_name)}
-                  </h1>
                   <h2>Edit User Information</h2>
                 </div>
                 {this.props.store.errors.registrationMessage && (
@@ -200,7 +197,7 @@ class EditProfile extends Component {
               </form>
             </div>
           );
-        case 2:
+        default:
           return (
             <div className="editWrapper">
               <form
@@ -290,9 +287,13 @@ class EditProfile extends Component {
                     native
                     value={this.props.store.userDetails[0].job_title}
                     onChange={this.handleDropdown('jobTitle')}
+                    className={classes.select}
                     inputProps={{
-                      name: 'jobTitle',
-                      id: 'filled-jobTitle-native-simple',
+                      classes: {
+                        icon: classes.icon,
+                      },
+                      name: 'osha',
+                      id: 'filled-osha-native-simple',
                     }}
                   >
                     <option aria-label="None" value="" />
@@ -306,7 +307,11 @@ class EditProfile extends Component {
                     native
                     value={this.props.store.userDetails[0].osha_level}
                     onChange={this.handleDropdown('osha')}
+                    className={classes.select}
                     inputProps={{
+                      classes: {
+                        icon: classes.icon,
+                      },
                       name: 'osha',
                       id: 'filled-osha-native-simple',
                     }}

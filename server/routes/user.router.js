@@ -40,7 +40,7 @@ router.post('/register', (req, res, next) => {
       username,
       password,
       registeredAs,
-      1,
+      registeredAs,
       fName,
       lName,
       phone,
