@@ -3,7 +3,7 @@ import { AdminSidebarData } from './AdminSidebarData';
 import { VendorSidebarData } from './VendorSidebarData';
 import { SubcontractorSidebarData } from './SubcontractorSidebarData';
 
-const Sidebar = (props) => {
+const SideBar = (props) => {
   const access = props.access;
   let items = 0;
   switch (access) {
@@ -48,4 +48,4 @@ const Sidebar = (props) => {
   }
 };
 
-export default Sidebar;
+export default SideBar;

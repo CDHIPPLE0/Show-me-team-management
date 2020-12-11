@@ -11,7 +11,7 @@ import Assignment from './Assignment';
 import Welcome from './Welcome';
 import Subcontractors from './Subcontractors';
 import Vendors from './Vendors';
-import Sidebar from './Sidebar';
+import SideBar from './SideBar';
 
 class UserPage extends Component {
   state = {
@@ -81,7 +81,7 @@ class UserPage extends Component {
       <>
         <AppNav props={this.props} />
         <div className="userPage">
-          <Sidebar
+          <SideBar
             access={this.state.access_level}
             handleSidebar={this.handleSidebar}
           />
