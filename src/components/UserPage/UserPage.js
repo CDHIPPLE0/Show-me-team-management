@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import '../UserPage/UserPage.css';
 import AppNav from '../Nav/AppNav';
-import Sidebar from './Sidebar';
 import JobSelection from './JobSelection';
 import JobCreation from './JobCreation';
 import EditProfile from './EditProfile';
@@ -12,6 +11,7 @@ import Assignment from './Assignment';
 import Welcome from './Welcome';
 import Subcontractors from './Subcontractors';
 import Vendors from './Vendors';
+import Sidebar from './Sidebar';
 
 class UserPage extends Component {
   state = {
