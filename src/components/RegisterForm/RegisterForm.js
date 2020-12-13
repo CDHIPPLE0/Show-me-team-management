@@ -312,6 +312,10 @@ class RegisterForm extends Component {
                 />
               </div>
               <div className="vendorItem8">
+                <ReCAPTCHA
+                  sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                  onChange={this.onChange}
+                />
                 <Button
                   style={{
                     backgroundColor: '#77818c',
@@ -325,12 +329,7 @@ class RegisterForm extends Component {
                 >
                   Submit
                 </Button>
-                <div className="vendorItem9">
-                  <ReCAPTCHA
-                    sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
-                    onChange={this.onChange}
-                  />
-                </div>
+                <div className="vendorItem9"></div>
               </div>
             </form>
           </div>
