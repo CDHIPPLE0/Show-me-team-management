@@ -1,4 +1,4 @@
-Show Me Stainless Team Management
+Show Me Stainless Team Management (Designed and build in 2 week sprint)
 
 This application was created to help a local business that fills jobs for commercial construction vendors.
 By allowing subcontractors to create profiles, (or the admin to add them) the owner has a record of all contacts in their network along with pertinent data such as, phone number, email and certifications. The vendors themselves are treated in the same way, save they have the ability to post jobs to the system.
