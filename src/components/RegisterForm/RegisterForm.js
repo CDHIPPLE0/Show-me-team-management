@@ -205,6 +205,8 @@ class RegisterForm extends Component {
                       notchedOutline: classes.notchedOutline,
                       input: classes.input,
                     },
+
+                    maxLength: 10,
                   }}
                   autoComplete="off"
                   fullWidth={true}
@@ -402,6 +404,7 @@ class RegisterForm extends Component {
                       notchedOutline: classes.notchedOutline,
                       input: classes.input,
                     },
+                    maxLength: 10,
                   }}
                   autoComplete="off"
                   fullWidth={true}
