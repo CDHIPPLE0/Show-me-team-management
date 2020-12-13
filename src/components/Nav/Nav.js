@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-const Nav = (props) => {
+function Nav(props) {
   let loginLinkData = {
     path: '/login',
     text: 'SIGN UP / SIGN IN ',
@@ -13,6 +13,10 @@ const Nav = (props) => {
   if (props.store.user.id != null) {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
+  }
+
+  function mobileMenu() {
+    console.log('hello');
   }
 
   return (
@@ -42,8 +46,13 @@ const Nav = (props) => {
           </Link>
         )}
       </div>
+      {/* <div className="burger" onClick={mobileMenu}>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div> */}
     </div>
   );
-};
+}
 
 export default connect(mapStoreToProps)(Nav);
