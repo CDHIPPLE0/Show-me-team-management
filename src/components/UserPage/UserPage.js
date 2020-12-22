@@ -12,6 +12,7 @@ import Welcome from './Welcome';
 import Subcontractors from './Subcontractors';
 import Vendors from './Vendors';
 import SideBar from './SideBar';
+import Verify from './Verify';
 
 class UserPage extends Component {
   state = {
@@ -40,6 +41,9 @@ class UserPage extends Component {
     this.props.dispatch({
       type: 'GET_USER_DETAILS',
       id: this.props.store.user.id,
+    });
+    this.props.dispatch({
+      type: 'GET_UNVERIFIED_USERS',
     });
     this.setState({
       ...this.state,
@@ -74,6 +78,9 @@ class UserPage extends Component {
         break;
       case 6:
         display = <EditProfile />;
+        break;
+      case 7:
+        display = <Verify />;
         break;
       default:
         display = (

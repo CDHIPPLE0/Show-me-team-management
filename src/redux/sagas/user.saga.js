@@ -24,6 +24,16 @@ function* fetchUser() {
   }
 }
 
+function* getUnverified(action) {
+  console.log('in saga with', action);
+  try {
+    const response = yield axios.get(`/api/unverified`);
+    yield put({ type: 'GET_UNVERIFIED', payload: response.data });
+  } catch (error) {
+    console.log('Error with get unverified :', error);
+  }
+}
+
 function* getUser(action) {
   console.log('in saga with', action);
   try {
@@ -108,6 +118,7 @@ function* verify(action) {
 }
 
 function* userSaga() {
+  yield takeLatest('GET_UNVERIFIED_USERS', getUnverified);
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('EDIT', edit);
   yield takeLatest('VERIFY_USER', verify);

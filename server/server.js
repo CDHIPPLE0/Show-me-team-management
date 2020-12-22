@@ -11,6 +11,7 @@ const vendorRouter = require('./routes/vendor.router');
 const jobRouter = require('./routes/job.router');
 const userJobRouter = require('./routes/userJob.router');
 const twilio = require('./routes/twilio');
+const unverified = require('./routes/unverified.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/vendor', vendorRouter);
 app.use('/api/job', jobRouter);
 app.use('/api/userJob', userJobRouter);
 app.use('/api/twilio', twilio);
+app.use('/api/unverified', unverified);
 
 // Serve static files
 app.use(express.static('build'));

@@ -75,6 +75,21 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.get('/', rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT first_name, address, last_name, phone, email, job_title, osha_level, vendor_company, subcontractor_certifications
+    FROM "user" WHERE access_level_id = 1;`;
+  const queryArray = [req.params.id];
+  pool
+    .query(queryText, queryArray)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('Error getting unverified users', err);
+      res.sendStatus(500);
+    });
+});
+
 router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const phone = req.body.phone;
