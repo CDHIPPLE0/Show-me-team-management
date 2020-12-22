@@ -26,6 +26,11 @@
   padding: 0;
 }
 
+.alert {
+  font-size: 10px;
+  color: red;
+}
+
 .appNav {
   margin-top: 0;
   display: flex;

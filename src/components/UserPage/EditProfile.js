@@ -30,21 +30,14 @@ const styles = {
 
 class EditProfile extends Component {
   state = {
-    phone: '',
-    email: '',
-    company: '',
-    address: '',
-    jobTitle: '',
-    osha: null,
-    certs: '',
+    phone: this.props.store.userDetails[0].phone,
+    email: this.props.store.userDetails[0].email,
+    company: this.props.store.userDetails[0].vendor_company,
+    address: this.props.store.userDetails[0].address,
+    jobTitle: this.props.store.userDetails[0].job_title,
+    osha: this.props.store.userDetails[0].osha_level,
+    certs: this.props.store.userDetails[0].subcontractor_certifications,
   };
-
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'GET_USER_DETAILS',
-      id: this.props.store.user.id,
-    });
-  }
 
   registerUser = (event) => {
     event.preventDefault();
@@ -58,7 +51,7 @@ class EditProfile extends Component {
         address: this.state.address,
         jobTitle: this.state.jobTitle,
         osha: this.state.osha,
-        certs: this.state.certifications,
+        certs: this.state.certs,
       },
     });
     swal(
@@ -133,7 +126,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="number"
                     name="Phone Number"
-                    value={this.props.store.userDetails[0].phone}
+                    value={this.state.phone}
                     required
                     onChange={this.handleInputChangeFor('phone')}
                   />
@@ -156,7 +149,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="email"
-                    value={this.props.store.userDetails[0].email}
+                    value={this.state.email}
                     required
                     onChange={this.handleInputChangeFor('email')}
                   />
@@ -179,7 +172,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="company"
-                    value={this.props.store.userDetails[0].company}
+                    value={this.state.company}
                     required
                     onChange={this.handleInputChangeFor('company')}
                   />
@@ -235,7 +228,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="number"
                     name="Phone Number"
-                    value={this.props.store.userDetails[0].phone}
+                    value={this.state.phone}
                     required
                     onChange={this.handleInputChangeFor('phone')}
                   />
@@ -258,7 +251,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="email"
-                    value={this.props.store.userDetails[0].email}
+                    value={this.state.email}
                     required
                     onChange={this.handleInputChangeFor('email')}
                   />
@@ -281,7 +274,7 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="address"
-                    value={this.props.store.userDetails[0].address}
+                    value={this.state.address}
                     required
                     onChange={this.handleInputChangeFor('address')}
                   />
@@ -290,11 +283,14 @@ class EditProfile extends Component {
                   <label>{'What do you do? :'}</label>
                   <Select
                     native
-                    value={this.props.store.userDetails[0].job_title}
+                    value={this.state.jobTitle}
                     onChange={this.handleDropdown('jobTitle')}
                     inputProps={{
+                      classes: {
+                        icon: classes.icon,
+                      },
                       name: 'jobTitle',
-                      id: 'filled-jobTitle-native-simple',
+                      id: 'filled-job-native-simple',
                     }}
                   >
                     <option aria-label="None" value="" />
@@ -306,9 +302,12 @@ class EditProfile extends Component {
                   <label>{'Osha Certification :'}</label>
                   <Select
                     native
-                    value={this.props.store.userDetails[0].osha_level}
+                    value={this.state.osha}
                     onChange={this.handleDropdown('osha')}
                     inputProps={{
+                      classes: {
+                        icon: classes.icon,
+                      },
                       name: 'osha',
                       id: 'filled-osha-native-simple',
                     }}
@@ -340,12 +339,9 @@ class EditProfile extends Component {
                     variant="outlined"
                     type="text"
                     name="certifications"
-                    value={
-                      this.props.store.userDetails[0]
-                        .subcontractor_certifications
-                    }
+                    value={this.state.certs}
                     required
-                    onChange={this.handleInputChangeFor('certifications')}
+                    onChange={this.handleInputChangeFor('certs')}
                   />
                 </div>
                 <div className="subItem12">

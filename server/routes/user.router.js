@@ -61,7 +61,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT first_name, address, last_name, phone, email, vendor_company, subcontractor_certifications
+  const queryText = `SELECT first_name, address, last_name, phone, email, job_title, osha_level, vendor_company, subcontractor_certifications
     FROM "user" WHERE id = $1;`;
   const queryArray = [req.params.id];
   pool
@@ -85,20 +85,20 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
   const certs = req.body.certs;
   const company = req.body.company;
 
-  const queryText = `UPDATE "user" SET phone, email, address, job_title, osha_level,
-    subcontractor_certifications, vendor_company WHERE id=$1)
-    VALUES ($2, $3, $4, $5, $6, $7, $8)`;
+  const queryText = `UPDATE "user" SET phone=$2, email=$3, address=$4, job_title=$5, osha_level=$6,
+    subcontractor_certifications=$7, vendor_company=$8 WHERE id=$1`;
+  const queryArray = [
+    req.params.id,
+    phone,
+    email,
+    address,
+    jobTitle,
+    oshaLevel,
+    certs,
+    company,
+  ];
   pool
-    .query(queryText, [
-      req.params.id,
-      phone,
-      email,
-      address,
-      jobTitle,
-      oshaLevel,
-      certs,
-      company,
-    ])
+    .query(queryText, queryArray)
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User edit failed: ', err);
@@ -168,7 +168,6 @@ router.put('/selectTrue/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/selectAllFalse/', rejectUnauthenticated, (req, res) => {
   const queryText = `UPDATE "user" SET is_selected=false WHERE access_level_id=2 AND job_status=false;`;
-
   pool
     .query(queryText)
     .then((dbResponse) => {

@@ -6,10 +6,10 @@ export default function Welcome(props) {
       <table className="statTable">
         <thead className="tableHead">
           <tr className="inTheGreen">
-            {props.accessLevel === 2 || 1 ? (
+            {props.accessLevel === 2 ? (
               <th className="welcome">
                 Welcome to Show Me Team Management, you will receive job offers
-                via text. Feel free to edit your profile as needed.
+                via text. Feel free to update your information as needed.
               </th>
             ) : (
               <th className="welcome">

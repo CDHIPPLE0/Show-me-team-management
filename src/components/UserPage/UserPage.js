@@ -37,6 +37,10 @@ class UserPage extends Component {
   };
 
   componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_USER_DETAILS',
+      id: this.props.store.user.id,
+    });
     this.setState({
       ...this.state,
       access_level: this.props.store.user.access_level_id,
