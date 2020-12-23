@@ -25,7 +25,6 @@ function* fetchUser() {
 }
 
 function* getUnverified(action) {
-  console.log('in saga with', action);
   try {
     const response = yield axios.get(`/api/unverified`);
     yield put({ type: 'GET_UNVERIFIED', payload: response.data });
@@ -35,7 +34,6 @@ function* getUnverified(action) {
 }
 
 function* getUser(action) {
-  console.log('in saga with', action);
   try {
     const response = yield axios.get(`/api/user/${action.id}`);
     yield put({ type: 'GET_DETAILS', payload: response.data });
@@ -45,7 +43,6 @@ function* getUser(action) {
 }
 
 function* edit(action) {
-  console.log('in saga with', action.id, action.payload);
   try {
     yield axios.put(`/api/user/edit/${action.id}`, action.payload);
   } catch (error) {
@@ -63,7 +60,6 @@ function* updateJobStatusTrue(action) {
 }
 
 function* updateJobStatusFalse(action) {
-  yield console.log('in the saga');
   try {
     yield axios.put(`/api/user/setJobStatusFalse/${action.id}`);
   } catch (error) {
@@ -81,7 +77,6 @@ function* selectTrue(action) {
 }
 
 function* selectFalse(action) {
-  console.log('in selectFalse', action);
   try {
     yield axios.put(`/api/user/selectFalse/${action.payload}`);
     yield put({ type: 'GET_AVAILABLE' });
@@ -100,7 +95,6 @@ function* selectAllTrue(action) {
 }
 
 function* selectAllFalse(action) {
-  console.log('in selectFalse', action);
   try {
     yield axios.put(`/api/user/selectAllFalse/`);
     yield put({ type: 'GET_AVAILABLE' });

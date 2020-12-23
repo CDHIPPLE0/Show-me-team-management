@@ -8,12 +8,10 @@ class Vendors extends Component {
     this.props.dispatch({
       type: 'GET_VENDORS',
     });
-    console.log(this.props.store.allVendors);
   }
 
   render() {
     if (this.props.store.allVendors.length !== 0) {
-      console.log(this.props.store.allVendors);
       return (
         <div className="table">
           <table className="statTable">

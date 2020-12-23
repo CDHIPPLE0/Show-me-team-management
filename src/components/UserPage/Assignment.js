@@ -9,7 +9,6 @@ class Assignment extends Component {
     message: '',
   };
   recordMessage = (event) => {
-    console.log(this.state.message);
     this.setState({
       ...this.state,
       message: event.target.value,
@@ -93,7 +92,6 @@ class Assignment extends Component {
         array.splice(index, 1);
       }
     }
-    console.log('look at me', array);
     this.props.dispatch({
       type: 'SELECT_FALSE',
       payload: id,

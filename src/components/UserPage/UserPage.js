@@ -22,7 +22,6 @@ class UserPage extends Component {
   };
 
   jobSelection = (selection) => {
-    console.log(selection);
     this.setState({
       ...this.state,
       jobSelection: selection,

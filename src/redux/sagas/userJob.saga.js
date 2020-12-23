@@ -26,7 +26,6 @@ function* sendAutomatedToTwilio(action) {
       startDate: startDate,
       jobAddress: jobAddress,
     };
-    console.log('in automated with user', data);
     try {
       yield axios.post('/api/twilio/sendAutomated', data);
     } catch (error) {

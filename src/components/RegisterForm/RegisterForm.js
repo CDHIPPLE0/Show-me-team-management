@@ -112,14 +112,12 @@ class RegisterForm extends Component {
   handleDropdown = (propertyName) => (event) => {
     switch (propertyName) {
       case 'jobTitle':
-        console.log(event.target.value);
         this.setState({
           ...this.state,
           jobTitle: event.target.value,
         });
         break;
       case 'osha':
-        console.log(event.target.value);
         this.setState({
           ...this.state,
           osha: event.target.value,

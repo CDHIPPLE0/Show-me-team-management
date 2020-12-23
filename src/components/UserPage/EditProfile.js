@@ -70,14 +70,12 @@ class EditProfile extends Component {
   handleDropdown = (propertyName) => (event) => {
     switch (propertyName) {
       case 'jobTitle':
-        console.log(event.target.value);
         this.setState({
           ...this.state,
           jobTitle: event.target.value,
         });
         break;
       case 'osha':
-        console.log(event.target.value);
         this.setState({
           ...this.state,
           osha: event.target.value,
@@ -91,16 +89,12 @@ class EditProfile extends Component {
   render() {
     const { classes } = this.props;
     if (this.props.store.userDetails.length > 0) {
-      console.log('------', this.props.store.userDetails[0]);
       switch (this.props.store.user.access_level_id) {
         case 3:
           return (
             <div className="editWrapper">
               <form className="VendorEditForm" onSubmit={this.registerUser}>
                 <div className="vendorItem0">
-                  <h1>
-                    {JSON.stringify(this.props.store.userDetails[0].first_name)}
-                  </h1>
                   <h2>Edit User Information</h2>
                 </div>
                 {this.props.store.errors.registrationMessage && (

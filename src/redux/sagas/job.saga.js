@@ -4,7 +4,6 @@ import axios from 'axios';
 function* getJobs() {
   try {
     const response = yield axios.get('/api/job');
-    console.log(response.data);
     yield put({ type: 'POPULATE_JOBS', payload: response.data });
   } catch (error) {
     console.log('Error with jobs get:', error);
@@ -14,7 +13,6 @@ function* getJobs() {
 function* getThisJob(action) {
   try {
     const response = yield axios.get(`/api/job/${action.payload}`);
-    console.log(response.data);
     yield put({ type: 'GET_THIS_JOB', payload: response.data });
   } catch (error) {
     console.log('Error with jobs get:', error);
@@ -46,7 +44,6 @@ function* editJobAddress(action) {
 }
 
 function* setActive(action) {
-  console.log('overhere');
   try {
     yield axios.put(`/api/job/setActive/${action.id}`);
   } catch (error) {

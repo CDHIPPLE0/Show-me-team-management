@@ -20,7 +20,6 @@ class JobSelection extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.store.userJob.populateCurrentJobSubcontractors);
     this.props.dispatch({
       type: 'GET_JOB',
       payload: this.props.jobSelection,
