@@ -111,7 +111,9 @@ function* selectAllFalse(action) {
 
 function* verify(action) {
   try {
-    yield axios.put(`/user/verify/${action.id}`, action.payload);
+    yield axios.put(`api/user/verify/${action.id}`);
+    const response = yield axios.get(`/api/unverified`);
+    yield put({ type: 'GET_UNVERIFIED', payload: response.data });
   } catch (error) {
     console.log('Error with user verification:', error);
   }

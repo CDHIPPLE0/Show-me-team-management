@@ -209,9 +209,9 @@ router.put('/selectAllTrue/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/verify/:id', rejectUnauthenticated, (req, res) => {
-  const accessLevel = req.body;
-  const queryText = `UPDATE "user" SET access_level_id=$1 WHERE id=$2;`;
-  const queryArray = [accessLevel.setLevel, req.params.id];
+  console.log(req.params.id);
+  const queryText = `UPDATE "user" SET access_level_id=registered_as WHERE id=$1;`;
+  const queryArray = [req.params.id];
 
   pool
     .query(queryText, queryArray)

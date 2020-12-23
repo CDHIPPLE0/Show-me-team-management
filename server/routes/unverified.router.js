@@ -8,11 +8,10 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT first_name, address, last_name, phone, email, job_title, osha_level, vendor_company, subcontractor_certifications
+  const queryText = `SELECT id, first_name, address, last_name, phone, email, job_title, osha_level, vendor_company,registered_as, subcontractor_certifications
     FROM "user" WHERE access_level_id = 1;`;
-  const queryArray = [req.params.id];
   pool
-    .query(queryText, queryArray)
+    .query(queryText)
     .then((result) => {
       console.log(result.rows);
       res.send(result.rows);
