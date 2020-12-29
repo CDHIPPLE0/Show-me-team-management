@@ -41,30 +41,44 @@ class EditProfile extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-    this.props.dispatch({
-      type: 'EDIT',
-      id: this.props.store.user.id,
-      payload: {
-        phone: this.state.phone,
-        email: this.state.email,
-        company: this.state.company,
-        address: this.state.address,
-        jobTitle: this.state.jobTitle,
-        osha: this.state.osha,
-        certs: this.state.certs,
-      },
-    });
-    swal(
-      'Changes Submitted!',
-      'Thank you for using the team management system',
-      'success'
-    );
+    if (this.state.phone.length === 10) {
+      this.props.dispatch({
+        type: 'EDIT',
+        id: this.props.store.user.id,
+        payload: {
+          phone: this.state.phone,
+          email: this.state.email,
+          company: this.state.company,
+          address: this.state.address,
+          jobTitle: this.state.jobTitle,
+          osha: this.state.osha,
+          certs: this.state.certs,
+        },
+      });
+      swal(
+        'Changes Submitted!',
+        'Thank you for using the team management system',
+        'success'
+      );
+    } else {
+      swal('SORRY!', 'please include your area code', 'error');
+    }
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
+  };
+
+  handlePhoneChange = (event) => {
+    const onlyNums = event.target.value.replace(/[^0-9]/g, '');
+    if (onlyNums.length < 11) {
+      this.setState({ phone: onlyNums });
+    } else if (onlyNums.length === 11) {
+      const number = onlyNums.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+      this.setState({ phone: number });
+    }
   };
 
   handleDropdown = (propertyName) => (event) => {
@@ -116,13 +130,13 @@ class EditProfile extends Component {
                     autoComplete="off"
                     fullWidth="true"
                     id="outlined-basic"
-                    label="Phone (xxx-xxx-xxxx)"
+                    label="Phone (digits only include area code)"
                     variant="outlined"
                     type="number"
                     name="Phone Number"
                     value={this.state.phone}
                     required
-                    onChange={this.handleInputChangeFor('phone')}
+                    onChange={this.handlePhoneChange}
                   />
                 </div>
                 <div className="vendorItem4">
@@ -218,13 +232,13 @@ class EditProfile extends Component {
                     autoComplete="off"
                     fullWidth={true}
                     id="outlined-basic"
-                    label="Phone (xxx-xxx-xxxx)"
+                    label="Phone (digits only include area code)"
                     variant="outlined"
                     type="number"
                     name="Phone Number"
                     value={this.state.phone}
                     required
-                    onChange={this.handleInputChangeFor('phone')}
+                    onChange={this.handlePhoneChange}
                   />
                 </div>
                 <div className="subItem4">
