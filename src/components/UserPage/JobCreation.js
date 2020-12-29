@@ -50,11 +50,15 @@ class JobCreation extends Component {
       weldersNeeded: '',
       fittersNeeded: '',
     });
-    swal(
-      'Job Submitted!',
-      'You will be contacted by our team as soon as possible',
-      'success'
-    );
+    if (this.props.store.user.access_level_id === 3) {
+      swal(
+        'Job Submitted!',
+        'You will be contacted by our team as soon as possible',
+        'success'
+      );
+    } else if (this.props.store.user.access_level_id === 4) {
+      swal('Job Submitted!', 'Lets get rolling boss', 'success');
+    }
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
