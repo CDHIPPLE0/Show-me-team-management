@@ -60,23 +60,27 @@ class RegisterForm extends Component {
   registerUser = (event) => {
     event.preventDefault();
     if (this.state.captchaPassed) {
-      this.props.dispatch({
-        type: 'REGISTER',
-        payload: {
-          registeredAs: this.state.registeredAs,
-          username: this.state.username,
-          password: this.state.password,
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          phone: this.state.phone,
-          email: this.state.email,
-          company: this.state.company,
-          address: this.state.address,
-          jobTitle: this.state.jobTitle,
-          osha: this.state.osha,
-          certs: this.state.certifications,
-        },
-      });
+      if (this.state.phone.length === 10) {
+        this.props.dispatch({
+          type: 'REGISTER',
+          payload: {
+            registeredAs: this.state.registeredAs,
+            username: this.state.username,
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phone: this.state.phone,
+            email: this.state.email,
+            company: this.state.company,
+            address: this.state.address,
+            jobTitle: this.state.jobTitle,
+            osha: this.state.osha,
+            certs: this.state.certifications,
+          },
+        });
+      } else {
+        swal('SORRY!', 'please include your area code', 'error');
+      }
     } else {
       setTimeout(() => {
         swal('SORRY!', 'You need to pass the captcha', 'error');
@@ -88,6 +92,16 @@ class RegisterForm extends Component {
     this.setState({
       [propertyName]: event.target.value,
     });
+  };
+
+  handlePhoneChange = (event) => {
+    const onlyNums = event.target.value.replace(/[^0-9]/g, '');
+    if (onlyNums.length < 11) {
+      this.setState({ phone: onlyNums });
+    } else if (onlyNums.length === 11) {
+      const number = onlyNums.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+      this.setState({ phone: number });
+    }
   };
 
   handleSelectionButtons = (propertyName) => (event) => {
@@ -159,7 +173,7 @@ class RegisterForm extends Component {
                     },
                   }}
                   autoComplete="off"
-                  fullWidth="true"
+                  fullWidth={true}
                   id="outlined-basic"
                   label="First Name"
                   variant="outlined"
@@ -203,19 +217,17 @@ class RegisterForm extends Component {
                       notchedOutline: classes.notchedOutline,
                       input: classes.input,
                     },
-
-                    maxLength: 10,
                   }}
                   autoComplete="off"
                   fullWidth={true}
                   id="outlined-basic"
-                  label="Phone (xxx-xxx-xxxx)"
+                  label="Phone (digits only include area code)"
                   variant="outlined"
                   type="number"
                   name="Phone Number"
                   value={this.state.phone}
                   required
-                  onChange={this.handleInputChangeFor('phone')}
+                  onChange={this.handlePhoneChange}
                 />
               </div>
               <div className="vendorItem4">
@@ -402,18 +414,17 @@ class RegisterForm extends Component {
                       notchedOutline: classes.notchedOutline,
                       input: classes.input,
                     },
-                    maxLength: 10,
                   }}
                   autoComplete="off"
                   fullWidth={true}
                   id="outlined-basic"
-                  label="Phone (xxx-xxx-xxxx)"
+                  label="Phone (digits only include area code)"
                   variant="outlined"
                   type="number"
                   name="Phone Number"
                   value={this.state.phone}
                   required
-                  onChange={this.handleInputChangeFor('phone')}
+                  onChange={this.handlePhoneChange}
                 />
               </div>
               <div className="subItem4">
