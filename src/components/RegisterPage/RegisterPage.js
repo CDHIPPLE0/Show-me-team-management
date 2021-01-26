@@ -17,7 +17,7 @@ class RegisterPage extends Component {
       this.props.history.push('/login');
     };
     return (
-      <center>
+      <center className="loginPage">
         <RegisterForm callback={toLogin} />
       </center>
     );

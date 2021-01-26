@@ -9,7 +9,7 @@ class LoginPage extends Component {
       this.props.history.push('/registration');
     };
     return (
-      <center>
+      <center className="loginPage">
         <center>
           <LoginForm callback={toRegister} />
         </center>

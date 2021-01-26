@@ -9,6 +9,11 @@ html {
   font-family: volkhov;
   margin: 0;
 }
+
+.loginPage {
+  height: 100vh;
+}
+
 .pageWrapper {
   background-color: black;
   background-size: cover;
