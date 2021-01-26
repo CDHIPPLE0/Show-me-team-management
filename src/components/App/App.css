@@ -100,11 +100,16 @@ html {
 
 .carouselDiv {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
 }
-
 .carouselDiv * {
   color: white;
+}
+
+.carouselImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .title {
