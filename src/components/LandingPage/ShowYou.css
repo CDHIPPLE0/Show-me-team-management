@@ -1,8 +1,9 @@
-.showYouItem h2 {
+.showYouItem {
   color: #fffded;
   background-color: black;
   min-height: 100vh;
   scroll-snap-align: start;
+  text-align: center;
 }
 .showMeImage {
   margin: 4rem;
@@ -29,7 +30,7 @@
 .showMeGridItem p {
   font-family: sans-serif;
   margin: 1rem;
-  width: 40rem;
+  width: 90%;
   color: rgb(230, 252, 255);
   font-size: 1rem;
 }
