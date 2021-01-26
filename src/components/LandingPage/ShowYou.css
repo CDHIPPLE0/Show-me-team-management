@@ -7,8 +7,8 @@
 }
 .showMeImage {
   margin: 4rem;
-  height: 70%;
-  width: 70%;
+  height: 40rem;
+  width: 40rem;
   border: 2px inset rgb(230, 252, 255);
   border-radius: 50%;
 }
@@ -33,4 +33,11 @@
   width: 90%;
   color: rgb(230, 252, 255);
   font-size: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .showMeImage {
+    height: 11rem;
+    width: 11rem;
+  }
 }
