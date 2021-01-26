@@ -1,0 +1,35 @@
+.showYouItem h2 {
+  color: #fffded;
+  background-color: black;
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+.showMeImage {
+  margin: 4rem;
+  height: 70%;
+  width: 70%;
+  border: 2px inset rgb(230, 252, 255);
+  border-radius: 50%;
+}
+
+.aboutTitle {
+  height: 5rem;
+}
+
+.showMeContent {
+  color: #fffded;
+}
+
+.showMeGridItem h1 {
+  margin-top: 2rem;
+  color: #fffded;
+  font-size: 2rem;
+}
+
+.showMeGridItem p {
+  font-family: sans-serif;
+  margin: 1rem;
+  width: 40rem;
+  color: rgb(230, 252, 255);
+  font-size: 1rem;
+}

@@ -5,14 +5,9 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -28,43 +23,38 @@ class App extends Component {
   }
 
   render() {
+    let backClass = this.props.store.user.id ? 'menuWrapper' : 'pageWrapper';
     return (
       <Router>
-        <div
-          className={this.props.store.user.id ? 'menuWrapper' : 'pageWrapper'}
-        >
-          {!this.props.store.user.id ? <Nav /> : <></>}
-          <Switch>
-            <Redirect exact from="/" to="/home" />
-
-            <Route exact path="/about" component={AboutPage} />
-
-            <ProtectedRoute exact path="/user" component={UserPage} />
-
-            <ProtectedRoute exact path="/info" component={InfoPage} />
-
-            <ProtectedRoute
-              exact
-              path="/login"
-              component={LoginPage}
-              authRedirect="/user"
-            />
-            <ProtectedRoute
-              exact
-              path="/registration"
-              component={RegisterPage}
-              authRedirect="/user"
-            />
-            <ProtectedRoute
-              exact
-              path="/home"
-              component={LandingPage}
-              authRedirect="/user"
-            />
-
-            <Route render={() => <h1>404</h1>} />
-          </Switch>
-          {!this.props.store.user.id ? <Footer /> : <></>}
+        <div className={backClass}>
+          <div className="head">
+            {!this.props.store.user.id ? <Nav /> : <></>}
+            <Switch>
+              <Redirect exact from="/" to="/home" />
+              <Route exact path="/about" component={AboutPage} />
+              <ProtectedRoute exact path="/user" component={UserPage} />
+              <ProtectedRoute exact path="/info" component={InfoPage} />
+              <ProtectedRoute
+                exact
+                path="/login"
+                component={LoginPage}
+                authRedirect="/user"
+              />
+              <ProtectedRoute
+                exact
+                path="/registration"
+                component={RegisterPage}
+                authRedirect="/user"
+              />
+              <ProtectedRoute
+                exact
+                path="/home"
+                component={LandingPage}
+                authRedirect="/user"
+              />
+              <Route render={() => <h1>404</h1>} />
+            </Switch>
+          </div>
         </div>
       </Router>
     );

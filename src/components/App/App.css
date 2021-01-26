@@ -1,22 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-
-.pageWrapper {
-  background-image: url(../../Images/landingPageBackground.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.menuWrapper {
-  background-color: rgba(200, 205, 208, 1);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+html {
+  scroll-snap-type: y mandatory;
 }
 
 * {
@@ -24,6 +9,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+.pageWrapper {
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
+  width: 100%;
+}
+
+.menuWrapper {
+  background-color: rgba(200, 205, 208, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .alert {
@@ -48,18 +51,33 @@
 }
 
 .nav {
-  margin-top: 0;
+  width: 100%;
+  margin: 0;
   display: flex;
-  justify-content: space-between;
+  position: relative;
   align-items: center;
-  padding: 0.2% 10%;
-  background-color: rgba(72, 79, 86, 0.7);
+  justify-content: center;
+  background-color: rgba(72, 79, 86, 0);
+}
+
+.nav-left {
+  width: 10rem;
+  height: 1rem;
+  margin-right: auto;
+}
+
+.nav-right {
+  width: 10rem;
+  height: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
 }
 
 .nav-logo {
+  margin-top: 1rem;
   padding-top: 4px;
   border-radius: 1rem;
-  max-width: 7.5rem;
+  max-width: 9.5rem;
   max-height: 12rem;
 }
 
@@ -68,29 +86,36 @@
   font-size: 15px;
   text-decoration: none;
   color: #fffded;
-  display: inline-block;
-  padding: 1rem 1rem 1rem 1rem;
 }
 
 /* CONTENT STYLES */
 
-.content1 {
-  margin-top: 15%;
-  width: 40%;
-  height: 40%;
+.head {
+  scroll-snap-align: start;
+}
+
+.title {
+  text-align: center;
+  color: #fffded;
+  font-size: 2rem;
+  margin: 10px;
+}
+
+.carousel {
+  width: 100%;
+  height: 36.3rem;
+}
+.carousel img {
+  width: 100%;
 }
 
 .headtext1 {
-  text-align: center;
-  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
   font-weight: 400;
-  color: #fffded;
-}
-
-.bodytext1 {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 22px;
   color: #fffded;
 }
 
@@ -104,13 +129,14 @@
 }
 
 .formText {
+  color: #fffded;
   font-size: 20px;
   font-weight: bold;
 }
 
 .form {
   color: #fffded;
-  background-color: rgba(72, 79, 86, 0.9);
+  background-color: #171717;
   border: solid, black, 1px;
   border-radius: 20px;
   margin-top: 8rem;
@@ -119,6 +145,7 @@
 }
 
 .form Button {
+  color: black;
   width: 50%;
 }
 
@@ -127,9 +154,11 @@
 }
 
 .selectionButton {
+  color: black;
   margin-top: 3rem;
 }
 .buttonFormButton {
+  color: black;
   width: 60%;
 }
 
@@ -141,13 +170,13 @@
 }
 
 .subRegistrationForm {
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(10%, auto);
   border: solid, black, 1px;
-  border-radius: 20px;
-  width: 60%;
-  background-color: rgba(72, 79, 86, 0.9);
+  width: 90%;
+  background-color: #171717;
 }
 
 .subRegistrationForm > * {
@@ -155,7 +184,14 @@
 }
 
 .subRegistrationForm Button {
+  color: black;
   margin-top: 3rem;
+}
+.subItem5 {
+  grid-column: 1/-1;
+}
+.subItem7 {
+  align-self: start;
 }
 .subItem00 {
   grid-column: 1/-1;
@@ -169,14 +205,14 @@
 }
 
 .vendorRegistrationForm {
+  margin-top: 1rem;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(10%, auto);
   border: solid, black, 1px;
-  border-radius: 20px;
   width: 40rem;
-  background-color: rgba(72, 79, 86, 0.9);
+  background-color: #171717;
 }
 
 .vendorRegistrationForm > * {
@@ -208,7 +244,6 @@
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(10%, auto);
   border: solid, black, 1px;
-
   width: 60%;
   background-color: rgba(9, 11, 14, 0.7);
 }
@@ -218,6 +253,7 @@
 }
 
 .editSubcontractorForm Button {
+  color: black;
   margin-top: 3rem;
 }
 .subItem00 {
@@ -267,67 +303,24 @@
   grid-column: 1/-1;
   padding-top: 3rem;
 }
-/* FOOTER STYLES */
-
-.footcontent {
-  margin-top: auto;
-  margin-bottom: 3rem;
-}
-
-.footer li {
-  display: inline-block;
-  padding: 1rem 1rem 1rem 1rem;
-}
-
-.footNavBar {
-  text-align: center;
-  padding-left: 10rem;
-  position: absolute;
-  width: 100%;
-  background-color: rgba(72, 79, 86, 0.8);
-  color: #fffded;
-}
-
-.footer img {
-  float: right;
-  padding-top: 0.7rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 
 /*--------responsiveness--------*/
 
-@media (max-width: 1133px) {
-  .content1 {
-    margin-top: 25%;
-    width: 50%;
-    height: 50%;
-  }
-
+@media (max-width: 1347px) {
   .headtext1 {
     text-align: center;
-    font-size: 35px;
     font-weight: 400;
     color: #fffded;
   }
 
-  .bodytext1 {
-    text-align: center;
-    margin-top: 2%;
-    font-size: 15px;
-    color: #fffded;
-  }
-
   .subRegistrationForm {
-    height: 35rem;
+    height: 85vh;
     overflow: scroll;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: minmax(10%, auto);
     border: solid, black, 1px;
-    border-radius: 20px;
     width: 90%;
-    background-color: rgba(72, 79, 86, 0.9);
   }
 
   .subRegistrationForm > * {
@@ -335,6 +328,7 @@
   }
 
   .subRegistrationForm Button {
+    color: black;
     margin-top: 3rem;
   }
   .subItem00 {
@@ -350,15 +344,13 @@
 
   .vendorRegistrationForm {
     display: grid;
-    height: 35rem;
+    height: 85vh;
     overflow: scroll;
     grid-gap: 5px;
     grid-template-columns: 1fr;
     grid-auto-rows: minmax(10%, auto);
     border: solid, black, 1px;
-    border-radius: 20px;
     width: 90%;
-    background-color: rgba(72, 79, 86, 0.9);
   }
 
   .vendorRegistrationForm > * {
@@ -390,7 +382,6 @@
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: minmax(10%, auto);
     border: solid, black, 1px;
-
     width: 60%;
     background-color: rgba(9, 11, 14, 0.7);
   }
@@ -400,6 +391,7 @@
   }
 
   .editSubcontractorForm Button {
+    color: black;
     margin-top: 3rem;
   }
   .subItem00 {
@@ -417,18 +409,7 @@
   }
 }
 
-@media (max-width: 900px) {
-  .pageWrapper {
-    background-image: url(../../Images/landingPageBackgroundMobile.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-
+@media (max-width: 1000px) {
   /*--------responsivenessNAV----------------*/
 
   .nav-logo {
@@ -436,9 +417,6 @@
     max-width: 8rem;
     max-height: 8rem;
   }
-  /* .burger {
-    display: block;
-  } */
 
   .nav {
     margin-top: 0;
@@ -446,7 +424,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.2% 1%;
-    background-color: rgba(72, 79, 86, 0.7);
   }
 
   .nav-link {
@@ -461,127 +438,36 @@
 
   /*-------responsivenessBODY---------*/
 
-  .content1 {
-    margin-top: 20%;
-    width: 60%;
-    height: 60%;
-  }
-
   .headtext1 {
-    text-align: center;
-    font-size: 35px;
-    font-weight: 400;
-    color: #fffded;
-  }
+    margin-bottom: 10%;
 
-  .bodytext1 {
-    text-align: center;
-    margin-top: 2%;
-    font-size: 20px;
+    font-weight: 400;
     color: #fffded;
   }
 
   .form {
     color: #fffded;
-    background-color: rgba(72, 79, 86, 0.9);
     border: solid, black, 1px;
-    border-radius: 20px;
     margin-top: 4rem;
     width: 20rem;
     height: 20rem;
   }
-
-  /*-------responsivenessFOOTER---------*/
-  .footcontent {
-  }
-
-  .footer li {
-    display: inline-block;
-    padding: 1rem 1rem 1rem 1rem;
-  }
-
-  .footNavBar {
-    text-align: center;
-    padding-left: 10rem;
-    position: absolute;
-    width: 100%;
-    background-color: rgba(72, 79, 86, 0.8);
-    color: #fffded;
-  }
-
-  .footer img {
-    float: right;
-    padding-top: 0.7rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  /*--------responsivenessNAV----------------*/
-
-  /*-------responsivenessBODY---------*/
-
-  /*-------responsivenessFOOTER---------*/
 }
 
-@media (max-width: 900px) {
-  /*-------responsivenessFOOTER---------*/
-  .footcontent {
-    font-size: 12px;
-  }
-
-  .footer li {
-    display: inline-block;
-    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
-  }
-
-  .footNavBar {
-    text-align: center;
-    margin-top: 1rem;
-    padding-left: 1rem;
-    position: absolute;
-    width: 100%;
-    background-color: rgba(72, 79, 86, 0.8);
-    color: #fffded;
-  }
-
-  .footer img {
-    float: right;
-    padding-top: 0rem;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-  }
-}
-@media (max-width: 500px) {
-  .content1 {
-    margin-top: 50%;
-    width: 60%;
-    height: 60%;
-  }
-
+@media (max-width: 800px) {
   .headtext1 {
-    text-align: center;
-    font-size: 25px;
+    font-size: 2rem;
+    width: 75%;
     font-weight: 400;
     color: #fffded;
   }
+}
 
-  .bodytext1 {
-    text-align: center;
-    margin-top: 2%;
-    font-size: 15px;
+@media (max-width: 591px) {
+  .headtext1 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 80%;
     color: #fffded;
-  }
-
-  .footNavBar {
-    text-align: center;
-    margin-top: 1.5rem;
-    padding-left: 1rem;
-    position: absolute;
-    width: 100%;
-    background-color: rgba(72, 79, 86, 0.8);
-    color: #fffded;
-  }
-
-  .footer img {
-    display: none;
   }
 }

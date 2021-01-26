@@ -110,7 +110,7 @@ class LoginForm extends Component {
           <div>
             <Button
               style={{
-                backgroundColor: '#77818c',
+                backgroundColor: '#fffded',
               }}
               variant="contained"
               type="submit"
@@ -124,7 +124,7 @@ class LoginForm extends Component {
         <>
           <Button
             style={{
-              backgroundColor: '#77818c',
+              backgroundColor: '#fffded',
             }}
             variant="contained"
             type="button"

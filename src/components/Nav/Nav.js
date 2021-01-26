@@ -15,13 +15,10 @@ function Nav(props) {
     loginLinkData.text = 'Home';
   }
 
-  function mobileMenu() {
-    console.log('hello');
-  }
-
   return (
     <div className="nav">
-      <Link to="/home">
+      <div className="nav-left"></div>
+      <Link to="/home" className="logoBox">
         <img className="nav-logo" src={require('../../Images/showme.png')} />
       </Link>
       <div className="nav-right">
@@ -39,18 +36,7 @@ function Nav(props) {
             <LogOutButton className="nav-link" />
           </>
         )}
-        {/* Always show this link since the about page is not protected */}
-        {!props.store.user.id && (
-          <Link className="nav-link" to="/about">
-            ABOUT US
-          </Link>
-        )}
       </div>
-      {/* <div className="burger" onClick={mobileMenu}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
-      </div> */}
     </div>
   );
 }
