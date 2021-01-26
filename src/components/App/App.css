@@ -98,7 +98,7 @@ html {
 
 .carouselDiv {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 .carouselDiv * {
   color: white;
@@ -427,6 +427,18 @@ html {
 
 @media (max-width: 1000px) {
   /*--------responsivenessNAV----------------*/
+  html {
+    scroll-snap-type: none;
+    overflow: auto;
+  }
+
+  .carouselDiv {
+    text-align: center;
+  }
+
+  .head {
+    scroll-snap-align: unset;
+  }
 
   .nav-logo {
     border-radius: 1rem;
@@ -452,7 +464,6 @@ html {
     /* padding: 0.2rem 0.2rem 0.2rem 0.2rem; */
   }
   .title {
-    display: none;
     font-size: 1.5rem;
     margin: 10px;
   }

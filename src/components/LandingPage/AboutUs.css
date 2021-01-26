@@ -1,5 +1,5 @@
 .aboutUsItem {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #171717;
   scroll-snap-align: start;
   color: #fffded;
@@ -34,6 +34,10 @@
 }
 
 @media (max-width: 1000px) {
+  .aboutUsItem {
+    scroll-snap-align: unset;
+  }
+
   .aboutUsGridItem {
     text-align: center;
     padding-top: 2%;
@@ -55,7 +59,7 @@
     width: 20rem;
   }
   .aboutImage {
-    height: 5rem;
-    width: 5rem;
+    height: 10rem;
+    width: 10rem;
   }
 }
