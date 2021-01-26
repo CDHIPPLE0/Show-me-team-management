@@ -98,6 +98,15 @@ html {
   scroll-snap-align: start;
 }
 
+.carouselDiv {
+  text-align: center;
+  height: 100vh;
+}
+
+.carouselDiv * {
+  color: white;
+}
+
 .title {
   text-align: center;
   color: #fffded;

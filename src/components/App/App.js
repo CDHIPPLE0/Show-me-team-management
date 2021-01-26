@@ -6,11 +6,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -28,7 +26,6 @@ class App extends Component {
       <Router>
         <div className={backClass}>
           <div className="head">
-            {!this.props.store.user.id ? <Nav /> : <></>}
             <Switch>
               <Redirect exact from="/" to="/home" />
               <Route exact path="/about" component={AboutPage} />
