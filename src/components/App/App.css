@@ -453,7 +453,10 @@ html {
     margin-left: 0%;
     /* padding: 0.2rem 0.2rem 0.2rem 0.2rem; */
   }
-
+  .title {
+    font-size: 1.5rem;
+    margin: 10px;
+  }
   /*-------responsivenessBODY---------*/
 
   .headtext1 {
