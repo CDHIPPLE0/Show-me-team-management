@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
+import Nav from '../Nav/Nav';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // CUSTOM COMPONENTS
@@ -18,6 +18,7 @@ class RegisterPage extends Component {
     };
     return (
       <center className="loginPage">
+        {!this.props.store.user.id ? <Nav /> : <></>}
         <RegisterForm callback={toLogin} />
       </center>
     );

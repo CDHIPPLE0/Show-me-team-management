@@ -16,7 +16,6 @@ class LandingPage extends Component {
       <div>
         <div className="carouselDiv">
           {!this.props.store.user.id ? <Nav /> : <></>}
-
           <h1 className="title">Show Up And Show Out</h1>
           <Carousel>
             {items.map((item, i) => (
