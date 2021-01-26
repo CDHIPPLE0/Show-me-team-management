@@ -11,9 +11,14 @@ import AboutUs from './AboutUs';
 import ShowYou from './ShowYou';
 class LandingPage extends Component {
   render() {
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     let items = [{ image: image1 }, { image: image2 }];
     return (
-      <div>
+      <>
         <div className="carouselDiv">
           {!this.props.store.user.id ? <Nav /> : <></>}
           <h1 className="title">Show Up And Show Out</h1>
@@ -28,7 +33,7 @@ class LandingPage extends Component {
         </div>
         <AboutUs />
         <ShowYou />
-      </div>
+      </>
     );
   }
 }

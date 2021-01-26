@@ -93,14 +93,12 @@ html {
 /* CONTENT STYLES */
 
 .head {
-  max-height: 100%;
-  max-width: 100%;
   scroll-snap-align: start;
 }
 
 .carouselDiv {
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
 }
 .carouselDiv * {
   color: white;
@@ -454,6 +452,7 @@ html {
     /* padding: 0.2rem 0.2rem 0.2rem 0.2rem; */
   }
   .title {
+    display: none;
     font-size: 1.5rem;
     margin: 10px;
   }

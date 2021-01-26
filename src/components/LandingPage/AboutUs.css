@@ -1,5 +1,5 @@
 .aboutUsItem {
-  min-height: 100vh;
+  height: 100vh;
   background-color: #171717;
   scroll-snap-align: start;
   color: #fffded;
@@ -31,4 +31,31 @@
   width: 15rem;
   border: 2px inset rgb(230, 252, 255);
   border-radius: 50%;
+}
+
+@media (max-width: 1000px) {
+  .aboutUsGridItem {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2rem;
+  }
+  .aboutTitle {
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .aboutUsGridItem h1 {
+    font-size: 1.5rem;
+    width: 20rem;
+    margin: auto;
+  }
+  .aboutUsGridItem p {
+    font-size: 1rem;
+    width: 20rem;
+  }
+  .aboutImage {
+    height: 5rem;
+    width: 5rem;
+  }
 }
