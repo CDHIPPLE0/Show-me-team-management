@@ -11,7 +11,7 @@ class LandingPage extends Component {
   render() {
     let items = [{ image: image1 }, { image: image2 }];
     return (
-      <section className="landingPageItems">
+      <div className="landingPageItems">
         <div>
           <h1 className="title">Show Up And Show Out</h1>
           <Carousel>
@@ -22,7 +22,7 @@ class LandingPage extends Component {
         </div>
         <AboutUs />
         <ShowYou />
-      </section>
+      </div>
     );
   }
 }

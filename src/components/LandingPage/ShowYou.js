@@ -5,7 +5,7 @@ import image6 from '../../Images/pic6.jpg';
 
 function ShowYou(props) {
   return (
-    <section className="showYouItem">
+    <div className="showYouItem">
       <Grid container>
         <Grid
           item
@@ -67,7 +67,7 @@ function ShowYou(props) {
           </section>
         </Grid>
       </Grid>
-    </section>
+    </div>
   );
 }
 
