@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-
 html {
   scroll-snap-type: y mandatory;
-  overflow-y: auto;
+  overflow: auto;
 }
-
 * {
   font-family: volkhov;
   margin: 0;

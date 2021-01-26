@@ -37,7 +37,7 @@
 
 .sideBar {
   height: 100vh;
-  min-width: 12rem;
+  width: 14rem;
   background-color: rgba(9, 11, 14, 0.7);
 }
 
@@ -48,11 +48,16 @@
   background-color: rgba(27, 32, 39, 0.315);
 }
 
+.sideBar ul {
+  margin: 0;
+  padding: 0;
+}
+
 .sideBar li {
   display: flex;
   flex-direction: row;
   line-height: 4rem;
-  justify-content: center;
+  justify-content: start;
   height: 100%;
   width: 100%;
   font-weight: bold;

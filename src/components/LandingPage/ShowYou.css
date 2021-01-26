@@ -1,7 +1,7 @@
 .showYouItem {
   color: #fffded;
   background-color: black;
-  min-height: 93vh;
+  min-height: 100vh;
   scroll-snap-align: start;
   text-align: center;
 }

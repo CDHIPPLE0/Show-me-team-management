@@ -33,7 +33,6 @@ class App extends Component {
               <Redirect exact from="/" to="/home" />
               <Route exact path="/about" component={AboutPage} />
               <ProtectedRoute exact path="/user" component={UserPage} />
-              <ProtectedRoute exact path="/info" component={InfoPage} />
               <ProtectedRoute
                 exact
                 path="/login"
