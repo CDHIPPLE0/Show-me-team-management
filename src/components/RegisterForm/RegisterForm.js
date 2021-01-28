@@ -599,7 +599,7 @@ class RegisterForm extends Component {
                 style={{
                   backgroundColor: '#fffded',
                 }}
-                fullWidth={true}
+                // fullWidth={true}
                 variant="contained"
                 color="primary"
                 className="btn"
