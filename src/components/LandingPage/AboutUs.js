@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 import './AboutUs.css';
 import image3 from '../../Images/pic3.jpg';
 import image4 from '../../Images/pic4.jpeg';
-import image5 from '../../Images/pic5.jpg';
+import image7 from '../../Images/pic7.JPG';
 function AboutUs(props) {
   return (
     <div className="aboutUsItem">
@@ -19,7 +19,7 @@ function AboutUs(props) {
           <h2>ABOUT US</h2>
         </Grid>
         <Grid item lg={5} sm={12} xs={12} className="aboutUsGridItem">
-          <img src={image5} className="aboutImage" />
+          <img src={image7} className="aboutImage" />
           <h1>Ten years of results</h1>
           <p>
             lorem ipsum sdsf sdf sdf sdfsdf wesgsg d gsd lorem ipsum sdsf sdf

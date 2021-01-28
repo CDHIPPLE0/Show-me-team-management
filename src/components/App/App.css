@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-
+html {
+  overflow: scroll;
+}
 * {
   font-family: volkhov;
   margin: 0;

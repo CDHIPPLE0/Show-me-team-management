@@ -7,6 +7,9 @@ import Nav from '../Nav/Nav';
 import Item from './Carousel';
 import image1 from '../../Images/landingPageBackground.png';
 import image2 from '../../Images/pic2.jpg';
+import image6 from '../../Images/pic6.jpg';
+import image7 from '../../Images/pic7.JPG';
+import image8 from '../../Images/pic8.jpg';
 import AboutUs from './AboutUs';
 import ShowYou from './ShowYou';
 class LandingPage extends Component {
@@ -16,7 +19,7 @@ class LandingPage extends Component {
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-    let items = [{ image: image1 }, { image: image2 }];
+    let items = [{ image: image2 }, { image: image8 }];
     return (
       <>
         <div className="carouselDiv">

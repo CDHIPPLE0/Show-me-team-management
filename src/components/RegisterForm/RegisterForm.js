@@ -216,7 +216,7 @@ class RegisterForm extends Component {
                 autoComplete="off"
                 fullWidth={true}
                 id="outlined-basic"
-                label="Phone (digits only include area code)"
+                label="Phone (eg. 8883331111)"
                 variant="outlined"
                 type="number"
                 name="Phone Number"
@@ -409,7 +409,7 @@ class RegisterForm extends Component {
                 autoComplete="off"
                 fullWidth={true}
                 id="outlined-basic"
-                label="Phone (digits only include area code)"
+                label="Phone (eg. 8883331111)"
                 variant="outlined"
                 type="number"
                 name="Phone Number"
