@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-html {
-  scroll-snap-type: y mandatory;
-  overflow: auto;
-}
+
 * {
   font-family: volkhov;
   margin: 0;
@@ -91,10 +88,6 @@ html {
 }
 
 /* CONTENT STYLES */
-
-.head {
-  scroll-snap-align: start;
-}
 
 .carouselDiv {
   text-align: center;

@@ -14,14 +14,6 @@ const styles = {
     borderWidth: '1px',
     borderColor: ' #fffded  !important',
   },
-  select: {
-    '&:before': {
-      borderColor: ' #fffded',
-    },
-    '&:after': {
-      borderColor: ' #fffded',
-    },
-  },
   icon: {
     fill: ' #fffded',
   },
@@ -476,14 +468,16 @@ class RegisterForm extends Component {
               <label style={{ color: '#fffded' }}>{'What do you do? :'}</label>
               <Select
                 native
+                style={{ border: '1px solid #fffded' }}
+                id="outlined-basic"
+                variant="outlined"
+                fullWidth={true}
                 value={this.state.jobTitle}
                 onChange={this.handleDropdown('jobTitle')}
                 inputProps={{
                   classes: {
                     icon: classes.icon,
                   },
-                  name: 'jobTitle',
-                  id: 'filled-jobTitle-native-simple',
                 }}
               >
                 <option aria-label="None" value="" />
@@ -499,6 +493,11 @@ class RegisterForm extends Component {
               </label>
               <Select
                 native
+                style={{ border: '1px solid #fffded' }}
+                id="outlined-basic"
+                className={classes.outlined}
+                variant="outlined"
+                fullWidth={true}
                 value={this.state.osha}
                 onChange={this.handleDropdown('osha')}
                 inputProps={{
@@ -526,7 +525,6 @@ class RegisterForm extends Component {
                   classes: {
                     notchedOutline: classes.notchedOutline,
                     input: classes.input,
-                    icon: classes.icon,
                   },
                 }}
                 autoComplete="off"
