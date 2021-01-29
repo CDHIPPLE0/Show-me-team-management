@@ -321,6 +321,11 @@ html {
   padding-top: 3rem;
 }
 
+.mobileArrow {
+  visibility: hidden;
+  color: white;
+}
+
 /*--------responsiveness--------*/
 
 @media (max-width: 1347px) {
@@ -428,6 +433,9 @@ html {
 
 @media (max-width: 1000px) {
   /*--------responsivenessNAV----------------*/
+  .mobileArrow {
+    visibility: visible;
+  }
   html {
     scroll-snap-type: none;
     overflow: auto;

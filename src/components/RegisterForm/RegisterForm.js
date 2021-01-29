@@ -345,7 +345,7 @@ class RegisterForm extends Component {
                 <div className="vendorItem9"></div>
               </div>
             </form>
-            <ArrowDownwardIcon style={{ color: 'white' }} />
+            <ArrowDownwardIcon className="mobileArrow" />
           </>
         );
       case 2:
@@ -621,7 +621,7 @@ class RegisterForm extends Component {
                 </Button>
               </div>
             </form>
-            <ArrowDownwardIcon style={{ color: 'white' }} />
+            <ArrowDownwardIcon className="mobileArrow" />
           </>
         );
       default:
