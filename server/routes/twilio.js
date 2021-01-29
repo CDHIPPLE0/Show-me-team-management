@@ -74,10 +74,10 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
     
       ${jobAddress}
     
-      then please click this link http://www.showmestainless.com/api/twilio/accept/${newGuid}
+      then please click this link https://show-me-team-management.herokuapp.com/api/twilio/accept/${newGuid}
   
       To reject consideration please click the link below.
-      http://www.showmestainless.com/api/twilio/reject/${newGuid};`;
+      https://show-me-team-management.herokuapp.com/api/twilio/reject${newGuid};`;
 
       pool
         .query(queryText, queryArray)
