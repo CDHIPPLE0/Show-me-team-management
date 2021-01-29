@@ -473,8 +473,9 @@ html {
     /* padding: 0.2rem 0.2rem 0.2rem 0.2rem; */
   }
   .title {
+    visibility: hidden;
     font-size: 1.5rem;
-    margin: 10px;
+    margin: 0;
   }
   /*-------responsivenessBODY---------*/
 
