@@ -180,6 +180,12 @@ html {
 .editWrapper {
 }
 
+.scrollIcon {
+  height: 10rem;
+  width: 10rem;
+  color: white;
+}
+
 .subRegistrationForm {
   margin-top: 1rem;
   display: grid;

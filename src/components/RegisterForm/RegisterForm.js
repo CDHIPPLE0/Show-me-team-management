@@ -53,6 +53,7 @@ class RegisterForm extends Component {
     event.preventDefault();
     if (this.state.captchaPassed) {
       if (this.state.phone.length === 10) {
+        console.log('sent');
         this.props.dispatch({
           type: 'REGISTER',
           payload: {
@@ -78,19 +79,13 @@ class RegisterForm extends Component {
         swal('SORRY!', 'You need to pass the captcha', 'error');
       }, 1000);
     }
+    console.log('sent');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
     console.log(event.target.value);
     this.setState({
       [propertyName]: event.target.value,
-    });
-  };
-
-  handleNextButton = (buttonName) => (event) => {
-    console.log('button clicked');
-    this.setState({
-      [buttonName]: false,
     });
   };
 
@@ -147,10 +142,7 @@ class RegisterForm extends Component {
     switch (this.state.registeredAs) {
       case 3:
         return (
-          <form
-            className="vendorRegistrationForm"
-            onSubmit={this.handleNextButton}
-          >
+          <form className="vendorRegistrationForm" onSubmit={this.registerUser}>
             {this.props.store.errors.registrationMessage && (
               <h3 className="alert" role="alert">
                 {this.props.store.errors.registrationMessage}
