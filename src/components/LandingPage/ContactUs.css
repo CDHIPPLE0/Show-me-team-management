@@ -1,0 +1,44 @@
+.formBox {
+  background-color: #171717;
+  min-height: 100vh;
+  width: 100%;
+}
+.contactForm {
+  color: #fffded;
+}
+
+.contactTitle {
+  font-size: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 4rem;
+}
+
+.formBox section {
+  margin-top: 2rem;
+}
+
+.formBox h1 {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 3rem;
+}
+
+.formBox h2 {
+  width: 90%;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 3rem;
+}
+.formBox h3 {
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.formBox p {
+  width: 80%;
+  font-family: sans-serif;
+  margin-bottom: 2rem;
+}

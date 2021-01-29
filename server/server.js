@@ -12,6 +12,7 @@ const jobRouter = require('./routes/job.router');
 const userJobRouter = require('./routes/userJob.router');
 const twilio = require('./routes/twilio');
 const unverified = require('./routes/unverified.router');
+const nodeMailer = require('./routes/nodeMailer');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/nodeMailer', nodeMailer);
 app.use('/api/subcontractor', subcontractorRouter);
 app.use('/api/vendor', vendorRouter);
 app.use('/api/job', jobRouter);

@@ -2,11 +2,10 @@
   color: #fffded;
   background-color: black;
   min-height: 100vh;
-
   text-align: center;
 }
 .showMeImage {
-  margin: 4rem;
+  margin: 2rem;
   height: 40rem;
   width: 40rem;
   border: 2px inset rgb(230, 252, 255);
@@ -49,7 +48,6 @@
     font-size: 1.5rem;
   }
   .showMeGridItem p {
-    margin: 0.5rem;
     width: 90%;
     color: rgb(230, 252, 255);
     font-size: 0.9rem;

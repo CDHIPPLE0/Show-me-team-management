@@ -1,7 +1,6 @@
 .aboutUsItem {
   min-height: 100vh;
   background-color: #171717;
-
   color: #fffded;
 }
 
@@ -22,6 +21,7 @@
   margin: auto;
 }
 .aboutUsGridItem p {
+  text-align: center;
   font-family: sans-serif;
   font-weight: 100;
 }

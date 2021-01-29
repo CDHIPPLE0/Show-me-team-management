@@ -12,6 +12,7 @@ import image7 from '../../Images/pic7.JPG';
 import image8 from '../../Images/pic8.jpg';
 import AboutUs from './AboutUs';
 import ShowYou from './ShowYou';
+import ContactUs from './ContactUs';
 class LandingPage extends Component {
   render() {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -36,6 +37,7 @@ class LandingPage extends Component {
         </div>
         <AboutUs />
         <ShowYou />
+        <ContactUs />
       </>
     );
   }
