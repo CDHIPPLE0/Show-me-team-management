@@ -288,9 +288,14 @@ class EditProfile extends Component {
                   />
                 </div>
                 <div className="subItemEdit6">
-                  <label>{'What do you do? :'}</label>
+                  <label style={{ color: '#fffded' }}>
+                    {'What do you do? :'}
+                  </label>
                   <Select
                     native
+                    fullWidth={true}
+                    variant="outlined"
+                    style={{ border: '1px solid #fffded' }}
                     value={this.state.jobTitle}
                     onChange={this.handleDropdown('jobTitle')}
                     inputProps={{
@@ -307,9 +312,14 @@ class EditProfile extends Component {
                     <option value={'Fitter'}>Fitter</option>
                     <option value={'Welder / Fitter'}>Welder / Fitter</option>
                   </Select>
-                  <label>{'Osha Certification :'}</label>
+                  <label style={{ color: '#fffded' }}>
+                    {'Osha Certification :'}
+                  </label>
                   <Select
                     native
+                    fullWidth={true}
+                    variant="outlined"
+                    style={{ border: '1px solid #fffded' }}
                     value={this.state.osha}
                     onChange={this.handleDropdown('osha')}
                     inputProps={{

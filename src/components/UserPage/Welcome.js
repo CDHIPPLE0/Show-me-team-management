@@ -8,7 +8,7 @@ export default function Welcome(props) {
           <tr className="inTheGreen">
             {props.accessLevel === 2 ? (
               <th className="welcome">
-                Welcome to Show Me Team Management, you will receive job offers
+                Welcome to Show Me Team Management, you will receive information
                 via text. Feel free to update your information as needed.
               </th>
             ) : (

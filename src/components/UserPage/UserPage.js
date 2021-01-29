@@ -81,6 +81,18 @@ class UserPage extends Component {
       case 7:
         display = <Verify />;
         break;
+      case 7:
+        display = <Verify />;
+        break;
+      case 12:
+        display = (
+          <center>
+            <h1 style={{ color: 'red' }}>
+              Your account is awaiting verification
+            </h1>
+          </center>
+        );
+        break;
       default:
         display = (
           <Welcome accessLevel={this.props.store.user.access_level_id} />

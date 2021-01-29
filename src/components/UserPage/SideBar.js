@@ -1,5 +1,6 @@
 import React from 'react';
 import { AdminSidebarData } from './AdminSidebarData';
+import { UnverifiedSidebarData } from './UnverifiedSidebarData';
 import { VendorSidebarData } from './VendorSidebarData';
 import { SubcontractorSidebarData } from './SubcontractorSidebarData';
 
@@ -17,7 +18,7 @@ const SideBar = (props) => {
       items = AdminSidebarData;
       break;
     default:
-      items = SubcontractorSidebarData;
+      items = UnverifiedSidebarData;
       break;
   }
   if (items !== 0) {

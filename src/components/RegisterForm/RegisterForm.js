@@ -14,6 +14,14 @@ const styles = {
     borderWidth: '1px',
     borderColor: ' #fffded  !important',
   },
+  select: {
+    '&:before': {
+      borderColor: ' #fffded',
+    },
+    '&:after': {
+      borderColor: ' #fffded',
+    },
+  },
   icon: {
     fill: ' #fffded',
   },
