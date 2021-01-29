@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import './ContactUs.css';
 import swal from 'sweetalert';
+import ReCAPTCHA from 'react-google-recaptcha';
 const styles = {
   input: {
     color: ' #fffded',
@@ -28,29 +29,40 @@ const styles = {
 };
 
 class ContactUs extends Component {
+  onChange = () => {
+    this.setState({
+      captchaPassed: true,
+    });
+  };
+
   state = {
     name: '',
     email: '',
     subject: '',
     message: '',
+    captchaPassed: false,
   };
   sendEmail = (event) => {
     event.preventDefault();
-    let payload = {
-      name: this.state.name,
-      email: this.state.email,
-      subject: this.state.subject,
-      message: this.state.message,
-    };
-    console.log(payload);
-    axios.put('/api/nodeMailer/send', payload);
-    swal('Thanks!', 'We will get back to you soon', 'success');
-    this.setState({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    if (this.state.captchaPassed) {
+      let payload = {
+        name: this.state.name,
+        email: this.state.email,
+        subject: this.state.subject,
+        message: this.state.message,
+      };
+      console.log(payload);
+      axios.put('/api/nodeMailer/send', payload);
+      swal('Thanks!', 'We will get back to you soon', 'success');
+      this.setState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } else {
+      swal('Sorry', 'Please complete the captcha', 'error');
+    }
   };
   handleInputChangeFor = (propertyName) => (event) => {
     console.log(event.target.value);
@@ -165,6 +177,10 @@ class ContactUs extends Component {
                   />
                 </Grid>
                 <Grid item lg={12} sm={12} xs={12}>
+                  <ReCAPTCHA
+                    sitekey="6LfTQfsZAAAAAA90RLCOy7FynQ1mJMIf85JYtWpj"
+                    onChange={this.onChange}
+                  />
                   <Button
                     style={{ width: '300px' }}
                     className="buttonFormButton"
