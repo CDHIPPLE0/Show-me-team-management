@@ -51,6 +51,7 @@ class UserPage extends Component {
   }
   render() {
     let display = null;
+    let sideBar = null;
     switch (this.state.selection) {
       case 0:
         display = <CurrentJob jobSelection={this.state.jobSelection} />;
@@ -94,23 +95,29 @@ class UserPage extends Component {
         );
         break;
       default:
-        display = (
-          <Welcome accessLevel={this.props.store.user.access_level_id} />
-        );
+        display = <Welcome />;
         break;
     }
-    return (
-      <>
-        <AppNav props={this.props} />
-        <div className="userPage">
-          <SideBar
-            access={this.state.access_level}
-            handleSidebar={this.handleSidebar}
-          />
-          {display}
-        </div>
-      </>
-    );
+    {
+      return this.state.access_level ? (
+        <>
+          <AppNav props={this.props} />
+          <div className="userPage">
+            {this.state.access_level >= 2 ? (
+              <SideBar
+                access={this.state.access_level}
+                handleSidebar={this.handleSidebar}
+              />
+            ) : (
+              <></>
+            )}
+            {display}
+          </div>
+        </>
+      ) : (
+        <p>...loading</p>
+      );
+    }
   }
 }
 

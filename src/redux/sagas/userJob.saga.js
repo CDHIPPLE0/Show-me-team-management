@@ -12,6 +12,17 @@ function* createJobConnection(action) {
   }
 }
 
+function* removeJob(action) {
+  let id = action.payload;
+  try {
+    yield axios.delete(`/api/userJob/deleteJob/${id}`);
+    const response = yield axios.get('/api/job');
+    yield put({ type: 'POPULATE_JOBS', payload: response.data });
+  } catch (error) {
+    console.log('Error with job deletion:', error);
+  }
+}
+
 function* sendAutomatedToTwilio(action) {
   let startDate = action.payload.startDate;
   let jobAddress = action.payload.jobAddress;
@@ -78,6 +89,7 @@ function* userJobSaga() {
   yield takeLatest('CREATE_JOB_CONNECTION', createJobConnection);
   yield takeLatest('SEND_AUTOMATED', sendAutomatedToTwilio);
   yield takeLatest('SEND_CUSTOM', sendCustomToTwilio);
+  yield takeLatest('REMOVE_JOB', removeJob);
 }
 
 export default userJobSaga;

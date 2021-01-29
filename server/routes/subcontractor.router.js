@@ -23,7 +23,9 @@ router.delete('/deleteSubcontractor/:id', rejectUnauthenticated, (req, res) => {
 
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT first_name, last_name, phone, email, address,
-  job_title, osha_level, subcontractor_certifications, job_status, is_selected FROM "user" WHERE access_level_id = 2 ORDER BY job_status DESC;`;
+  job_title, osha_level, subcontractor_certifications, job_status, is_selected, 
+  job_id FROM "user" LEFT JOIN "user_job" ON "user".id = "user_job".user_id WHERE access_level_id = 2 
+  ORDER BY job_status, job_title DESC`;
   pool
     .query(queryText)
     .then((result) => {

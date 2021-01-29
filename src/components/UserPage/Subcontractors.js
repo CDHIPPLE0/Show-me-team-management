@@ -25,6 +25,7 @@ class Subcontractors extends Component {
                 <th>Osha Level</th>
                 <th>Certifications</th>
                 <th>Availability</th>
+                <th>Job Assigned</th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,7 @@ class Subcontractors extends Component {
                     <td>{item.osha_level}</td>
                     <td>{item.subcontractor_certifications}</td>
                     <td>{item.job_status ? 'Working' : 'Available'}</td>
+                    <td>{item.job_id}</td>
                   </tr>
                 )
               )}

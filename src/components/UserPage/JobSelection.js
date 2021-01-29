@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Button } from '@material-ui/core';
+import Axios from 'axios';
 
 class JobSelection extends Component {
   sendToParent = (id) => (event) => {
@@ -10,6 +11,14 @@ class JobSelection extends Component {
       id: id,
     });
     this.props.callBack(id);
+  };
+
+  removeJob = (id) => (event) => {
+    console.log(id);
+    this.props.dispatch({
+      type: 'REMOVE_JOB',
+      payload: id,
+    });
   };
 
   componentDidMount() {
@@ -24,38 +33,50 @@ class JobSelection extends Component {
           <table className="statTable">
             <thead className="tableHead">
               <tr>
+                <th>Job ID</th>
                 <th>Start Date</th>
                 <th>Vendor Name</th>
                 <th>Vendor Company</th>
                 <th>Description</th>
                 <th>Location</th>
-                <th>Helpers Needed</th>
-                <th>Welders Needed</th>
-                <th>Fitters Needed</th>
                 <th>Date Posted</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {this.props.store.jobs.populateJobs.map((item, index) => (
                 <tr key={index}>
+                  <td>{item.id}</td>
                   <td>{item.start_date}</td>
                   <td>{item.last_name}</td>
                   <td>{item.vendor_company}</td>
                   <td>{item.description}</td>
                   <td>{item.job_address}</td>
-                  <td>{item.helpers_needed}</td>
-                  <td>{item.welders_needed}</td>
-                  <td>{item.fitters_needed}</td>
                   <td>{item.date_created.substring(0, 10)}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
-                      <Button onClick={this.sendToParent(item.id)} key={index}>
+                      <Button
+                        onClick={this.sendToParent(item.id)}
+                        key={index}
+                        style={{
+                          backgroundColor: 'rgba(144, 238, 144, 0.322)',
+                        }}
+                      >
                         Select
                       </Button>
                     ) : (
                       <Button key={index}>Currently Selected</Button>
                     )}
+                  </td>
+                  <td>
+                    <Button
+                      onClick={this.removeJob(item.id)}
+                      key={index}
+                      style={{ backgroundColor: 'rgba(255, 0, 0, 0.342)' }}
+                    >
+                      DELETE
+                    </Button>
                   </td>
                 </tr>
               ))}
