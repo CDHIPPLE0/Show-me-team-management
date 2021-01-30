@@ -45,8 +45,8 @@ class Vendors extends Component {
             <thead className="tableHead">
               <tr className="inTheRed">
                 <th className="welcome">
-                  Check your Verify Menu, there are no verified subcontractors
-                  in the system.
+                  Check your Verify Menu, there are no verified vendors in the
+                  system.
                 </th>
               </tr>
             </thead>
