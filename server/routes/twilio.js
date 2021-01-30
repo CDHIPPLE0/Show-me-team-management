@@ -83,7 +83,7 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
       then please click this link https://show-me-team-management.herokuapp.com/api/twilio/accept/${newGuid}
   
       To reject consideration please click the link below.
-      https://show-me-team-management.herokuapp.com/api/twilio/reject${newGuid};`;
+      https://show-me-team-management.herokuapp.com/api/twilio/reject/${newGuid};`;
 
       pool
         .query(queryText, queryArray)
