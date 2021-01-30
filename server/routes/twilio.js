@@ -113,8 +113,7 @@ router.get('/accept/:id', (req, res) => {
   let jid = null;
   let firstName = '';
   let lastName = '';
-  let queryThree = `DELETE FROM "job_user_message" WHERE message_id = $1;`;
-  let referenceThree = [req.params.id];
+  let queryThree = `DELETE FROM "job_user_message" WHERE user_id = $1;`;
   const query = `SELECT user_id, job_id FROM "job_user_message" WHERE message_id = $1;`;
   const reference = [req.params.id];
   pool
@@ -129,7 +128,7 @@ router.get('/accept/:id', (req, res) => {
       let referenceTwo = [Number(jid), Number(uid)];
       pool.query(queryTwo, referenceTwo).then(() => {
         pool
-          .query(queryThree, referenceThree)
+          .query(queryThree, referenceFour)
           .then(() => pool.query(queryFour, referenceFour));
         const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
         const queryGetArray = [uid];
