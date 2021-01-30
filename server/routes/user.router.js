@@ -18,7 +18,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
-  console.log('hit registration with', req.body);
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const registeredAs = req.body.registeredAs;
@@ -200,6 +199,20 @@ router.put('/selectAllTrue/', rejectUnauthenticated, (req, res) => {
 
   pool
     .query(queryText)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/delete/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `  DELETE FROM "user" WHERE id = $1;`;
+  const queryArray = [req.params.id];
+  pool
+    .query(queryText, queryArray)
     .then((dbResponse) => {
       res.sendStatus(200);
     })

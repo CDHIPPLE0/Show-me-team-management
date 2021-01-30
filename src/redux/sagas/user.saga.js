@@ -112,12 +112,22 @@ function* verify(action) {
     console.log('Error with user verification:', error);
   }
 }
+function* deleteUser(action) {
+  try {
+    yield axios.put(`api/user/delete/${action.id}`);
+    const response = yield axios.get(`/api/unverified`);
+    yield put({ type: 'GET_UNVERIFIED', payload: response.data });
+  } catch (error) {
+    console.log('Error with user verification:', error);
+  }
+}
 
 function* userSaga() {
   yield takeLatest('GET_UNVERIFIED_USERS', getUnverified);
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('EDIT', edit);
   yield takeLatest('VERIFY_USER', verify);
+  yield takeLatest('DELETE_USER', deleteUser);
   yield takeLatest('GET_USER_DETAILS', getUser);
   yield takeLatest('STATUS_WORKING', updateJobStatusTrue);
   yield takeLatest('STATUS_NOT_WORKING', updateJobStatusFalse);

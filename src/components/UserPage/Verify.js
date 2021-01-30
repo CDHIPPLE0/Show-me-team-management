@@ -15,7 +15,12 @@ class Verify extends Component {
       id: id,
     });
   };
-
+  deleteUser = (id) => () => {
+    this.props.dispatch({
+      type: 'DELETE_USER',
+      id: id,
+    });
+  };
   render() {
     if (this.props.store.unverified.length !== 0) {
       return (
@@ -30,6 +35,7 @@ class Verify extends Component {
                 <th>Address</th>
                 <th>Company</th>
                 <th>Registered As</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -48,10 +54,22 @@ class Verify extends Component {
                   <td>
                     {
                       <Button
-                        color="primary"
+                        style={{
+                          backgroundColor: 'rgba(144, 238, 144, 0.322)',
+                        }}
                         onClick={this.verifyUser(item.id, item.registered_as)}
                       >
                         Verify
+                      </Button>
+                    }
+                  </td>
+                  <td>
+                    {
+                      <Button
+                        style={{ backgroundColor: 'rgba(255, 0, 0, 0.342)' }}
+                        onClick={this.deleteUser(item.id, item.registered_as)}
+                      >
+                        Reject
                       </Button>
                     }
                   </td>
