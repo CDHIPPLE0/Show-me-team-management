@@ -61,7 +61,7 @@ class JobSelection extends Component {
                   <td>{`$${item.helper_rate}`}</td>
                   <td>{`$${item.welder_rate}`}</td>
                   <td>{`$${item.fitter_rate}`}</td>
-                  <td>{item.count}</td>
+                  <td style={{ color: 'blue' }}>{item.count}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
                       <Button

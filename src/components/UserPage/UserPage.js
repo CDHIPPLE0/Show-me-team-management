@@ -82,9 +82,6 @@ class UserPage extends Component {
       case 7:
         display = <Verify />;
         break;
-      case 7:
-        display = <Verify />;
-        break;
       case 12:
         display = (
           <center>

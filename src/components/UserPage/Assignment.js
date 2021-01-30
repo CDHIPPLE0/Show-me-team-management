@@ -113,11 +113,23 @@ Please Do Not Respond:
   }
 
   render() {
+    let thisJob = this.props.store.jobs.getDetailJob;
     if (this.props.jobSelection !== 0) {
       if (this.props.store.Subcontractors.availableSubcontractors.length > 0) {
         return (
           <div className="table">
             <table className="statTable">
+              <thead className="tableHead">
+                {this.props.store.jobs.getDetailJob.map((item, index) => (
+                  <tr index={index}>
+                    <th colSpan="9">
+                      {'Assigning Subcontractors to job for: '}
+                      {item.vendor_company}
+                      {' Beginning on '} {item.start_date}
+                    </th>
+                  </tr>
+                ))}
+              </thead>
               <thead className="tableHead">
                 <tr>
                   <th>First Name</th>
