@@ -25,7 +25,7 @@ class Subcontractors extends Component {
                 <th>Osha Level</th>
                 <th>Certifications</th>
                 <th>Availability</th>
-                <th>Job Assigned</th>
+                <th>Assigned Job ID</th>
               </tr>
             </thead>
             <tbody>

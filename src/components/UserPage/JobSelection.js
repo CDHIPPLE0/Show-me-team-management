@@ -43,6 +43,7 @@ class JobSelection extends Component {
                 <th>Helper Rate</th>
                 <th>Welder Rate</th>
                 <th>Fitter Rate</th>
+                <th># Assigned to Job</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -60,6 +61,7 @@ class JobSelection extends Component {
                   <td>{`$${item.helper_rate}`}</td>
                   <td>{`$${item.welder_rate}`}</td>
                   <td>{`$${item.fitter_rate}`}</td>
+                  <td>{item.count}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
                       <Button

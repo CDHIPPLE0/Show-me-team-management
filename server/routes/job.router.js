@@ -7,8 +7,14 @@ const router = express.Router();
 
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
-  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed,helper_rate, welder_rate,fitter_rate
-  FROM "job" JOIN "user" ON "job".job_creator_id = "user".id ORDER BY start_date ASC;`;
+  first_name, last_name, vendor_company, start_date, date_created,
+  helpers_needed, welders_needed, fitters_needed,helper_rate, 
+  welder_rate,fitter_rate, COUNT("user_job".id) AS "count"
+  FROM "job" 
+  JOIN "user" ON "job".job_creator_id = "user".id 
+  LEFT JOIN "user_job" ON "job".id = "user_job".job_id
+  GROUP BY "job".id, "user".id
+  ORDER BY start_date ASC;`;
   pool
     .query(queryText)
     .then((result) => {
