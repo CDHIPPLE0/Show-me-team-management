@@ -328,7 +328,12 @@ html {
 
 /*--------responsiveness--------*/
 
-@media (max-width: 1347px) {
+@media (max-width: 1447px) {
+  .appNav p {
+    font-size: 20px;
+    margin-left: 20rem;
+  }
+
   .headtext1 {
     text-align: center;
     font-weight: 400;
@@ -433,6 +438,12 @@ html {
 
 @media (max-width: 1000px) {
   /*--------responsivenessNAV----------------*/
+
+  .appNav p {
+    font-size: 10px;
+    margin-left: 5rem;
+  }
+
   .mobileArrow {
     visibility: visible;
   }
@@ -473,7 +484,7 @@ html {
     /* padding: 0.2rem 0.2rem 0.2rem 0.2rem; */
   }
   .title {
-    visibility: hidden;
+    /* visibility: hidden; */
     font-size: 1.5rem;
     margin: 0;
   }
