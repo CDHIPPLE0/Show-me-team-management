@@ -80,7 +80,17 @@ class Verify extends Component {
         </div>
       );
     } else {
-      return <center>No unverified users to display...</center>;
+      return (
+        <div className="table">
+          <table className="statTable">
+            <thead className="tableHead">
+              <tr className="inTheRed">
+                <th className="welcome">No unverified users in the system</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      );
     }
   }
 }
