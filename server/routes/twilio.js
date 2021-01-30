@@ -142,7 +142,7 @@ router.get('/accept/:id', (req, res) => {
             .create({
               body: message,
               from: '+13862048962',
-              to: `+16609246155`,
+              to: `+13254368881`,
             })
             .then(() => {
               res.sendStatus(200);
