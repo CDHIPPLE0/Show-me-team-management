@@ -441,7 +441,7 @@ html {
 
   .appNav p {
     font-size: 10px;
-    margin-left: 5rem;
+    margin-left: 0rem;
   }
 
   .mobileArrow {
@@ -492,7 +492,6 @@ html {
 
   .headtext1 {
     margin-bottom: 10%;
-
     font-weight: 400;
     color: #fffded;
   }
