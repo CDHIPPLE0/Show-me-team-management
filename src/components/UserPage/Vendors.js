@@ -39,7 +39,20 @@ class Vendors extends Component {
         </div>
       );
     } else {
-      return <center>loading...</center>;
+      return (
+        <div className="table">
+          <table className="statTable">
+            <thead className="tableHead">
+              <tr className="inTheRed">
+                <th className="welcome">
+                  Check your Verify Menu, there are no verified subcontractors
+                  in the system.
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      );
     }
   }
 }
