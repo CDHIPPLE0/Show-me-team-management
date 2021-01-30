@@ -69,7 +69,8 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
       VALUES ($1 , $2, $3);`;
       const queryArray = [jobId, userId, newGuid];
       const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}.
-
+      please do not text your response to this number, follow the directions below.
+      
       If you would like to be considered for the following job
 
       Start Date: ${startDate} 

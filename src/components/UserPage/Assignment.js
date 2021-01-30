@@ -45,7 +45,7 @@ class Assignment extends Component {
       type: 'SEND_CUSTOM',
       payload: {
         userArray: userArray,
-        message: message,
+        message: `This is a one way message, Please Do Not Respond: ${message}`,
       },
     });
   };
