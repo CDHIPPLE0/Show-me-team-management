@@ -24,6 +24,9 @@ class JobCreation extends Component {
     helpersNeeded: '',
     weldersNeeded: '',
     fittersNeeded: '',
+    helperRate: '',
+    welderRate: '',
+    fitterRate: '',
   };
 
   createJob = (event) => {
@@ -39,6 +42,9 @@ class JobCreation extends Component {
         helpersNeeded: this.state.helpersNeeded,
         weldersNeeded: this.state.weldersNeeded,
         fittersNeeded: this.state.fittersNeeded,
+        helperRate: this.state.helperRate,
+        welderRate: this.state.welderRate,
+        fitterRate: this.state.fitterRate,
       },
     });
     this.setState({
@@ -49,6 +55,9 @@ class JobCreation extends Component {
       helpersNeeded: '',
       weldersNeeded: '',
       fittersNeeded: '',
+      helperRate: '',
+      welderRate: '',
+      fitterRate: '',
     });
     if (this.props.store.user.access_level_id === 3) {
       swal(
@@ -80,7 +89,7 @@ class JobCreation extends Component {
             </h3>
           )}
           <br />
-          <div className="jobItem">
+          <div className="jobItemDesc">
             <TextField
               InputLabelProps={{
                 style: { color: '#fffded' },
@@ -92,6 +101,7 @@ class JobCreation extends Component {
                 },
               }}
               autoComplete="off"
+              fullWidth={true}
               id="outlined-basic"
               label="Description"
               variant="outlined"
@@ -210,6 +220,72 @@ class JobCreation extends Component {
               value={this.state.fittersNeeded}
               required
               onChange={this.handleInputChangeFor('fittersNeeded')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Helper Rate"
+              variant="outlined"
+              type="number"
+              name="Helper Rate"
+              value={this.state.helperRate}
+              required
+              onChange={this.handleInputChangeFor('helperRate')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Welder Rate"
+              variant="outlined"
+              type="number"
+              name="Welder Rate"
+              value={this.state.welderRate}
+              required
+              onChange={this.handleInputChangeFor('welderRate')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Fitter Rate"
+              variant="outlined"
+              type="number"
+              name="Fitter Rate"
+              value={this.state.fitterRate}
+              required
+              onChange={this.handleInputChangeFor('fitterRate')}
             />
           </div>
           <div className="jobItem">

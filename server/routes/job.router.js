@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
-  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed
+  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed,helper_rate, welder_rate,fitter_rate
   FROM "job" JOIN "user" ON "job".job_creator_id = "user".id ORDER BY start_date ASC;`;
   pool
     .query(queryText)
@@ -22,7 +22,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
-  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed
+  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed, helper_rate, welder_rate,fitter_rate
   FROM "job" JOIN "user" ON "job".job_creator_id = "user".id WHERE "job".id = $1;`;
   pool
     .query(queryText, [req.params.id])
@@ -44,8 +44,12 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const helpersNeeded = req.body.helpersNeeded;
   const weldersNeeded = req.body.weldersNeeded;
   const fittersNeeded = req.body.fittersNeeded;
-  const queryText = `INSERT INTO "job" (description,start_date, job_address, job_creator_id, helpers_needed, welders_needed, fitters_needed) 
-  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+  const helperRate = req.body.helperRate;
+  const welderRate = req.body.welderRate;
+  const fitterRate = req.body.fitterRate;
+  const queryText = `INSERT INTO "job" (description,start_date, job_address, job_creator_id, 
+  helpers_needed, welders_needed, fitters_needed,helper_rate,welder_rate,fitter_rate) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
   pool
     .query(queryText, [
       description,
@@ -55,6 +59,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       helpersNeeded,
       weldersNeeded,
       fittersNeeded,
+      helperRate,
+      welderRate,
+      fitterRate,
     ])
     .then(() => res.sendStatus(201))
     .catch((err) => {

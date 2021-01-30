@@ -61,6 +61,9 @@ class Assignment extends Component {
     let jobDetails = this.props.store.jobs.getDetailJob[0];
     let startDate = jobDetails.start_date;
     let jobAddress = jobDetails.job_address;
+    let helperRate = jobDetails.helper_rate;
+    let welderRate = jobDetails.welder_rate;
+    let fitterRate = jobDetails.fitter_rate;
     let jobId = this.props.jobSelection;
     this.props.dispatch({
       type: 'SEND_AUTOMATED',
@@ -69,6 +72,9 @@ class Assignment extends Component {
         userArray: userArray,
         startDate: startDate,
         jobAddress: jobAddress,
+        helperRate: helperRate,
+        welderRate: welderRate,
+        fitterRate: fitterRate,
       },
     });
   };

@@ -27,6 +27,10 @@
   padding: 1rem;
 }
 
+.jobItemDesc {
+  grid-column: 1/-1;
+}
+
 .CreateJobForm Button {
   margin-top: 1rem;
 }

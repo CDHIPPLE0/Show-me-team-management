@@ -40,6 +40,9 @@ class JobSelection extends Component {
                 <th>Description</th>
                 <th>Location</th>
                 <th>Date Posted</th>
+                <th>Helper Rate</th>
+                <th>Welder Rate</th>
+                <th>Fitter Rate</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -54,6 +57,9 @@ class JobSelection extends Component {
                   <td>{item.description}</td>
                   <td>{item.job_address}</td>
                   <td>{item.date_created.substring(0, 10)}</td>
+                  <td>{`$${item.helper_rate}`}</td>
+                  <td>{`$${item.welder_rate}`}</td>
+                  <td>{`$${item.fitter_rate}`}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
                       <Button

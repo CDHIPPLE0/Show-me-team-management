@@ -39,6 +39,7 @@ router.post('/sendCustom', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
+  console.log(req.body);
   const newGuid = dataGuid();
   const userId = req.body.userId;
   const jobId = req.body.jobId;
@@ -47,6 +48,9 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
   let firstName = '';
   let lastName = '';
   let phone = '';
+  const helperRate = req.body.helperRate;
+  const welderRate = req.body.welderRate;
+  const fitterRate = req.body.fitterRate;
 
   const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
   const queryGetArray = [userId];
@@ -66,14 +70,16 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
       const queryArray = [jobId, userId, newGuid];
       const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}.
 
-      If you would like to be considered for a job starting 
+      If you would like to be considered for the following job
 
-      ${startDate} 
+      Start Date: ${startDate} 
+      Address: ${jobAddress}
+      
+      Pay rates:
+      Helper $${helperRate} 
+      Welder $${welderRate} 
+      fitter $${fitterRate} 
 
-      at 
-    
-      ${jobAddress}
-    
       then please click this link https://show-me-team-management.herokuapp.com/api/twilio/accept/${newGuid}
   
       To reject consideration please click the link below.
