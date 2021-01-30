@@ -39,6 +39,7 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
   const queryArray = [req.params.id];
   const userArray = [];
   const queryTextOne = `DELETE FROM "user_job" WHERE job_id=$1;`;
+  const queryTextFour = `DELETE FROM "job_user_message" WHERE job_id=$1;`;
   const queryTextTwo = `DELETE FROM "job" WHERE id=$1;`;
   const queryTextThree = `SELECT array_agg("user".id) AS "users" 
   FROM "user" INNER JOIN user_job ON user_job.user_id = "user".id WHERE user_job.job_id = $1;`;
@@ -52,6 +53,13 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
           console.log(userArray);
         });
       }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+    .then(() => {
+      pool.query(queryTextFour, queryArray);
     })
     .catch((err) => {
       console.log(err);
