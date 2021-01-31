@@ -8,7 +8,7 @@ app.use(urlencoded({ extended: false }));
 router.put('/send', (req, res) => {
   console.log(req.body);
   const transportConfig = {
-    service: 'yahoo',
+    service: 'gmail',
     auth: {
       user: process.env.MAILER_EMAIL,
       pass: process.env.MAILER_PASSWORD,
