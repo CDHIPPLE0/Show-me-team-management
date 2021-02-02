@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Button } from '@material-ui/core';
 import Axios from 'axios';
+import swal from 'sweetalert';
 
 class JobSelection extends Component {
   sendToParent = (id) => (event) => {
@@ -14,10 +15,24 @@ class JobSelection extends Component {
   };
 
   removeJob = (id) => (event) => {
-    console.log(id);
-    this.props.dispatch({
-      type: 'REMOVE_JOB',
-      payload: id,
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this job!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        this.props.dispatch({
+          type: 'REMOVE_JOB',
+          payload: id,
+        });
+        swal('Poof! The job has been deleted!', {
+          icon: 'success',
+        });
+      } else {
+        swal('Crisis averted!');
+      }
     });
   };
 
@@ -35,15 +50,22 @@ class JobSelection extends Component {
               <tr>
                 <th>Job ID</th>
                 <th>Start Date</th>
-                <th>Vendor Name</th>
-                <th>Vendor Company</th>
                 <th>Description</th>
                 <th>Location</th>
                 <th>Date Posted</th>
-                <th>Helper Rate</th>
-                <th>Welder Rate</th>
-                <th>Fitter Rate</th>
-                <th># Assigned to Job</th>
+                <th style={{ fontSize: '.8rem' }}>
+                  Helpers needed / assigned / rate{' '}
+                </th>
+                <th style={{ fontSize: '.8rem' }}>
+                  Welders needed / assigned / rate{' '}
+                </th>
+                <th style={{ fontSize: '.8rem' }}>
+                  Fitters needed / assigned / rate{' '}
+                </th>
+                <th style={{ fontSize: '.8rem' }}>
+                  Fitter-Welders needed / assigned{' '}
+                </th>
+                <th style={{ fontSize: '.8rem' }}>Total Assigned</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -53,15 +75,22 @@ class JobSelection extends Component {
                 <tr key={index}>
                   <td>{item.id}</td>
                   <td>{item.start_date}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.vendor_company}</td>
                   <td>{item.description}</td>
                   <td>{item.job_address}</td>
                   <td>{item.date_created.substring(0, 10)}</td>
-                  <td>{`$${item.helper_rate}`}</td>
-                  <td>{`$${item.welder_rate}`}</td>
-                  <td>{`$${item.fitter_rate}`}</td>
-                  <td style={{ color: 'blue' }}>{item.count}</td>
+                  <td
+                    style={{ textAlign: 'center' }}
+                  >{`${item.helpers_needed} / ${item.Helpers} / $${item.helper_rate}`}</td>
+                  <td
+                    style={{ textAlign: 'center' }}
+                  >{`${item.welders_needed} / ${item.Welders} / $${item.welder_rate}`}</td>
+                  <td
+                    style={{ textAlign: 'center' }}
+                  >{`${item.fitters_needed} / ${item.Fitters} / $${item.fitter_rate}`}</td>
+                  <td
+                    style={{ textAlign: 'center' }}
+                  >{`${item.welderfitters_needed} / ${item.WelderFitters}`}</td>
+                  <td style={{ textAlign: 'center' }}>{item.count}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
                       <Button

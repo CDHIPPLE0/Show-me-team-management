@@ -30,6 +30,8 @@ function* sendAutomatedToTwilio(action) {
   let helperRate = action.payload.helperRate;
   let welderRate = action.payload.welderRate;
   let fitterRate = action.payload.fitterRate;
+  let perDiem = action.payload.perDiem;
+  let description = action.payload.description;
   let userArray = action.payload.userArray;
   let data = [];
   for (let index = 0; index < userArray.length; index++) {
@@ -42,6 +44,8 @@ function* sendAutomatedToTwilio(action) {
       helperRate: helperRate,
       welderRate: welderRate,
       fitterRate: fitterRate,
+      perDiem: perDiem,
+      description: description,
     };
     try {
       yield axios.post('/api/twilio/sendAutomated', data);

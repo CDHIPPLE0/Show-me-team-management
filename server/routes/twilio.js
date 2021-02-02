@@ -39,7 +39,6 @@ router.post('/sendCustom', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
   const newGuid = dataGuid();
   const userId = req.body.userId;
   const jobId = req.body.jobId;
@@ -51,7 +50,8 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
   const helperRate = req.body.helperRate;
   const welderRate = req.body.welderRate;
   const fitterRate = req.body.fitterRate;
-
+  const perDiem = req.body.perDiem;
+  const description = req.body.description;
   const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
   const queryGetArray = [userId];
   pool
@@ -69,14 +69,17 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
       VALUES ($1 , $2, $3);`;
       const queryArray = [jobId, userId, newGuid];
       const message = `This is Show Me Stainless Inc with an automated message for ${firstName} ${lastName}.
-      please do not text your response to this number, follow the directions below.
+      Please do not text your response to this number, follow the directions below.
       
       If you would like to be considered for the following job
+      
+      ${description}
 
       Start Date: ${startDate} 
       Address: ${jobAddress}
       
       Pay rates:
+      Per Diem $${perDiem}
       Helper $${helperRate} 
       Welder $${welderRate} 
       fitter $${fitterRate} 

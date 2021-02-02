@@ -547,7 +547,7 @@ class RegisterForm extends Component {
                   type="text"
                   name="certifications"
                   value={this.state.certifications}
-                  required
+                  required={false}
                   onChange={this.handleInputChangeFor('certifications')}
                 />
               </div>

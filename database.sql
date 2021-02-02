@@ -32,9 +32,15 @@ CREATE TABLE "job" (
   helpers_needed int,
   welders_needed int,
   fitters_needed int,
+  welderFitters_needed int,
+  helper_rate int,
+  welder_rate int,
+  fitter_rate int,
+  per_diem int,
   date_created date not null default CURRENT_DATE,
   is_active boolean
 );
+
 
 CREATE TABLE "user_job" (
   id serial PRIMARY KEY,
@@ -42,10 +48,17 @@ CREATE TABLE "user_job" (
   user_id INT REFERENCES "user"  ON DELETE CASCADE
 );
 
+CREATE TABLE "job_user_message" (
+  id serial PRIMARY KEY,
+  user_id INT REFERENCES "user",
+  job_id INT REFERENCES "job",
+  message_id VARCHAR
+);
+
+
 
 INSERT INTO "access_level" (level, name) VALUES
 ( 1 , 'UNVERIFIED'),
 ( 2 , 'SUBCONTRACTOR'),
 ( 3 , 'VENDOR'),
 ( 4 , 'ADMIN');
-

@@ -27,6 +27,7 @@ class JobCreation extends Component {
     helperRate: '',
     welderRate: '',
     fitterRate: '',
+    perDiem: '',
   };
 
   createJob = (event) => {
@@ -42,9 +43,11 @@ class JobCreation extends Component {
         helpersNeeded: this.state.helpersNeeded,
         weldersNeeded: this.state.weldersNeeded,
         fittersNeeded: this.state.fittersNeeded,
+        welderFittersNeeded: this.state.fittersNeeded,
         helperRate: this.state.helperRate,
         welderRate: this.state.welderRate,
         fitterRate: this.state.fitterRate,
+        perDiem: this.state.perDiem,
       },
     });
     this.setState({
@@ -55,9 +58,11 @@ class JobCreation extends Component {
       helpersNeeded: '',
       weldersNeeded: '',
       fittersNeeded: '',
+      welderFittersNeeded: '',
       helperRate: '',
       welderRate: '',
       fitterRate: '',
+      perDiem: '',
     });
     if (this.props.store.user.access_level_id === 3) {
       swal(
@@ -112,6 +117,29 @@ class JobCreation extends Component {
               onChange={this.handleInputChangeFor('description')}
             />
           </div>
+          <div className="jobItemAddress">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              fullWidth={true}
+              id="outlined-basic"
+              label="Job Address"
+              variant="outlined"
+              type="text"
+              name="Job Address"
+              value={this.state.jobAddress}
+              required
+              onChange={this.handleInputChangeFor('jobAddress')}
+            />
+          </div>
           <div className="jobItem">
             <TextField
               InputLabelProps={{
@@ -132,28 +160,6 @@ class JobCreation extends Component {
               value={this.state.startDate}
               required
               onChange={this.handleInputChangeFor('startDate')}
-            />
-          </div>
-          <div className="jobItem">
-            <TextField
-              InputLabelProps={{
-                style: { color: '#fffded' },
-              }}
-              InputProps={{
-                classes: {
-                  notchedOutline: classes.notchedOutline,
-                  input: classes.input,
-                },
-              }}
-              autoComplete="off"
-              id="outlined-basic"
-              label="Job Address"
-              variant="outlined"
-              type="text"
-              name="Job Address"
-              value={this.state.jobAddress}
-              required
-              onChange={this.handleInputChangeFor('jobAddress')}
             />
           </div>
           <div className="jobItem">
@@ -235,6 +241,28 @@ class JobCreation extends Component {
               }}
               autoComplete="off"
               id="outlined-basic"
+              label="Welder / Fitters Needed"
+              variant="outlined"
+              type="number"
+              name="Welder / Fitters Needed"
+              value={this.state.welderFittersNeeded}
+              required
+              onChange={this.handleInputChangeFor('welderFittersNeeded')}
+            />
+          </div>
+          <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
               label="Helper Rate"
               variant="outlined"
               type="number"
@@ -289,8 +317,31 @@ class JobCreation extends Component {
             />
           </div>
           <div className="jobItem">
+            <TextField
+              InputLabelProps={{
+                style: { color: '#fffded' },
+              }}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                  input: classes.input,
+                },
+              }}
+              autoComplete="off"
+              id="outlined-basic"
+              label="Per Diem"
+              variant="outlined"
+              type="number"
+              name="Per Diem"
+              value={this.state.perDiem}
+              required
+              onChange={this.handleInputChangeFor('perDiem')}
+            />
+          </div>
+          <div className="jobItem">
             <Button
               variant="contained"
+              fullWidth={true}
               className="btn"
               type="submit"
               name="submit"

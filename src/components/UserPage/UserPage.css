@@ -5,14 +5,14 @@
 }
 .jobForm-grid-wrapper {
   border: 2px, solid, black;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
   display: grid;
   background-color: rgba(9, 11, 14, 0.7);
   color: #fffded;
-  grid-gap: 5px;
+  grid-gap: 2px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10%;
+  grid-template-rows: 8%;
 }
 
 .jobForm-grid-wrapper > * {
@@ -28,6 +28,10 @@
 }
 
 .jobItemDesc {
+  grid-column: 1/-1;
+}
+
+.jobItemAddress {
   grid-column: 1/-1;
 }
 
@@ -109,8 +113,8 @@
 }
 
 .statTable td {
-  font-size: 0.9rem;
-  padding: 6px 10px;
+  font-size: 0.8rem;
+  padding: 6px 6px;
   border: 1px solid black;
 }
 

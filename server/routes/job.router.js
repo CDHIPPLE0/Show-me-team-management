@@ -6,18 +6,23 @@ const {
 const router = express.Router();
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
-  first_name, last_name, vendor_company, start_date, date_created,
-  helpers_needed, welders_needed, fitters_needed,helper_rate, 
-  welder_rate,fitter_rate, COUNT("user_job".id) AS "count"
-  FROM "job" 
-  JOIN "user" ON "job".job_creator_id = "user".id 
-  LEFT JOIN "user_job" ON "job".id = "user_job".job_id
-  GROUP BY "job".id, "user".id
+  const queryText = `SELECT j.id, description, job_address, start_date, date_created,
+  helpers_needed, welders_needed, welderfitters_needed, fitters_needed, helper_rate, 
+  welder_rate,fitter_rate, 
+  COUNT(uj.id) AS "count", 
+  COUNT(uj.id) FILTER (WHERE u.job_title = 'Welder / Fitter') AS "WelderFitters", 
+  COUNT(uj.id) FILTER (WHERE u.job_title = 'Welder') AS "Welders",
+  COUNT(uj.id) FILTER (WHERE u.job_title = 'Fitter') AS "Fitters",
+  COUNT(uj.id) FILTER (WHERE u.job_title = 'Helper') AS "Helpers"
+  FROM "job" j
+  LEFT JOIN "user_job" uj ON j.id = uj.job_id
+  LEFT JOIN "user" u ON uj.user_id = u.id 
+  GROUP BY j.id
   ORDER BY start_date ASC;`;
   pool
     .query(queryText)
     .then((result) => {
+      console.log(result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
@@ -28,7 +33,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "job".id, description, job_address, job_creator_id, 
-  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, welders_needed, fitters_needed, helper_rate, welder_rate,fitter_rate
+  first_name, last_name, vendor_company, start_date, date_created, helpers_needed, 
+  welders_needed, fitters_needed, helper_rate, welder_rate,fitter_rate, per_diem
   FROM "job" JOIN "user" ON "job".job_creator_id = "user".id WHERE "job".id = $1;`;
   pool
     .query(queryText, [req.params.id])
@@ -50,12 +56,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const helpersNeeded = req.body.helpersNeeded;
   const weldersNeeded = req.body.weldersNeeded;
   const fittersNeeded = req.body.fittersNeeded;
+  const welderFittersNeeded = req.body.welderFittersNeeded;
   const helperRate = req.body.helperRate;
   const welderRate = req.body.welderRate;
   const fitterRate = req.body.fitterRate;
+  const perDiem = req.body.perDiem;
   const queryText = `INSERT INTO "job" (description,start_date, job_address, job_creator_id, 
-  helpers_needed, welders_needed, fitters_needed,helper_rate,welder_rate,fitter_rate) 
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+  helpers_needed, welders_needed, fitters_needed, welderfitters_needed, helper_rate,welder_rate,fitter_rate, per_diem) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`;
   pool
     .query(queryText, [
       description,
@@ -65,9 +73,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       helpersNeeded,
       weldersNeeded,
       fittersNeeded,
+      welderFittersNeeded,
       helperRate,
       welderRate,
       fitterRate,
+      perDiem,
     ])
     .then(() => res.sendStatus(201))
     .catch((err) => {

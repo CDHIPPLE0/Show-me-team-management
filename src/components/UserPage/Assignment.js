@@ -45,7 +45,7 @@ class Assignment extends Component {
       type: 'SEND_CUSTOM',
       payload: {
         userArray: userArray,
-        message: `This is a one way message from Show Me Stainless, 
+        message: `This is a one-way message from Show Me Stainless, 
 Please Do Not Respond:
          ${message}`,
       },
@@ -66,6 +66,8 @@ Please Do Not Respond:
     let helperRate = jobDetails.helper_rate;
     let welderRate = jobDetails.welder_rate;
     let fitterRate = jobDetails.fitter_rate;
+    let perDiem = jobDetails.per_diem;
+    let description = jobDetails.description;
     let jobId = this.props.jobSelection;
     this.props.dispatch({
       type: 'SEND_AUTOMATED',
@@ -77,6 +79,8 @@ Please Do Not Respond:
         helperRate: helperRate,
         welderRate: welderRate,
         fitterRate: fitterRate,
+        perDiem: perDiem,
+        description: description,
       },
     });
   };
