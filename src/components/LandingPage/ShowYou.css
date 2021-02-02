@@ -39,8 +39,8 @@
     scroll-snap-align: unset;
   }
   .showMeImage {
-    height: 10rem;
-    width: 10rem;
+    height: 15rem;
+    width: 15rem;
   }
   .showMeGridItem h1 {
     margin-top: 0.5rem;
