@@ -209,6 +209,7 @@ html {
 }
 .subItem7 {
   align-self: start;
+  color: 'white';
 }
 .subItem00 {
   grid-column: 1/-1;

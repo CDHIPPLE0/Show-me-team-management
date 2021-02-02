@@ -478,7 +478,7 @@ class RegisterForm extends Component {
                 </label>
                 <Select
                   native
-                  style={{ border: '1px solid #fffded' }}
+                  style={{ border: '1px solid #fffded', color: '#fffded' }}
                   id="outlined-basic"
                   variant="outlined"
                   fullWidth={true}
@@ -503,7 +503,7 @@ class RegisterForm extends Component {
                 </label>
                 <Select
                   native
-                  style={{ border: '1px solid #fffded' }}
+                  style={{ border: '1px solid #fffded', color: '#fffded' }}
                   id="outlined-basic"
                   className={classes.outlined}
                   variant="outlined"
