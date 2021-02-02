@@ -295,7 +295,7 @@ class EditProfile extends Component {
                     native
                     fullWidth={true}
                     variant="outlined"
-                    style={{ border: '1px solid #fffded' }}
+                    style={{ border: '1px solid #fffded', color: '#fffded' }}
                     value={this.state.jobTitle}
                     onChange={this.handleDropdown('jobTitle')}
                     inputProps={{
@@ -319,7 +319,7 @@ class EditProfile extends Component {
                     native
                     fullWidth={true}
                     variant="outlined"
-                    style={{ border: '1px solid #fffded' }}
+                    style={{ border: '1px solid #fffded', color: '#fffded' }}
                     value={this.state.osha}
                     onChange={this.handleDropdown('osha')}
                     inputProps={{
