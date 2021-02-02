@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Button } from '@material-ui/core';
+import swal from 'sweetalert';
 
 class Verify extends Component {
   componentDidMount() {
@@ -16,9 +17,24 @@ class Verify extends Component {
     });
   };
   deleteUser = (id) => () => {
-    this.props.dispatch({
-      type: 'DELETE_USER',
-      id: id,
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this user!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        this.props.dispatch({
+          type: 'DELETE_USER',
+          id: id,
+        });
+        swal('Poof! The user has been deleted!', {
+          icon: 'success',
+        });
+      } else {
+        swal('Crisis averted!');
+      }
     });
   };
   render() {

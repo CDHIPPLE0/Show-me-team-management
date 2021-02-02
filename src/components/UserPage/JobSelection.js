@@ -78,19 +78,11 @@ class JobSelection extends Component {
                   <td>{item.description}</td>
                   <td>{item.job_address}</td>
                   <td>{item.date_created.substring(0, 10)}</td>
-                  <td
-                    style={{ textAlign: 'center' }}
-                  >{`${item.helpers_needed} / ${item.Helpers} / $${item.helper_rate}`}</td>
-                  <td
-                    style={{ textAlign: 'center' }}
-                  >{`${item.welders_needed} / ${item.Welders} / $${item.welder_rate}`}</td>
-                  <td
-                    style={{ textAlign: 'center' }}
-                  >{`${item.fitters_needed} / ${item.Fitters} / $${item.fitter_rate}`}</td>
-                  <td
-                    style={{ textAlign: 'center' }}
-                  >{`${item.welderfitters_needed} / ${item.WelderFitters}`}</td>
-                  <td style={{ textAlign: 'center' }}>{item.count}</td>
+                  <td>{`${item.helpers_needed} / ${item.Helpers} / $${item.helper_rate}`}</td>
+                  <td>{`${item.welders_needed} / ${item.Welders} / $${item.welder_rate}`}</td>
+                  <td>{`${item.fitters_needed} / ${item.Fitters} / $${item.fitter_rate}`}</td>
+                  <td>{`${item.welderfitters_needed} / ${item.WelderFitters}`}</td>
+                  <td>{item.count}</td>
                   <td>
                     {this.props.jobSelection !== item.id ? (
                       <Button
