@@ -12,7 +12,7 @@
 
 .aboutUsGridItem {
   text-align: center;
-  padding-top: 5%;
+  padding-top: 8.5%;
   padding-bottom: 4rem;
 }
 
@@ -20,10 +20,14 @@
   width: 15rem;
   margin: auto;
 }
+.aboutUsGridItem h1 {
+  padding-top: 1rem;
+}
 .aboutUsGridItem p {
   text-align: center;
   font-family: sans-serif;
   font-weight: 100;
+  padding-top: 1rem;
 }
 
 .aboutImage {
