@@ -28,7 +28,7 @@ class Subcontractors extends Component {
                 <th>Assigned Job ID</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="tBody">
               {this.props.store.Subcontractors.allSubcontractors.map(
                 (item, index) => (
                   <tr index={index}>

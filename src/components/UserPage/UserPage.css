@@ -113,12 +113,13 @@
 }
 
 .statTable td {
-  text-align: center;
   font-size: 0.8rem;
   padding: 6px 6px;
   border: 1px solid black;
 }
-
+.tBody td {
+  text-align: center;
+}
 .tableHead {
   height: 4rem;
   background-color: rgba(9, 11, 14, 0.7);

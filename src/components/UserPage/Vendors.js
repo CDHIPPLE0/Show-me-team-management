@@ -24,7 +24,7 @@ class Vendors extends Component {
                 <th>Company</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="tBody">
               {this.props.store.allVendors.map((item, index) => (
                 <tr index={index}>
                   <td>{item.first_name}</td>

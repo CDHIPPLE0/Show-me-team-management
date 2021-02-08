@@ -146,7 +146,7 @@ Please Do Not Respond:
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="tBody">
                 {this.props.store.Subcontractors.availableSubcontractors.map(
                   (item, index) => (
                     <tr key={index}>

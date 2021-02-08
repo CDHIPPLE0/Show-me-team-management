@@ -70,7 +70,7 @@ class JobSelection extends Component {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="tBody">
               {this.props.store.jobs.populateJobs.map((item, index) => (
                 <tr key={index}>
                   <td>{item.id}</td>
