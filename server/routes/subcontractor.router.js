@@ -12,7 +12,6 @@ router.delete('/deleteSubcontractor/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {

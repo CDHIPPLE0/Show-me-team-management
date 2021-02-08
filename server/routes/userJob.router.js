@@ -46,11 +46,9 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryTextThree, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse.rows[0].users);
       if (dbResponse.rows[0].users) {
         dbResponse.rows[0].users.map((item) => {
           userArray.push(item);
-          console.log(userArray);
         });
       }
     })
@@ -67,7 +65,6 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
     })
     .then(() => {
       userArray.forEach((element) => {
-        console.log(element);
         pool
           .query(`UPDATE "user" SET job_status=false WHERE id=${element};`)
           .catch((err) => {
@@ -84,7 +81,6 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
       pool
         .query(queryTextOne, queryArray)
         .then((dbResponse) => {
-          console.log(dbResponse);
           res.sendStatus(200);
         })
         .catch((err) => {
@@ -106,7 +102,6 @@ router.delete('/deleteJobConnection/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {

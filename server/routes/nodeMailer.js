@@ -6,7 +6,6 @@ const app = express();
 app.use(urlencoded({ extended: false }));
 
 router.put('/send', (req, res) => {
-  console.log(req.body);
   const transportConfig = {
     service: 'gmail',
     auth: {

@@ -12,7 +12,6 @@ router.delete('/deleteVendor/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -22,7 +21,6 @@ router.delete('/deleteVendor/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  console.log('in vendor get');
   const queryText = `SELECT first_name, last_name, phone, email, vendor_company
     FROM "user" WHERE access_level_id = 3;`;
   pool

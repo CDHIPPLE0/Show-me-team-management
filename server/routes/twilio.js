@@ -61,7 +61,6 @@ router.post('/sendAutomated', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     })
     .then((dbResponse) => {
-      console.log(dbResponse.rows[0]);
       firstName = dbResponse.rows[0].first_name;
       lastName = dbResponse.rows[0].last_name;
       phone = dbResponse.rows[0].phone;
@@ -175,7 +174,6 @@ router.get('/reject/:id', (req, res) => {
     .then((dbResponse) => {
       uid = dbResponse.rows[0].user_id;
       jid = dbResponse.rows[0].job_id;
-      console.log('first pool', uid, jid);
       const queryGetText = `SELECT first_name, last_name, phone FROM "user" WHERE id = $1;`;
       const queryGetArray = [uid];
       pool

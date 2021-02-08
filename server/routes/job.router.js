@@ -22,7 +22,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText)
     .then((result) => {
-      console.log(result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
@@ -48,7 +47,6 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
   const description = req.body.description;
   const startDate = req.body.startDate;
   const address = req.body.address;
@@ -94,7 +92,6 @@ router.put('/editJobAddress/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -111,7 +108,6 @@ router.put('/editJobDescription/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -121,14 +117,12 @@ router.put('/editJobDescription/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/setActive/:id', rejectUnauthenticated, (req, res) => {
-  console.log(req);
   const queryText = `UPDATE "job" SET is_active=true WHERE id=$1;`;
   const queryArray = [req.params.id];
 
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -138,14 +132,12 @@ router.put('/setActive/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/setInactive/:id', rejectUnauthenticated, (req, res) => {
-  console.log(req);
   const queryText = `UPDATE "job" SET is_active=false  WHERE id=$1;`;
   const queryArray = [req.params.id];
 
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -161,7 +153,6 @@ router.delete('/deleteJob/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryArray)
     .then((dbResponse) => {
-      console.log(dbResponse);
       res.sendStatus(200);
     })
     .catch((err) => {

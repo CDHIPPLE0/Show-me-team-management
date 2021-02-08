@@ -91,7 +91,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
   const phone = req.body.phone;
   const email = req.body.email;
   const address = req.body.address;
@@ -223,7 +222,6 @@ router.put('/delete/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/verify/:id', rejectUnauthenticated, (req, res) => {
-  console.log(req.params.id);
   const queryText = `UPDATE "user" SET access_level_id=registered_as WHERE id=$1;`;
   const queryArray = [req.params.id];
 
